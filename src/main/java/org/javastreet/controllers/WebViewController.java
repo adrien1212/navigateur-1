@@ -1,5 +1,6 @@
 package org.javastreet.controllers;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,11 +12,10 @@ import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -24,6 +24,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.DBHistory;
@@ -61,6 +62,9 @@ public class WebViewController
     @FXML
     private MenuButton menuButton;
 
+    @FXML
+    private MenuItem historyMenu;
+
     private DBHistory myHistory;
 
     @FXML
@@ -79,7 +83,6 @@ public class WebViewController
                 addressBar.setText(webEngine.getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
                     myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
-                    stateLabel.setText("Finish!");
                 }
             }
 
@@ -116,6 +119,24 @@ public class WebViewController
                 });
             }
 
+        });
+
+        historyMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/history.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("Historique");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
         });
 
         // Refresh Button click handler
