@@ -1,5 +1,7 @@
 package org.javastreet.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +10,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.application.Platform;
@@ -29,23 +32,23 @@ public class WebViewController
     private TextField addressBar;
 
     @FXML
-    private Button goButton;
-
-    @FXML
     private Label stateLabel;
 
     @FXML
     private ProgressBar progressBar;
-    
+
     @FXML
     private Button previousButton;
-    
+
     @FXML
     private Button forwardButton;
 
     @FXML
     private Button refreshButton;
-    
+
+    @FXML
+    private MenuButton menuButton;
+
     @FXML
     private void initialize()
     {
@@ -55,64 +58,56 @@ public class WebViewController
 
         // Listening to the status of worker
         worker.stateProperty().addListener(new ChangeListener<State>() {
-        	
+
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 addressBar.setText(webEngine.getLocation());
             }
-            
+
         });
         progressBar.progressProperty().bind(worker.progressProperty());
-
+        
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){
                     search(webEngine);
                 }
         });
 
-        goButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println(event.getEventType());
-                search(webEngine);
-            }
-        });
-        
         // Previous Button click handler
         previousButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		Platform.runLater(() -> {
-        			// Interaction with the webview DOM to fetch the previous page
-        			webEngine.executeScript("history.back()");
-        		});
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                Platform.runLater(() -> {
+                    // Interaction with the webview DOM to fetch the previous page
+                    webEngine.executeScript("history.back()");
+                });
+            }
+
         });
-        
+
         // Forward Button click handler
         forwardButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		Platform.runLater(() -> {
-        			// Interaction with the webview DOM to fetch the forward page
-        			webEngine.executeScript("history.forward()");
-        		});
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                Platform.runLater(() -> {
+                    // Interaction with the webview DOM to fetch the forward page
+                    webEngine.executeScript("history.forward()");
+                });
+            }
+
         });
-        
+
         // Refresh Button click handler
         refreshButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		// Refresh the page
-        		webEngine.reload();
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                // Refresh the page
+                webEngine.reload();
+            }
+
         });
     }
 
