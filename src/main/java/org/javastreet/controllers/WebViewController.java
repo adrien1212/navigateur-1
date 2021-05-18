@@ -1,11 +1,10 @@
 package org.javastreet.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.beans.value.ChangeListener;
@@ -32,6 +31,9 @@ public class WebViewController
 
     @FXML
     private ProgressBar progressBar;
+
+    @FXML
+    private MenuButton menuButton;
 
 
     @FXML
