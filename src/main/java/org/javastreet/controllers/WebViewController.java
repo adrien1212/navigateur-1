@@ -8,6 +8,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
@@ -51,15 +52,12 @@ public class WebViewController
 
         // Listening to the status of worker
         worker.stateProperty().addListener(new ChangeListener<State>() {
-
+        	
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
-                stateLabel.setText("Loading state: " + newValue.toString());
                 addressBar.setText(webEngine.getLocation());
-                if (newValue == Worker.State.SUCCEEDED) {
-                    stateLabel.setText("Finish!");
-                }
             }
+            
         });
         progressBar.progressProperty().bind(worker.progressProperty());
 
@@ -74,9 +72,40 @@ public class WebViewController
         });
         
         // Previous Button click handler
+        previousButton.setOnAction(new EventHandler<ActionEvent>() {
+        	
+        	@Override
+        	public void handle(ActionEvent event) {
+        		Platform.runLater(() -> {
+        			// Interaction with the webview DOM to fetch the previous page
+        			webEngine.executeScript("history.back()");
+        		});
+        	}
+        	
+        });
         
         // Forward Button click handler
+        forwardButton.setOnAction(new EventHandler<ActionEvent>() {
+        	
+        	@Override
+        	public void handle(ActionEvent event) {
+        		Platform.runLater(() -> {
+        			// Interaction with the webview DOM to fetch the forward page
+        			webEngine.executeScript("history.forward()");
+        		});
+        	}
+        	
+        });
         
         // Refresh Button click handler
+        refreshButton.setOnAction(new EventHandler<ActionEvent>() {
+        	
+        	@Override
+        	public void handle(ActionEvent event) {
+        		// Refresh the page
+        		webEngine.reload();
+        	}
+        	
+        });
     }
 }
