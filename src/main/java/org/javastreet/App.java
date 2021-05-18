@@ -20,6 +20,7 @@ public class App extends Application {
         connection.connect();
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

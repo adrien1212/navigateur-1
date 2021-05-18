@@ -60,6 +60,7 @@ public class WebViewController
 
     @FXML
     private MenuButton menuButton;
+
     private DBHistory myHistory;
 
     @FXML
