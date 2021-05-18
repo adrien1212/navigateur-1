@@ -36,10 +36,10 @@ public class WebViewController
 
     @FXML
     private ProgressBar progressBar;
-    
+
     @FXML
     private Button previousButton;
-    
+
     @FXML
     private Button forwardButton;
 
@@ -58,56 +58,56 @@ public class WebViewController
 
         // Listening to the status of worker
         worker.stateProperty().addListener(new ChangeListener<State>() {
-        	
+
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 addressBar.setText(webEngine.getLocation());
             }
-            
+
         });
         progressBar.progressProperty().bind(worker.progressProperty());
-
+        
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){
                     search(webEngine);
                 }
         });
-        
+
         // Previous Button click handler
         previousButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		Platform.runLater(() -> {
-        			// Interaction with the webview DOM to fetch the previous page
-        			webEngine.executeScript("history.back()");
-        		});
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                Platform.runLater(() -> {
+                    // Interaction with the webview DOM to fetch the previous page
+                    webEngine.executeScript("history.back()");
+                });
+            }
+
         });
-        
+
         // Forward Button click handler
         forwardButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		Platform.runLater(() -> {
-        			// Interaction with the webview DOM to fetch the forward page
-        			webEngine.executeScript("history.forward()");
-        		});
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                Platform.runLater(() -> {
+                    // Interaction with the webview DOM to fetch the forward page
+                    webEngine.executeScript("history.forward()");
+                });
+            }
+
         });
-        
+
         // Refresh Button click handler
         refreshButton.setOnAction(new EventHandler<ActionEvent>() {
-        	
-        	@Override
-        	public void handle(ActionEvent event) {
-        		// Refresh the page
-        		webEngine.reload();
-        	}
-        	
+
+            @Override
+            public void handle(ActionEvent event) {
+                // Refresh the page
+                webEngine.reload();
+            }
+
         });
     }
 
