@@ -52,7 +52,7 @@ public class WebViewController
     @FXML
     private void initialize()
     {
-        addressBar.setText("https://eclipse.org");
+        addressBar.setText("https://www.google.com");
         WebEngine webEngine = webView.getEngine();
         Worker<Void> worker = webEngine.getLoadWorker();
 
@@ -109,6 +109,8 @@ public class WebViewController
             }
 
         });
+
+        search(webEngine);
     }
 
     private void search(WebEngine webEngine){
