@@ -32,8 +32,16 @@ public class WebViewController
 
     @FXML
     private ProgressBar progressBar;
+    
+    @FXML
+    private Button previousButton;
+    
+    @FXML
+    private Button forwardButton;
 
-
+    @FXML
+    private Button refreshButton;
+    
     @FXML
     private void initialize()
     {
@@ -64,5 +72,11 @@ public class WebViewController
                 webEngine.load(url);
             }
         });
+        
+        // Previous Button click handler
+        
+        // Forward Button click handler
+        
+        // Refresh Button click handler
     }
 }
