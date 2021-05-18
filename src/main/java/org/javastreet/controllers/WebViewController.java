@@ -14,6 +14,8 @@ import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.io.File;
+
 public class WebViewController
 {
     @FXML
@@ -45,13 +47,12 @@ public class WebViewController
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 stateLabel.setText("Loading state: " + newValue.toString());
+                addressBar.setText(webEngine.getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
-                    // stage.setTitle(webEngine.getLocation());
                     stateLabel.setText("Finish!");
                 }
             }
         });
-
         progressBar.progressProperty().bind(worker.progressProperty());
 
         goButton.setOnAction(new EventHandler<ActionEvent>() {
