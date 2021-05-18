@@ -1,11 +1,10 @@
 package org.javastreet.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.application.Platform;
@@ -26,9 +25,6 @@ public class WebViewController
     private TextField addressBar;
 
     @FXML
-    private Button goButton;
-
-    @FXML
     private Label stateLabel;
 
     @FXML
@@ -42,7 +38,10 @@ public class WebViewController
 
     @FXML
     private Button refreshButton;
-    
+
+    @FXML
+    private MenuButton menuButton;
+
     @FXML
     private void initialize()
     {
@@ -60,16 +59,6 @@ public class WebViewController
             
         });
         progressBar.progressProperty().bind(worker.progressProperty());
-
-        goButton.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                String url = addressBar.getText();
-                // Load the page.
-                webEngine.load(url);
-            }
-        });
         
         // Previous Button click handler
         previousButton.setOnAction(new EventHandler<ActionEvent>() {
