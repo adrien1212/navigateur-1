@@ -17,6 +17,9 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -47,6 +50,9 @@ public class WebViewController
     private MenuButton menuButton;
 
     @FXML
+    private VBox vBox;
+
+    @FXML
     private void initialize()
     {
         addressBar.setText("https://www.google.com");
@@ -63,6 +69,7 @@ public class WebViewController
 
         });
         progressBar.progressProperty().bind(worker.progressProperty());
+        progressBar.prefWidthProperty().bind(vBox.widthProperty());
         
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){

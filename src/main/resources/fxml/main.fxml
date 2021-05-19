@@ -21,7 +21,7 @@
             <children>
                 <HBox>
                     <children>
-                        <Button fx:id="previousButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <Button fx:id="previousButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
                                     <image>
@@ -33,7 +33,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <Button fx:id="forwardButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <Button fx:id="forwardButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
                                     <image>
@@ -45,7 +45,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <Button fx:id="refreshButton" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <Button fx:id="refreshButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
                                 <ImageView fitHeight="12.0" fitWidth="12.0" style="-fx-cursor: hand;">
                                     <image>
@@ -57,8 +57,13 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </Button>
-                        <TextField fx:id="addressBar" prefHeight="26.0" prefWidth="216.0" HBox.hgrow="ALWAYS" />
-                        <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="29.0" style="-fx-background-color: transparent;">
+                  <VBox fx:id="vBox" prefHeight="32.0" HBox.hgrow="ALWAYS">
+                     <children>
+                              <TextField fx:id="addressBar" prefHeight="26.0" prefWidth="216.0" />
+                              <ProgressBar fx:id="progressBar" prefHeight="30.0" prefWidth="467.0" progress="0.0" stylesheets="@../styles/progress.css" />
+                     </children>
+                  </VBox>
+                        <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" style="-fx-background-color: transparent;">
                             <items>
                                 <MenuItem mnemonicParsing="false" text="Favoris" />
                                 <MenuItem mnemonicParsing="false" text="Liste de Lecture" />
@@ -81,10 +86,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                         </MenuButton>
-                        <ProgressBar fx:id="progressBar" prefHeight="25.0" prefWidth="93.0" progress="0.0" />
                     </children>
                     <padding>
-                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                        <Insets bottom="2.0" left="4.0" right="4.0" top="4.0" />
                     </padding>
                 </HBox>
                 <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
