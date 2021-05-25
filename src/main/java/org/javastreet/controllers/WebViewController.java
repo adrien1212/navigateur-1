@@ -202,13 +202,6 @@ public class WebViewController
             }
         });
 
-        settingsMenu.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                cookieManager.getCookieStore().removeAll();
-            }
-        });
-
         // Refresh Button click handler
         refreshButton.setOnAction(new EventHandler<ActionEvent>() {
 
