@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class HistoryEntry {
 
-    //private int id;
+    private int id;
     private String link;
     private String name;
     private Date date;
@@ -13,11 +13,26 @@ public class HistoryEntry {
     SimpleDateFormat formatter;
 
     public HistoryEntry(String link, String name, Date date) {
-        //this.id = id;
         this.link = link;
         this.name = name;
         this.date = date;
         formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    }
+
+    public HistoryEntry(int id, String link, String name, Date date) {
+        this.id = id;
+        this.link = link;
+        this.name = name;
+        this.date = date;
+        formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLink() {
@@ -46,15 +61,7 @@ public class HistoryEntry {
 
     @Override
     public String toString() {
-        return "HistoryEntry{" +
-                ", link='" + link + '\'' +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                '}';
-    }
-
-    public String getStringForHistory() {
-
         return ""+formatter.format(date)+ " - " + name + " | " + link;
     }
+
 }
