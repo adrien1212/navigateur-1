@@ -90,6 +90,12 @@ public class WebViewController
         myCookies = new DBCookies();
         WebEngine webEngine = webView.getEngine();
 
+
+        webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
+            addressBar.setText(newLoc);
+            myHistory.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+        });
+
         // Cookie Manager
         cookieManager = new CookieManager();
         CookieHandler.setDefault(cookieManager);
@@ -100,17 +106,6 @@ public class WebViewController
         });
 
         Worker<Void> worker = webEngine.getLoadWorker();
-
-        // Listening to the status of worker
-        worker.stateProperty().addListener(new ChangeListener<State>() {
-            @Override
-            public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
-                addressBar.setText(webEngine.getLocation());
-                if (newValue == Worker.State.SUCCEEDED) {
-                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
-                }
-            }
-        });
 
         // Bind progress bar to loading status of the worker
         progressBar.progressProperty().bind(worker.progressProperty());
@@ -136,7 +131,6 @@ public class WebViewController
 
         // Previous Button click handler
         previousButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
@@ -144,12 +138,10 @@ public class WebViewController
                     webEngine.executeScript("history.back()");
                 });
             }
-
         });
 
         // Forward Button click handler
         forwardButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
@@ -157,7 +149,6 @@ public class WebViewController
                     webEngine.executeScript("history.forward()");
                 });
             }
-
         });
 
         historyMenu.setOnAction(new EventHandler<ActionEvent>() {
@@ -195,13 +186,11 @@ public class WebViewController
 
         // Refresh Button click handler
         refreshButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 // Refresh the page
                 webEngine.reload();
             }
-
         });
 
         search(webEngine);
