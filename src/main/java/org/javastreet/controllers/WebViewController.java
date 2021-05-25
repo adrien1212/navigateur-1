@@ -1,6 +1,7 @@
 package org.javastreet.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -87,7 +88,11 @@ public class WebViewController
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 addressBar.setText(webEngine.getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
-                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                    try {
+                        myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     progressBar.setOpacity(0);
                 } else {
                     progressBar.setOpacity(1);
