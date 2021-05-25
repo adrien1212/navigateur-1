@@ -1,6 +1,7 @@
 package org.javastreet.controllers;
 
 import java.io.IOException;
+import java.net.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +31,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -66,6 +68,9 @@ public class WebViewController
     private MenuButton menuButton;
 
     @FXML
+    private MenuItem cookieMenu;
+
+    @FXML
     private MenuItem historyMenu;
 
     private DBHistory myHistory;
@@ -73,12 +78,27 @@ public class WebViewController
     @FXML
     private VBox vBox;
 
+    private CookieManager cookieManager;
+
+    private DBCookies myCookies;
+
     @FXML
     private void initialize()
     {
         addressBar.setText("https://www.google.com");
         myHistory = new DBHistory();
+        myCookies = new DBCookies();
         WebEngine webEngine = webView.getEngine();
+
+        // Cookie Manager
+        cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
+
+        // Load cookies into webview when starting the app
+        myCookies.getCookiesList().forEach(cookie -> {
+            cookieManager.getCookieStore().add(URI.create(cookie.getDomain()), cookie);
+        });
+
         Worker<Void> worker = webEngine.getLoadWorker();
 
         // Listening to the status of worker
@@ -88,9 +108,6 @@ public class WebViewController
                 addressBar.setText(webEngine.getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
                     myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
-                    progressBar.setOpacity(0);
-                } else {
-                    progressBar.setOpacity(1);
                 }
             }
         });
@@ -156,8 +173,30 @@ public class WebViewController
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
 
+        cookieMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = null;
+                try {
+                    saveCookies();
+                    root = FXMLLoader.load(getClass().getResource("/fxml/cookie.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("Cookie");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        settingsMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                cookieManager.getCookieStore().removeAll();
             }
         });
 
@@ -173,6 +212,16 @@ public class WebViewController
         });
 
         search(webEngine);
+    }
+
+    public void saveCookies() {
+        // Delete all cookies from the DB so that we don't store duplicates
+        // and only store cookies from the webview that are not stale
+        // (the webview automatically delete)
+        myCookies.deleteAll();
+        cookieManager.getCookieStore().getCookies().forEach(cookie -> {
+            myCookies.insert(cookie);
+        });
     }
 
     private void search(WebEngine webEngine){
