@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.web.WebView?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javastreet.controllers.WebViewController">
     <children>
@@ -21,6 +20,7 @@
             <children>
                 <HBox>
                     <children>
+                  <Button fx:id="newTabButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" text="+" />
                         <Button fx:id="previousButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
@@ -91,7 +91,8 @@
                         <Insets bottom="2.0" left="4.0" right="4.0" top="4.0" />
                     </padding>
                 </HBox>
-                <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+              
+                <fx:include fx:id="tab" source="tabs.fxml"></fx:include>
             </children>
         </VBox>
     </children>

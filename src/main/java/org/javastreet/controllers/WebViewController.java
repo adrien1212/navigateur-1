@@ -4,6 +4,14 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.javastreet.models.HistoryEntry;
+import org.javastreet.models.TabEntry;
+import org.javastreet.utils.DBHistory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,35 +23,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker.State;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DBHistory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import java.io.File;
-import java.sql.Date;
 
 public class WebViewController
 {
-    @FXML
-    private WebView webView;
-
     @FXML
     private TextField addressBar;
 
@@ -61,6 +54,9 @@ public class WebViewController
 
     @FXML
     private Button refreshButton;
+    
+    @FXML
+    private Button newTabButton;
 
     @FXML
     private MenuButton menuButton;
@@ -72,22 +68,28 @@ public class WebViewController
 
     @FXML
     private VBox vBox;
-
+    
+    @FXML private TabsController tabController;
+    
     @FXML
     private void initialize()
     {
+    	
         addressBar.setText("https://www.google.com");
         myHistory = new DBHistory();
+        
+        TabEntry currentTab = tabController.getCurrentTab();
+        WebView webView = currentTab.getWebView();
         WebEngine webEngine = webView.getEngine();
         Worker<Void> worker = webEngine.getLoadWorker();
-
+        
         // Listening to the status of worker
         worker.stateProperty().addListener(new ChangeListener<State>() {
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
-                addressBar.setText(webEngine.getLocation());
+                addressBar.setText(tabController.getCurrentTab().getWebView().getEngine().getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
-                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                    myHistory.insert(new HistoryEntry(getTitle(tabController.getCurrentTab().getWebView().getEngine()), tabController.getCurrentTab().getWebView().getEngine().getLocation(), new java.util.Date()));
                     progressBar.setOpacity(0);
                 } else {
                     progressBar.setOpacity(1);
@@ -113,7 +115,7 @@ public class WebViewController
         
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){
-                    search(webEngine);
+                    search(tabController.getCurrentTab().getWebView().getEngine());
                 }
         });
 
@@ -124,7 +126,7 @@ public class WebViewController
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
                     // Interaction with the webview DOM to fetch the previous page
-                    webEngine.executeScript("history.back()");
+                	tabController.getCurrentTab().getWebView().getEngine().executeScript("history.back()");
                 });
             }
 
@@ -137,7 +139,7 @@ public class WebViewController
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
                     // Interaction with the webview DOM to fetch the forward page
-                    webEngine.executeScript("history.forward()");
+                	tabController.getCurrentTab().getWebView().getEngine().executeScript("history.forward()");
                 });
             }
 
@@ -167,12 +169,20 @@ public class WebViewController
             @Override
             public void handle(ActionEvent event) {
                 // Refresh the page
-                webEngine.reload();
+            	tabController.getCurrentTab().getWebView().getEngine().reload();
             }
 
         });
+        
+        newTabButton.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent event) {
+        		tabController.addNewTab();
+        		search(tabController.getCurrentTab().getWebView().getEngine());
+        	}
+        });
 
-        search(webEngine);
+        search(tabController.getCurrentTab().getWebView().getEngine());
     }
 
     private void search(WebEngine webEngine){
