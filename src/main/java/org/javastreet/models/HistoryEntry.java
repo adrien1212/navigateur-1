@@ -61,15 +61,7 @@ public class HistoryEntry {
 
     @Override
     public String toString() {
-        return "HistoryEntry{" +
-                ", link='" + link + '\'' +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                '}';
-    }
-
-    public String getStringForHistory() {
-
         return ""+formatter.format(date)+ " - " + name + " | " + link;
     }
+
 }

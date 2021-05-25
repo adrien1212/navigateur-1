@@ -85,7 +85,28 @@ public class DBHistory {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            history.remove(he);
+            //history.remove(he);
+            history.clear();
+            selectAll();
+        }
+    }
+
+    public void deleteItems(HistoryEntry... hes) throws SQLException {
+        for(HistoryEntry he: hes){
+            delete(he);
+        }
+    }
+
+    public void deleteAll() {
+        String sql = "DELETE FROM History";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            int retour = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            history.clear();
         }
     }
 
