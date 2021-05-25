@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javastreet.controllers.WebViewController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox>
+                    <children>
+                        <Button fx:id="previousButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
+                                    <image>
+                                        <Image url="@../images/left-arrow.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button fx:id="forwardButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
+                                    <image>
+                                        <Image url="@../images/right-arrow.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                        <Button fx:id="refreshButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
+                            <graphic>
+                                <ImageView fitHeight="12.0" fitWidth="12.0" style="-fx-cursor: hand;">
+                                    <image>
+                                        <Image url="@../images/refresh-button.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </Button>
+                  <VBox fx:id="vBox" prefHeight="32.0" HBox.hgrow="ALWAYS">
+                     <children>
+                              <TextField fx:id="addressBar" prefHeight="26.0" prefWidth="216.0" />
+                              <ProgressBar fx:id="progressBar" prefHeight="30.0" prefWidth="467.0" progress="0.0" stylesheets="@../styles/progress.css" />
+                     </children>
+                  </VBox>
+                        <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" style="-fx-background-color: transparent;">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Favoris" />
+                                <MenuItem mnemonicParsing="false" text="Liste de Lecture" />
+                                <SeparatorMenuItem />
+                                <MenuItem mnemonicParsing="false" text="Cookies" />
+                                <MenuItem fx:id="historyMenu" text="Historique" />
+                                <MenuItem mnemonicParsing="false" text="Téléchargements" />
+                                <SeparatorMenuItem />
+                                <MenuItem mnemonicParsing="false" text="Mots de passe" />
+                                <MenuItem mnemonicParsing="false" text="Paramètres" />
+                            </items>
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="15.0">
+                                    <image>
+                                        <Image url="@../images/menu.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                        </MenuButton>
+                    </children>
+                    <padding>
+                        <Insets bottom="2.0" left="4.0" right="4.0" top="4.0" />
+                    </padding>
+                </HBox>
+                <WebView fx:id="webView" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
