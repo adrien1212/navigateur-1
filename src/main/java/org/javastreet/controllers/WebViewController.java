@@ -17,6 +17,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.beans.value.ChangeListener;
@@ -68,6 +71,9 @@ public class WebViewController
     private DBHistory myHistory;
 
     @FXML
+    private VBox vBox;
+
+    @FXML
     private void initialize()
     {
         addressBar.setText("https://www.google.com");
@@ -77,17 +83,33 @@ public class WebViewController
 
         // Listening to the status of worker
         worker.stateProperty().addListener(new ChangeListener<State>() {
-
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 addressBar.setText(webEngine.getLocation());
                 if (newValue == Worker.State.SUCCEEDED) {
                     myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                    progressBar.setOpacity(0);
+                } else {
+                    progressBar.setOpacity(1);
                 }
             }
-
         });
+
+        // Bind progress bar to loading status of the worker
         progressBar.progressProperty().bind(worker.progressProperty());
+        progressBar.prefWidthProperty().bind(vBox.widthProperty());
+
+        // Hide the progress bar once the page has loaded completely
+        worker.stateProperty().addListener(new ChangeListener<State>() {
+            @Override
+            public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
+                if (newValue == Worker.State.SUCCEEDED) {
+                    progressBar.setOpacity(0);
+                } else {
+                    progressBar.setOpacity(1);
+                }
+            }
+        });
         
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){
