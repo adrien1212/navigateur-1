@@ -93,10 +93,23 @@ public class WebViewController
                     progressBar.setOpacity(1);
                 }
             }
-
         });
+
+        // Bind progress bar to loading status of the worker
         progressBar.progressProperty().bind(worker.progressProperty());
         progressBar.prefWidthProperty().bind(vBox.widthProperty());
+
+        // Hide the progress bar once the page has loaded completely
+        worker.stateProperty().addListener(new ChangeListener<State>() {
+            @Override
+            public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
+                if (newValue == Worker.State.SUCCEEDED) {
+                    progressBar.setOpacity(0);
+                } else {
+                    progressBar.setOpacity(1);
+                }
+            }
+        });
         
         addressBar.setOnKeyPressed( event-> {
                 if (event.getCode().equals(KeyCode.ENTER)){
