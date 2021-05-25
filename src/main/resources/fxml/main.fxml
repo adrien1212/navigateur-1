@@ -64,7 +64,7 @@
                                 <MenuItem mnemonicParsing="false" text="Liste de Lecture" />
                                 <SeparatorMenuItem />
                                 <MenuItem mnemonicParsing="false" text="Cookies" />
-                                <MenuItem mnemonicParsing="false" text="Historique" />
+                                <MenuItem fx:id="historyMenu" text="Historique" />
                                 <MenuItem mnemonicParsing="false" text="Téléchargements" />
                                 <SeparatorMenuItem />
                                 <MenuItem mnemonicParsing="false" text="Mots de passe" />

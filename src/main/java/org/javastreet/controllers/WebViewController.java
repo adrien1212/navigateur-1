@@ -1,5 +1,6 @@
 package org.javastreet.controllers;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,14 +12,29 @@ import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker.State;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.stage.Stage;
+import org.javastreet.models.HistoryEntry;
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DBHistory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.File;
+import java.sql.Date;
 
 public class WebViewController
 {
@@ -47,9 +63,15 @@ public class WebViewController
     private MenuButton menuButton;
 
     @FXML
+    private MenuItem historyMenu;
+
+    private DBHistory myHistory;
+
+    @FXML
     private void initialize()
     {
         addressBar.setText("https://www.google.com");
+        myHistory = new DBHistory();
         WebEngine webEngine = webView.getEngine();
         Worker<Void> worker = webEngine.getLoadWorker();
 
@@ -59,6 +81,9 @@ public class WebViewController
             @Override
             public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
                 addressBar.setText(webEngine.getLocation());
+                if (newValue == Worker.State.SUCCEEDED) {
+                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                }
             }
 
         });
@@ -94,6 +119,24 @@ public class WebViewController
                 });
             }
 
+        });
+
+        historyMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = null;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/history.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("Historique");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
         });
 
         // Refresh Button click handler
@@ -158,4 +201,20 @@ public class WebViewController
         }
         return "";
     }
+
+    private String getTitle(WebEngine webEngine) {
+        Document doc = webEngine.getDocument();
+        NodeList heads = doc.getElementsByTagName("head");
+        String titleText = webEngine.getLocation() ; // use location if page does not define a title
+        if (heads.getLength() > 0) {
+            Element head = (Element)heads.item(0);
+            NodeList titles = head.getElementsByTagName("title");
+            if (titles.getLength() > 0) {
+                Node title = titles.item(0);
+                titleText = title.getTextContent();
+            }
+        }
+        return titleText ;
+    }
 }
+
