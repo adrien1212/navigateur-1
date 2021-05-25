@@ -68,7 +68,7 @@
                                 <MenuItem mnemonicParsing="false" text="Favoris" />
                                 <MenuItem mnemonicParsing="false" text="Liste de Lecture" />
                                 <SeparatorMenuItem />
-                                <MenuItem mnemonicParsing="false" text="Cookies" />
+                                <MenuItem fx:id="cookieMenu" mnemonicParsing="false" text="Cookies" />
                                 <MenuItem fx:id="historyMenu" text="Historique" />
                                 <MenuItem mnemonicParsing="false" text="Téléchargements" />
                                 <SeparatorMenuItem />
