@@ -12,6 +12,11 @@ public class HistoryEntry {
 
     SimpleDateFormat formatter;
 
+    /**
+     * @param link lien url du site 
+     * @param name du site
+     * @param date de consultation du site
+     */
     public HistoryEntry(String link, String name, Date date) {
         this.link = link;
         this.name = name;
@@ -20,11 +25,8 @@ public class HistoryEntry {
     }
 
     public HistoryEntry(int id, String link, String name, Date date) {
+    	this(link, name, date);
         this.id = id;
-        this.link = link;
-        this.name = name;
-        this.date = date;
-        formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     }
 
     public int getId() {
