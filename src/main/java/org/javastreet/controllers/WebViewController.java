@@ -21,6 +21,17 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import org.javastreet.models.HistoryEntry;
+import org.javastreet.utils.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.File;
+import java.sql.Date;
+
+
 public class WebViewController
 {
     @FXML
@@ -58,6 +69,9 @@ public class WebViewController
     
     @FXML 
     private TabsController tabController;
+
+    @FXML
+    private MenuItem paramsMenu;
       
     @FXML
     private void initialize()
@@ -112,6 +126,20 @@ public class WebViewController
                     e.printStackTrace();
                 }
             }
+        });
+
+        paramsMenu.setOnAction(event -> {
+            Parent root = null;
+            try{
+                root = FXMLLoader.load(getClass().getResource("/fxml/parameters.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Paramètres");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         });
 
         cookieMenu.setOnAction(new EventHandler<ActionEvent>() {

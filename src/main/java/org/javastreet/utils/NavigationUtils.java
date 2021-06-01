@@ -11,6 +11,7 @@ import org.w3c.dom.NodeList;
 import javafx.scene.web.WebEngine;
 
 public class NavigationUtils {
+
 	public static void search(String url, WebEngine webEngine){
 		// Check if it's an url
 		if(!isUrl(url)) {
@@ -19,7 +20,16 @@ public class NavigationUtils {
 				url = "https://" + url;
 			} else {
 				String keywords[] = url.split(" ");
-				url = googleQuery(keywords);
+				if(keywords[0].startsWith("@")){
+					String engine = keywords[0].split("@")[1];
+					System.out.println(engine);
+					if(Configuration.getInstance().isAvailable(engine)){
+						keywords[0] = "";
+						url = Query.request(engine, keywords);
+					}
+				} else {
+					url = Configuration.getInstance().query(keywords);
+				}
 			}
 		}
 		webEngine.load(url);

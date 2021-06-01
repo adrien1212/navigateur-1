@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
+import org.javastreet.utils.Configuration;
 import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.javastreet.utils.NavigationUtils;
@@ -41,6 +42,7 @@ public class TabsController {
 	private DBHistory history;
 	private DBCookies myCookies;
 	private CookieManager cookieManager;
+	private Configuration config;
 	
 	private static File localStorageFile = new File("src/main/resources/localStorage");
 
@@ -81,6 +83,7 @@ public class TabsController {
 
 	public void addNewTab() {
 		WebView webView = new WebView();
+		config = Configuration.getInstance();
 		
 		Tab tab = new Tab("Loading ...", webView);
 		
@@ -124,7 +127,7 @@ public class TabsController {
             }
         });
 
-		NavigationUtils.search("https://google.com", newTab.getWebView().getEngine());
+		NavigationUtils.search("https://"+config.getEngine()+".com", newTab.getWebView().getEngine());
 
 		this.tabs.add(newTab);
 		this.tabPane.getTabs().add(newTab.getTab());
