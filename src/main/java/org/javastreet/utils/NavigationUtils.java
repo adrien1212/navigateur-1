@@ -26,14 +26,14 @@ public class NavigationUtils {
 	}
 
 	public static Boolean isUrl(String url){
-		Pattern urlPattern;
-		Matcher urlMatcher;
+        Pattern urlPattern;
+        Matcher urlMatcher;
 
-		urlPattern = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-		urlMatcher = urlPattern.matcher(url);
+        urlPattern = Pattern.compile("\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
+        urlMatcher = urlPattern.matcher(url);
 
-		return urlMatcher.find();
-	}
+        return urlMatcher.find();
+    }
 
 	public static Boolean isHost(String host){
 		Pattern urlPattern;

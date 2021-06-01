@@ -48,6 +48,9 @@ public class WebViewController
     private MenuButton menuButton;
 
     @FXML
+    private MenuItem cookieMenu;
+
+    @FXML
     private MenuItem historyMenu;
 
     @FXML
@@ -55,15 +58,13 @@ public class WebViewController
     
     @FXML 
     private TabsController tabController;
-    
+      
     @FXML
     private void initialize()
     {
-  
-        tabController.setControlsController(this);
-        
-        tabController.addNewTab();
-        
+		tabController.setControlsController(this);
+		tabController.addNewTab();
+
         progressBar.prefWidthProperty().bind(vBox.widthProperty());
         
         addressBar.setOnKeyPressed( event-> {
@@ -75,7 +76,6 @@ public class WebViewController
 
         // Previous Button click handler
         previousButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
@@ -84,12 +84,10 @@ public class WebViewController
                 	tabController.getCurrentTab().getWebView().getEngine().executeScript("history.back()");
                 });
             }
-
         });
 
         // Forward Button click handler
         forwardButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 Platform.runLater(() -> {
@@ -98,7 +96,6 @@ public class WebViewController
                 	tabController.getCurrentTab().getWebView().getEngine().executeScript("history.forward()");
                 });
             }
-
         });
 
         historyMenu.setOnAction(new EventHandler<ActionEvent>() {
@@ -114,22 +111,35 @@ public class WebViewController
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
 
-
+        cookieMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = null;
+                try {
+                    tabController.saveCookies();
+                    root = FXMLLoader.load(getClass().getResource("/fxml/cookie.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("Cookie");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         // Refresh Button click handler
         refreshButton.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 // Refresh the page
             	tabController.getCurrentTab().getWebView().getEngine().reload();
             }
-
         });
-        
+
         newTabButton.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent event) {
@@ -146,6 +156,10 @@ public class WebViewController
     
     public ProgressBar getProgressBar() {
     	return this.progressBar;
+    }
+    
+    public TabsController getTabsController() {
+    	return this.tabController;
     }
 }
 
