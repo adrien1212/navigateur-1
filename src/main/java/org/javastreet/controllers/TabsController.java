@@ -127,7 +127,7 @@ public class TabsController {
             }
         });
 
-		NavigationUtils.search("https://"+config.getEngine()+".com", newTab.getWebView().getEngine());
+		NavigationUtils.search(config.getEngineURL(), newTab.getWebView().getEngine());
 
 		this.tabs.add(newTab);
 		this.tabPane.getTabs().add(newTab.getTab());
