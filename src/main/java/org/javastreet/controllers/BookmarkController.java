@@ -57,9 +57,7 @@ public class BookmarkController {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println(choices.getValue());
                 BookmarkDir d = (BookmarkDir)choices.getValue();
-                System.out.println(d.getId());
                 Bookmark temp = new Bookmark(name.getText(), link.getText(), d.getId());
                 bookmarks.addBookmark(temp);
                 treeView.setRoot(createTreeView());

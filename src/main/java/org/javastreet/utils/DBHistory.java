@@ -39,7 +39,6 @@ public class DBHistory {
                         rs.getString("link"),
                         rs.getDate("date")
                 );
-                System.out.println(he);
                 history.add(he);
             }
         } catch (SQLException e) {
@@ -60,11 +59,11 @@ public class DBHistory {
             ResultSet rsKey = pstmt.getGeneratedKeys();
             if (rsKey.next()){
                 id = rsKey.getInt(1);
-                System.out.println("id : " + id);
             } else {
                 throw new SQLException("Erreur dans la récupération de l'ID");
             }
         } catch (SQLException e) {
+            System.out.println(he);
             System.out.println(e.getMessage());
         } finally {
             he.setId(id);

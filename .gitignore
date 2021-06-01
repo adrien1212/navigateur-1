@@ -40,3 +40,12 @@ local.properties
 
 .project
 .classpath
+
+# Ignore database file
+Database.db
+
+# Ignore local storage save
+localStorage/
+
+# macOS
+.DS_Store

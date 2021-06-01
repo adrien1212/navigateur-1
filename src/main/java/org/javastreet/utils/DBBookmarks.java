@@ -58,7 +58,6 @@ public class DBBookmarks {
             ResultSet rsKey = pstmt.getGeneratedKeys();
             if (rsKey.next()){
                 id = rsKey.getInt(1);
-                System.out.println("id : " + id);
             } else {
                 throw new SQLException("Erreur dans la récupération de l'ID");
             }
@@ -72,8 +71,6 @@ public class DBBookmarks {
 
     private void insertBookmark(Bookmark b) {
         Optional<BookmarkDir> result = bookmarkDirs.stream().filter(obj -> obj.getId()== b.getDirId()).findFirst();
-        //System.out.println(result);
-        System.out.println("coucou "+b);
         result.get().addBookmark(b);
     }
 
@@ -87,7 +84,6 @@ public class DBBookmarks {
             ResultSet rsKey = pstmt.getGeneratedKeys();
             if (rsKey.next()){
                 id = rsKey.getInt(1);
-                System.out.println("id : " + id);
             } else {
                 throw new SQLException("Erreur dans la récupération de l'ID");
             }
@@ -116,7 +112,6 @@ public class DBBookmarks {
                         rs.getInt("id"),
                         rs.getString("name")
                 );
-                System.out.println(d);
                 bookmarkDirs.add(d);
             }
         } catch (SQLException e) {
@@ -137,7 +132,6 @@ public class DBBookmarks {
                         rs.getString("link"),
                         rs.getInt("dirId")
                 );
-                System.out.println(b);
                 insertBookmark(b);
             }
         } catch (SQLException e) {
