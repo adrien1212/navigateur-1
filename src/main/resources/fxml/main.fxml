@@ -16,14 +16,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javastreet.controllers.WebViewController">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox>
                     <children>
-                  <Button fx:id="newTabButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" text="+" />
                         <Button fx:id="previousButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" style="-fx-cursor: hand;">
                                     <image>
                                         <Image url="@../images/left-arrow.png" />
                                     </image>
@@ -35,7 +34,7 @@
                         </Button>
                         <Button fx:id="forwardButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
-                                <ImageView fitHeight="10.0" fitWidth="10.0" style="-fx-cursor: hand;">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" style="-fx-cursor: hand;">
                                     <image>
                                         <Image url="@../images/right-arrow.png" />
                                     </image>
@@ -47,7 +46,7 @@
                         </Button>
                         <Button fx:id="refreshButton" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: transparent;">
                             <graphic>
-                                <ImageView fitHeight="12.0" fitWidth="12.0" style="-fx-cursor: hand;">
+                                <ImageView fitHeight="15.0" fitWidth="15.0" style="-fx-cursor: hand;">
                                     <image>
                                         <Image url="@../images/refresh-button.png" />
                                     </image>
@@ -59,10 +58,27 @@
                         </Button>
                   <VBox fx:id="vBox" prefHeight="32.0" HBox.hgrow="ALWAYS">
                      <children>
-                              <TextField fx:id="addressBar" prefHeight="26.0" prefWidth="216.0" />
-                              <ProgressBar fx:id="progressBar" prefHeight="30.0" prefWidth="467.0" progress="0.0" stylesheets="@../styles/progress.css" />
+                              <TextField fx:id="addressBar" prefHeight="26.0" prefWidth="216.0">
+                           <VBox.margin>
+                              <Insets left="6.0" right="6.0" />
+                           </VBox.margin></TextField>
+                              <ProgressBar fx:id="progressBar" prefHeight="30.0" prefWidth="467.0" progress="0.0" stylesheets="@../styles/progress.css">
+                           <VBox.margin>
+                              <Insets left="6.0" right="6.0" />
+                           </VBox.margin></ProgressBar>
                      </children>
                   </VBox>
+                  <Button fx:id="newTabButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../images/new-tab.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                         <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" style="-fx-background-color: transparent;">
                             <items>
                                 <MenuItem mnemonicParsing="false" text="Favoris" />
@@ -76,7 +92,7 @@
                                 <MenuItem mnemonicParsing="false" text="Paramètres" />
                             </items>
                             <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="15.0">
+                                <ImageView fitHeight="20.0" fitWidth="20.0">
                                     <image>
                                         <Image url="@../images/menu.png" />
                                     </image>
@@ -92,7 +108,7 @@
                     </padding>
                 </HBox>
               
-                <fx:include fx:id="tab" source="tabs.fxml"></fx:include>
+                <fx:include fx:id="tab" source="tabs.fxml" VBox.vgrow="ALWAYS" />
             </children>
         </VBox>
     </children>

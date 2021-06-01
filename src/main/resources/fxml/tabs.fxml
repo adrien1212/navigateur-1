@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.TabPane?>
 
-<TabPane fx:id="tabPane" prefHeight="364.0" prefWidth="600.0" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javastreet.controllers.TabsController">
+<TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javastreet.controllers.TabsController">
    <tabs>
       
    </tabs>

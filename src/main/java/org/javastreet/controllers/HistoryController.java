@@ -25,4 +25,6 @@ public class HistoryController {
 
         historyEntries.setItems(observableList);
     }
+    
+    
 }
