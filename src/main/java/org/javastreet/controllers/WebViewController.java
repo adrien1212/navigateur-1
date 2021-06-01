@@ -117,7 +117,11 @@ public class WebViewController
             public void handle(ActionEvent event) {
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("/fxml/history.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/history.fxml"));
+                    root = loader.load();
+                    HistoryController historyController = loader.getController();
+                    historyController.setTabsController(tabController);
+
                     Stage stage = new Stage();
                     stage.setTitle("Historique");
                     stage.setScene(new Scene(root));

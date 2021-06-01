@@ -2,17 +2,22 @@ package org.javastreet.controllers;
 
 import java.sql.SQLException;
 
+import com.sun.javafx.scene.control.LabeledText;
+import javafx.event.EventHandler;
+import javafx.event.EventTarget;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.ListViewSkin;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import org.javastreet.models.HistoryEntry;
+import org.javastreet.models.TabEntry;
 import org.javastreet.utils.DBHistory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
 public class HistoryController {
@@ -34,6 +39,8 @@ public class HistoryController {
     @FXML
     private ListView<HistoryEntry> historyEntries;
 
+    private TabsController tabsController;
+
     ObservableList<HistoryEntry> observableList = FXCollections.observableArrayList();
     DBHistory db;
 
@@ -52,6 +59,30 @@ public class HistoryController {
         deleteChoice.getItems().add("Selectionné");
         //deleteChoice.getItems().add("dernière 24H");
         deleteChoice.getItems().add("Tout");
+
+        // When double clicking on history entries it loads the
+        // page in a new tab
+        historyEntries.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if (mouseEvent.getClickCount() == 2) {
+                        EventTarget target = mouseEvent.getTarget();
+                        if (target instanceof Text) {
+                            // Parse the URL from the String element
+                            String location = ((Text)target).getText();
+                            location = location.split(" \\| ")[1].trim();
+                            System.out.println(location);
+
+                            // Load the URL in a new tab
+                            tabsController.addNewTab();
+                            TabEntry tab = tabsController.getCurrentTab();
+                            tab.getWebView().getEngine().load(location);
+                        }
+                    }
+                }
+            }
+        });
 
         // Search
         searchBar.setOnKeyPressed(event -> {
@@ -117,6 +148,14 @@ public class HistoryController {
                 observableList.add(he);
             }
         }
+    }
+
+    private TabsController getTabsController() {
+        return this.tabsController;
+    }
+
+    public void setTabsController(TabsController tabsController) {
+        this.tabsController = tabsController;
     }
 
 }
