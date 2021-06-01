@@ -95,7 +95,7 @@ public class WebViewController
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
             try {
-                myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+                myHistory.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
