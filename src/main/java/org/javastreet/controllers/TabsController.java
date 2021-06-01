@@ -113,7 +113,7 @@ public class TabsController {
 				if (newValue == Worker.State.SUCCEEDED) {
 					progressBar.setOpacity(0);
 					try {
-						history.insert(new HistoryEntry(webEngine.getTitle(), newLoc, new java.util.Date()));
+						history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
