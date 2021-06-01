@@ -37,16 +37,6 @@ import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import javafx.stage.Stage;
 
-import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import java.io.File;
-import java.sql.Date;
-
 
 public class WebViewController
 {
@@ -70,6 +60,9 @@ public class WebViewController
     
     @FXML
     private Button newTabButton;
+    
+    @FXML
+    private Button newPrivateTabButton;
 
     @FXML
     private MenuButton menuButton;
@@ -96,7 +89,7 @@ public class WebViewController
     private void initialize()
     {
 		tabController.setControlsController(this);
-		tabController.addNewTab();
+		tabController.addNewTab(false);
 
         progressBar.prefWidthProperty().bind(vBox.widthProperty());
         
@@ -214,7 +207,16 @@ public class WebViewController
         newTabButton.setOnAction(new EventHandler<ActionEvent>() {
         	@Override
         	public void handle(ActionEvent event) {
-        		tabController.addNewTab();
+        		tabController.addNewTab(false);
+            	tabController.getCurrentTab().getTab().setText("Loading...");
+        		NavigationUtils.search(addressBar.getText(), tabController.getCurrentTab().getWebView().getEngine());
+        	}
+        });
+        
+        newPrivateTabButton.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override
+        	public void handle(ActionEvent event) {
+        		tabController.addNewTab(true);
             	tabController.getCurrentTab().getTab().setText("Loading...");
         		NavigationUtils.search(addressBar.getText(), tabController.getCurrentTab().getWebView().getEngine());
         	}

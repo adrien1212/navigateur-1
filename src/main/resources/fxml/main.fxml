@@ -79,6 +79,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
+                  <Button fx:id="newPrivateTabButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@../images/private.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                         <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" style="-fx-background-color: transparent;">
                             <items>
                                 <MenuItem fx:id="bookmarkMenu" mnemonicParsing="false" text="Favoris" />
@@ -89,7 +101,7 @@
                                 <MenuItem mnemonicParsing="false" text="Téléchargements" />
                                 <SeparatorMenuItem />
                                 <MenuItem mnemonicParsing="false" text="Mots de passe" />
-                                <MenuItem fx:id="paramsMenu"  text="Paramètres" />
+                                <MenuItem fx:id="paramsMenu" text="Paramètres" />
                             </items>
                             <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0">

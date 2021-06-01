@@ -124,7 +124,7 @@ public class BookmarkController {
                             location = location.split(" \\| ")[1].trim();
 
                             // Load the URL in a new tab
-                            tabsController.addNewTab();
+                            tabsController.addNewTab(false);
                             TabEntry tab = tabsController.getCurrentTab();
                             tab.getWebView().getEngine().load(location);
                         }

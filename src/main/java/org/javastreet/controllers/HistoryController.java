@@ -75,7 +75,7 @@ public class HistoryController {
                             System.out.println(location);
 
                             // Load the URL in a new tab
-                            tabsController.addNewTab();
+                            tabsController.addNewTab(false);
                             TabEntry tab = tabsController.getCurrentTab();
                             tab.getWebView().getEngine().load(location);
                         }
