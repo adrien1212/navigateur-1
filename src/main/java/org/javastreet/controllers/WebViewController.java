@@ -19,6 +19,22 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker.State;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import org.javastreet.models.Bookmark;
+import org.javastreet.models.BookmarkDir;
+import org.javastreet.models.HistoryEntry;
+import org.javastreet.utils.DBBookmarks;
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DBCookies;
+import org.javastreet.utils.DBHistory;
 import javafx.stage.Stage;
 
 import org.javastreet.models.HistoryEntry;
@@ -63,6 +79,9 @@ public class WebViewController
 
     @FXML
     private MenuItem historyMenu;
+
+    @FXML
+    private MenuItem bookmarkMenu;
 
     @FXML
     private VBox vBox;
@@ -132,6 +151,25 @@ public class WebViewController
             }
         });
 
+        bookmarkMenu.setOnAction(new EventHandler<ActionEvent>() {
+                                     @Override
+                                     public void handle(ActionEvent actionEvent) {
+                                         try {
+                                             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/bookmark.fxml"));
+                                             Parent parent = fxmlLoader.load();
+                                             BookmarkController bookmarkController = fxmlLoader.<BookmarkController>getController();
+                                             bookmarkController.setBookmark(new Bookmark(NavigationUtils.getTitle(tabController.getCurrentTab().getWebView().getEngine()), addressBar.getText()));
+                                             Scene scene = new Scene(parent);
+                                             Stage stage = new Stage();
+                                             stage.initModality(Modality.APPLICATION_MODAL);
+                                             stage.setTitle("Favoris");
+                                             stage.setScene(scene);
+                                             stage.showAndWait();
+                                         } catch (IOException e) {
+                                             e.printStackTrace();
+                                         }
+                                     }
+                                 });
         paramsMenu.setOnAction(event -> {
             Parent root = null;
             try{
