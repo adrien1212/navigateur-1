@@ -29,8 +29,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker.State;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.javastreet.models.Bookmark;
+import org.javastreet.models.BookmarkDir;
 import org.javastreet.models.HistoryEntry;
+import org.javastreet.utils.DBBookmarks;
 import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
@@ -74,14 +78,17 @@ public class WebViewController
     @FXML
     private MenuItem historyMenu;
 
+    @FXML
+    private MenuItem bookmarkMenu;
+
     private DBHistory myHistory;
 
     @FXML
     private VBox vBox;
 
     private CookieManager cookieManager;
-
     private DBCookies myCookies;
+    private DBBookmarks myBookmarks;
 
     @FXML
     private void initialize()
@@ -89,8 +96,10 @@ public class WebViewController
         addressBar.setText("https://www.google.com");
         myHistory = new DBHistory();
         myCookies = new DBCookies();
+        myBookmarks = new DBBookmarks();
+        //myBookmarks.addBoormarkDir(new BookmarkDir("Cours"));
+        //myBookmarks.addBookmark(new Bookmark("Moodle", "http://moodle-n7.inp-toulouse.fr/", 1));
         WebEngine webEngine = webView.getEngine();
-
 
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
@@ -166,6 +175,26 @@ public class WebViewController
                     stage.setTitle("Historique");
                     stage.setScene(new Scene(root));
                     stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        bookmarkMenu.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try{
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/bookmark.fxml"));
+                    Parent parent = fxmlLoader.load();
+                    BookmarkController bookmarkController = fxmlLoader.<BookmarkController>getController();
+                    bookmarkController.setBookmark(new Bookmark(getTitle(webEngine),addressBar.getText()));
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setTitle("Favoris");
+                    stage.setScene(scene);
+                    stage.showAndWait();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
