@@ -64,6 +64,11 @@ public class Configuration {
         return this.engine;
     }
 
+    public String getEngineURL() {
+        String url[] = this.availableEngine.get(this.engine).split("/");
+        return url[0] + "//" + url[2];
+    }
+
     public HashMap<String, String> getAvailableEngine(){
         return this.availableEngine;
     }
