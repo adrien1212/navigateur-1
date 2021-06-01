@@ -90,6 +90,7 @@ public class WebViewController
         myHistory = new DBHistory();
         myCookies = new DBCookies();
         WebEngine webEngine = webView.getEngine();
+        webEngine.setUserDataDirectory(new File("src/main/resources/localStorage"));
 
 
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
