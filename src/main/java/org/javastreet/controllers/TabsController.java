@@ -1,10 +1,15 @@
 package org.javastreet.controllers;
 
+import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.URI;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
+import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.javastreet.utils.NavigationUtils;
 
@@ -13,7 +18,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.concurrent.Worker.State;
 import javafx.fxml.FXML;
-import javafx.scene.control.Control;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -34,6 +38,8 @@ public class TabsController {
 	private TextField addressBar;
 	private ProgressBar progressBar; 
 	private DBHistory history;
+	private DBCookies myCookies;
+	private CookieManager cookieManager;
 
 	@FXML
 	public void initialize() {
@@ -53,6 +59,17 @@ public class TabsController {
 		});
 
 		this.history = new DBHistory();
+		
+        myCookies = new DBCookies();
+
+        // Cookie Manager
+        cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
+
+        // Load cookies into webview when starting the app
+        myCookies.getCookiesList().forEach(cookie -> {
+            cookieManager.getCookieStore().add(URI.create(cookie.getDomain()), cookie);
+        });
 	}
 
 	public TabEntry getCurrentTab() {
@@ -86,13 +103,21 @@ public class TabsController {
 			public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
 				updateCurrentTab(getCurrentTab());
 				if (newValue == Worker.State.SUCCEEDED) {
-					history.insert(new HistoryEntry(NavigationUtils.getTitle(getCurrentTab().getWebView().getEngine()), getCurrentTab().getWebView().getEngine().getLocation(), new java.util.Date()));
 					progressBar.setOpacity(0);
 				} else {
 					progressBar.setOpacity(1);
 				}
 			}
 		});
+		
+        webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
+            addressBar.setText(newLoc);
+            try {
+                history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
 
 		NavigationUtils.search("https://google.com", newTab.getWebView().getEngine());
 
@@ -129,4 +154,14 @@ public class TabsController {
 			this.progressBar = this.controlsController.getProgressBar();
 		}
 	}
+	
+    public void saveCookies() {
+        // Delete all cookies from the DB so that we don't store duplicates
+        // and only store cookies from the webview that are not stale
+        // (the webview automatically delete)
+        myCookies.deleteAll();
+        cookieManager.getCookieStore().getCookies().forEach(cookie -> {
+            myCookies.insert(cookie);
+        });
+    }
 }
