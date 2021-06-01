@@ -6,10 +6,12 @@ import javafx.scene.web.WebView;
 public class TabEntry {
 	private WebView webView;
 	private Tab tab;
+	private boolean privateTab;
 	
-	public TabEntry(WebView webView, Tab tab) {
+	public TabEntry(WebView webView, Tab tab, boolean privateTab) {
 		this.webView = webView;
 		this.tab = tab;
+		this.privateTab = privateTab;
 	}
 
 	public WebView getWebView() {
@@ -26,6 +28,14 @@ public class TabEntry {
 	
 	public void setTab(Tab tab) {
 		this.tab = tab;
+	}
+	
+	public boolean isPrivate() {
+		return this.privateTab;
+	}
+	
+	public void setPrivate(boolean privateTab) {
+		this.privateTab = privateTab;
 	}
 	
 }
