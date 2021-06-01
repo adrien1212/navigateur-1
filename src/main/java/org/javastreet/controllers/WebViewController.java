@@ -31,9 +31,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
+import org.javastreet.utils.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -74,6 +72,9 @@ public class WebViewController
     @FXML
     private MenuItem historyMenu;
 
+    @FXML
+    private MenuItem paramsMenu;
+
     private DBHistory myHistory;
 
     @FXML
@@ -83,10 +84,13 @@ public class WebViewController
 
     private DBCookies myCookies;
 
+    private Configuration config;
+
     @FXML
     private void initialize()
     {
-        addressBar.setText("https://www.google.com");
+        config = Configuration.getInstance();
+        addressBar.setText("https://"+config.getEngine()+".com");
         myHistory = new DBHistory();
         myCookies = new DBCookies();
         WebEngine webEngine = webView.getEngine();
@@ -172,6 +176,20 @@ public class WebViewController
             }
         });
 
+        paramsMenu.setOnAction(event -> {
+            Parent root = null;
+            try{
+                root = FXMLLoader.load(getClass().getResource("/fxml/parameters.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Paramètres");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+
         cookieMenu.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -220,7 +238,16 @@ public class WebViewController
                 url = "https://" + url;
             } else {
                 String keywords[] = url.split(" ");
-                url = googleQuery(keywords);
+                if(keywords[0].startsWith("@")){
+                    String engine = keywords[0].split("@")[1];
+                    System.out.println(engine);
+                    if(config.isAvailable(engine)){
+                        keywords[0] = "";
+                        url = Query.request(engine, keywords);
+                    }
+                } else {
+                    url = config.query(keywords);
+                }
             }
         }
         webEngine.load(url);

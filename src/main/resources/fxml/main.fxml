@@ -73,7 +73,7 @@
                                 <MenuItem mnemonicParsing="false" text="Téléchargements" />
                                 <SeparatorMenuItem />
                                 <MenuItem mnemonicParsing="false" text="Mots de passe" />
-                                <MenuItem mnemonicParsing="false" text="Paramètres" />
+                                <MenuItem fx:id="paramsMenu"  text="Paramètres" />
                             </items>
                             <graphic>
                                 <ImageView fitHeight="15.0" fitWidth="15.0">
