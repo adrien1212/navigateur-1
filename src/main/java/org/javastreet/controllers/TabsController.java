@@ -11,6 +11,7 @@ import java.util.List;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
 import org.javastreet.utils.Configuration;
+import org.javastreet.utils.DBBookmarks;
 import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.javastreet.utils.NavigationUtils;
@@ -51,7 +52,7 @@ public class TabsController {
 	
 	// Database instance of the history
 	private DBHistory history;
-	
+
 	// Database instance of the cookie store
 	private DBCookies myCookies;
 	
@@ -85,8 +86,13 @@ public class TabsController {
 
 		// Initialize storage / cookies
 		this.history = new DBHistory();
+
 		myCookies = new DBCookies();
 		cookieManager = new CookieManager();
+
+        // Cookie Manager
+        cookieManager = new CookieManager();
+        CookieHandler.setDefault(cookieManager);
 
 		// Load cookies into webview when starting the app
 		myCookies.getCookiesList().forEach(cookie -> {
@@ -151,26 +157,24 @@ public class TabsController {
 				updateCurrentTab(getCurrentTab());
 				if (newValue == Worker.State.SUCCEEDED) {
 					progressBar.setOpacity(0);
+					try {
+						if (!privateTab) {
+							history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				} else {
 					progressBar.setOpacity(1);
 				}
 			}
 		});
+		
+        webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
+            addressBar.setText(newLoc);
+        });
 
-		// Handle webEngine location changes.
-		webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
-			addressBar.setText(newLoc);
-			try {
-				if (!privateTab) {
-					history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		});
-
-		// Actually browse the default page.
-		NavigationUtils.search("https://"+config.getEngine()+".com", newTab.getWebView().getEngine());
+		NavigationUtils.search(config.getEngineURL(), newTab.getWebView().getEngine());
 
 		// Add the created tab to the window, and focus it.
 		this.tabs.add(newTab);

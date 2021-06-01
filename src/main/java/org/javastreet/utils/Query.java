@@ -7,22 +7,10 @@ public class Query {
 
     public static String request(String engine, String args[]){
         String url = "";
-        switch(engine.toLowerCase()){
-            case "duckduckgo":
-                url = Query.webQuery("https://duckduckgo.com/?q=", args);
-                break;
-            case "ecosia":
-                url = Query.webQuery("https://www.ecosia.org/search?q=", args);
-                break;
-            case "bing":
-                url = Query.webQuery("https://www.bing.com/search?q=%s", args);
-                break;
-            case "youtube":
-                url = Query.webQuery("https://www.youtube.com/results?search_query=", args);
-                break;
-            default:
-                // par defaut avec google
-                url = Query.webQuery("https://www.google.com/search?q=", args);
+        if(Configuration.getInstance().isAvailable(engine)){
+            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get(engine), args);
+        } else {
+            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get("google"), args);
         }
         return url;
     }
