@@ -94,7 +94,11 @@ public class WebViewController
 
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
-            myHistory.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+            try {
+                myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
 
         // Cookie Manager
@@ -104,28 +108,6 @@ public class WebViewController
         // Load cookies into webview when starting the app
         myCookies.getCookiesList().forEach(cookie -> {
             cookieManager.getCookieStore().add(URI.create(cookie.getDomain()), cookie);
-        });
-
-        Worker<Void> worker = webEngine.getLoadWorker();
-        
-        // Listening to the status of worker
-        worker.stateProperty().addListener(new ChangeListener<State>() {
-            @Override
-            public void changed(ObservableValue<? extends State> observable, State oldValue, State newValue) {
-                addressBar.setText(webEngine.getLocation());
-                if (newValue == Worker.State.SUCCEEDED) {
-                    try {
-                        myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    progressBar.setOpacity(0);
-                } else {
-                    progressBar.setOpacity(1);
-                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
-                }
-            }
-
         });
 
         Worker<Void> worker = webEngine.getLoadWorker();
