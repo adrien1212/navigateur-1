@@ -23,12 +23,15 @@ public class NavigationUtils {
 				if(keywords[0].startsWith("@")){
 					String engine = keywords[0].split("@")[1];
 					System.out.println(engine);
-					if(Configuration.getInstance().isAvailable(engine)){
+					if(((ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch")).isAvailable(engine)){
 						keywords[0] = "";
 						url = Query.request(engine, keywords);
 					}
 				} else {
-					url = Configuration.getInstance().query(keywords);
+					ConfigurationCreator cc = ConfigurationCreator.getInstance();
+					ConfigurationFileNavigator cfn = (ConfigurationFileNavigator) cc.getConfigurationFile("configurationFileNavigator");
+					System.out.println(cfn.getEngine());
+					url = Query.request(cfn.getEngine(), keywords);
 				}
 			}
 		}

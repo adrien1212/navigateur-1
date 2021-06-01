@@ -7,10 +7,12 @@ public class Query {
 
     public static String request(String engine, String args[]){
         String url = "";
-        if(Configuration.getInstance().isAvailable(engine)){
-            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get(engine), args);
+        ConfigurationFileEngineSearch cfe = 
+        		(ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
+        if(cfe.isAvailable(engine)){
+            url = Query.webQuery(cfe.getAvailableEngine().get(engine), args);
         } else {
-            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get("google"), args);
+            url = Query.webQuery(cfe.getAvailableEngine().get("google"), args);
         }
         return url;
     }

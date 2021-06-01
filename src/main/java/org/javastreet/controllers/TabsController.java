@@ -10,8 +10,10 @@ import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.Configuration;
 import org.javastreet.utils.DBBookmarks;
+import org.javastreet.utils.ConfigurationCreator;
+import org.javastreet.utils.ConfigurationFileEngineSearch;
+import org.javastreet.utils.ConfigurationFileNavigator;
 import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.javastreet.utils.NavigationUtils;
@@ -58,10 +60,9 @@ public class TabsController {
 	
 	// Instance of non-private tabs Cookie Manager
 	private CookieManager cookieManager;
-	
-	// Instance of the configuration
-	private Configuration config;
 
+	private ConfigurationCreator config;
+	
 	// Default directory for the localStorage
 	private static final File LOCAL_STORAGE_FILE = new File("src/main/resources/localStorage");
 
@@ -114,11 +115,12 @@ public class TabsController {
 	 */
 	public void addNewTab(boolean privateTab) {
 		WebView webView = new WebView();
+
 		WebEngine webEngine = webView.getEngine();
 		Worker<Void> worker = webEngine.getLoadWorker();
 
-		config = Configuration.getInstance();
-
+		config = ConfigurationCreator.getInstance();
+		
 		Tab tab = new Tab("Loading ...", webView);
 		TabEntry newTab = new TabEntry(webView, tab, privateTab);
 		
@@ -174,7 +176,9 @@ public class TabsController {
             addressBar.setText(newLoc);
         });
 
-		NavigationUtils.search(config.getEngineURL(), newTab.getWebView().getEngine());
+		ConfigurationFileEngineSearch cfes = (ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+
+		NavigationUtils.search(cfes.getEngineURL(), newTab.getWebView().getEngine());
 
 		// Add the created tab to the window, and focus it.
 		this.tabs.add(newTab);
