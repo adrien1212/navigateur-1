@@ -1,5 +1,6 @@
 package org.javastreet.controllers;
 
+import java.io.File;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.URI;
@@ -40,6 +41,8 @@ public class TabsController {
 	private DBHistory history;
 	private DBCookies myCookies;
 	private CookieManager cookieManager;
+	
+	private static File localStorageFile = new File("src/main/resources/localStorage");
 
 	@FXML
 	public void initialize() {
@@ -95,6 +98,8 @@ public class TabsController {
 		this.updateCurrentTab(newTab);
 
 		WebEngine webEngine = webView.getEngine();
+		webEngine.setUserDataDirectory(localStorageFile);
+		
 		Worker<Void> worker = webEngine.getLoadWorker();
 
 		// Listening to the status of worker
