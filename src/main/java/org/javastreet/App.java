@@ -1,15 +1,13 @@
 package org.javastreet;
 
+import org.javastreet.controllers.WebViewController;
+import org.javastreet.utils.DBConnection;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.javastreet.controllers.WebViewController;
-import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DBHistory;
-
-import java.sql.DriverManager;
 
 public class App extends Application {
 
@@ -28,7 +26,7 @@ public class App extends Application {
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setOnHidden(e -> webViewController.saveCookies());
+        stage.setOnHidden(e -> webViewController.getTabsController().saveCookies());
         stage.show();
 
     }
