@@ -81,7 +81,7 @@
                      </cursor></Button>
                         <MenuButton fx:id="menuButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" style="-fx-background-color: transparent;">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Favoris" />
+                                <MenuItem fx:id="bookmarkMenu" mnemonicParsing="false" text="Favoris" />
                                 <MenuItem mnemonicParsing="false" text="Liste de Lecture" />
                                 <SeparatorMenuItem />
                                 <MenuItem fx:id="cookieMenu" mnemonicParsing="false" text="Cookies" />

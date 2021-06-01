@@ -10,10 +10,7 @@ import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.Configuration;
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
-import org.javastreet.utils.NavigationUtils;
+import org.javastreet.utils.*;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -41,6 +38,7 @@ public class TabsController {
 	private ProgressBar progressBar; 
 	private DBHistory history;
 	private DBCookies myCookies;
+	private DBBookmarks myBookmarks;
 	private CookieManager cookieManager;
 	private Configuration config;
 	
@@ -64,6 +62,8 @@ public class TabsController {
 		});
 
 		this.history = new DBHistory();
+
+        myBookmarks = new DBBookmarks();
 		
         myCookies = new DBCookies();
 
@@ -121,7 +121,7 @@ public class TabsController {
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
             try {
-                history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+                history.insert(new HistoryEntry(webEngine.getTitle(), newLoc, new java.util.Date()));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
