@@ -158,10 +158,11 @@ public class WebViewController
                                              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/bookmark.fxml"));
                                              Parent parent = fxmlLoader.load();
                                              BookmarkController bookmarkController = fxmlLoader.<BookmarkController>getController();
+                                             bookmarkController.setTabsController(tabController);
                                              bookmarkController.setBookmark(new Bookmark(NavigationUtils.getTitle(tabController.getCurrentTab().getWebView().getEngine()), addressBar.getText()));
+
                                              Scene scene = new Scene(parent);
                                              Stage stage = new Stage();
-                                             stage.initModality(Modality.APPLICATION_MODAL);
                                              stage.setTitle("Favoris");
                                              stage.setScene(scene);
                                              stage.showAndWait();

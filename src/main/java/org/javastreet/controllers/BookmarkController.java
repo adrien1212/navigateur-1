@@ -3,6 +3,7 @@ package org.javastreet.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.javastreet.models.Bookmark;
 import org.javastreet.models.BookmarkDir;
+import org.javastreet.models.TabEntry;
 import org.javastreet.utils.DBBookmarks;
 
 import java.awt.*;
@@ -44,6 +49,8 @@ public class BookmarkController {
 
 
     private DBBookmarks bookmarks;
+
+    private TabsController tabsController;
 
 
     @FXML
@@ -104,6 +111,28 @@ public class BookmarkController {
             }
         });
 
+        treeView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if (mouseEvent.getClickCount() == 2) {
+                        EventTarget target = mouseEvent.getTarget();
+                        System.out.println(target instanceof Bookmark);
+                        if (target instanceof Text) {
+                            // Parse the URL from the String element
+                            String location = ((Text)target).getText();
+                            location = location.split(" \\| ")[1].trim();
+
+                            // Load the URL in a new tab
+                            tabsController.addNewTab();
+                            TabEntry tab = tabsController.getCurrentTab();
+                            tab.getWebView().getEngine().load(location);
+                        }
+                    }
+                }
+            }
+        });
+
     }
 
     private void loadChoices() {
@@ -130,5 +159,9 @@ public class BookmarkController {
     public void setBookmark(Bookmark bookmark) {
         name.setText(bookmark.getName());
         link.setText(bookmark.getLink());
+    }
+
+    public void setTabsController(TabsController tabsController) {
+        this.tabsController = tabsController;
     }
 }
