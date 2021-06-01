@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.javastreet.controllers.WebViewController;
 import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.DBHistory;
 
@@ -19,10 +20,15 @@ public class App extends Application {
         connection = new DBConnection("src/main/resources/Database.db");
         connection.connect();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        Parent root = loader.load();
+        WebViewController webViewController = loader.getController();
+
+        // Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHidden(e -> webViewController.saveCookies());
         stage.show();
 
     }
