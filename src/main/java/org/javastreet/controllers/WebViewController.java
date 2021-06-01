@@ -125,7 +125,10 @@ public class WebViewController
                     myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
                 }
             }
+
         });
+
+        Worker<Void> worker = webEngine.getLoadWorker();
 
         // Bind progress bar to loading status of the worker
         progressBar.progressProperty().bind(worker.progressProperty());
