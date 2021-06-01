@@ -112,6 +112,11 @@ public class TabsController {
 				updateCurrentTab(getCurrentTab());
 				if (newValue == Worker.State.SUCCEEDED) {
 					progressBar.setOpacity(0);
+					try {
+						history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				} else {
 					progressBar.setOpacity(1);
 				}
@@ -120,11 +125,6 @@ public class TabsController {
 		
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
-            try {
-                history.insert(new HistoryEntry(webEngine.getTitle(), newLoc, new java.util.Date()));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         });
 
 		NavigationUtils.search(config.getEngineURL(), newTab.getWebView().getEngine());
