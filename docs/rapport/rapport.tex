@@ -242,11 +242,11 @@ Cette solution bien que plus compliquée à mettre en place a été retenue car 
 Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
 
 \subsection{Stockage des configurations}
-Nous avons souhaité offrir à l'utilisateur la possibilité de customiser certaines options de l'application. 
+Nous avons souhaité offrir à l'utilisateur la possibilité de configurer certaines options de l'application. 
 
-\subsubsection{Customiser le navigateur}
+\subsubsection{Configurer le navigateur}
 Premièrement, l'utilisateur peut enregistrer des configurations pour l'intégralité du navigateur web. Par exemple, le moteur de recherche par défaut, s'il souhaite être en mode sombre, etc ... \\
-De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donnée que les possibilité de customisation peuvent évoluer au fil des versions il vaut mieux les stocker dans un fichier formatté. Ainsi, la solution retenue est une architecture JSON comme ci-dessous.
+De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donné que les configurations possibles ne représentent pas un grand nombreux de données à stocker, il est plus simple de manier un fichier formaté comme JSON.
 
 \begin{verbatim}
 config.json
@@ -257,9 +257,9 @@ config.json
 
 L'utilisateur à la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifie la valeur dans le fichier \verb|config.json|.
 
-\subsubsection{Customiser les recherches}
-Ensuite, nous souhaitons que l'utilisateur puissent accéder différement aux ressources sur différent site. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
-Pour ce faire, de même que la customisation du navigateur nous utilisons une fichier JSON en associant un nom et un url.
+\subsubsection{Configurer les moteurs recherches}
+Ensuite, nous souhaitons que l'utilisateur puissent ajouter des moteurs de recherche ou des raccourcies de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
+Pour ce faire, de même que la configuration du navigateur nous utilisons un fichier JSON en associant un nom et un url.
 \begin{verbatim}
 webengine.config
 {
@@ -303,15 +303,44 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \attribute {\underline{- instance : ConfigurationCreator}}
 \operation {\underline{+ getInstance() : ConfigurationCreator }}
 \operation {+ isAvaibleEngine(engine : String) : bool. }
-\operation {+ loadConfigurationFiles() }
+\operation {- loadConfigurationFiles() }
+\end{class}	
+
+\begin{class}[text  width=4cm]{aT}{-8.8,-4.7}
+\operation {+ initialize }
+\end{class}	
+
+\begin{class}[text  width=4cm]{TabsController}{-9,-4.5}
+\operation {+ initialize() }
 \end{class}	
 
 \aggregation{ConfigurationCreator}{ }{*}{ConfigurationFile}
 
 \draw[umlcd  style  dashed  line ,->] (ConfigurationCreator.north) |- ++(0, 0.5) -- ++(-4,0) --node[above , sloped ,black]{}  +(0 ,-2)  |- (ConfigurationCreator.west);
 
+\draw[umlcd  style  dashed  line ,->] (TabsController) --node[above ,sloped , black]{} (ConfigurationCreator);
 \end{tikzpicture}
 \end{center}
+
+C'est dans la méthode \verb|TabsController#initialize()| que nous instancions pour la premièrement fois un objet de type \verb|ConfigurationCreator|. Ce qui a pour effet de créer des instances de chaque implémentation de \verb|ConfigurationsFile|, donc de charger tous les fichiers de configuration.
+
+\begin{lstlisting}
+@FXML
+void initialize() {
+	config = ConfigurationCreator.getInstance();
+}
+
+void loadConfigurationFiles() {
+		configurationsFiles.put("configurationFileNavigator", 
+		                                  new ConfigurationFileNavigator());
+		configurationsFiles.put("configurationFileEngineSearch", 
+		                                  new ConfigurationFileEngineSearch());
+	}
+\end{lstlisting}
+
+\underline{Notes} Dans les constructeurs de nos différentes configurations nous exécutons la méthode \verb|load()|.  \\
+
+Par la suite, étant donné que nous utilisons un \textit{singleton}, lorsque d'autre contrôleur souhaiterons utiliser ou modifier les fichiers de configuration ils n'existera qu'une seule instance de chaque.
 
 \subsubsection{Chargement des fichiers de configuration}
 Les fichiers de configurations ne doivent existés qu'en un seul exemplaire. En effet, il ne faudrait pas qu'il y  ait deux objets différents qui chargent les fichiers de configuration et qu'un des objets modifie les paramètres configurés. Pour ce faire, nous avons mis en place un patron singleton dans la classe \verb|Configuration| qui permet de manipuler les fichiers de configuration.
