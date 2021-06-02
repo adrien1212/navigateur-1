@@ -1,4 +1,4 @@
-package org.javastreet.utils;
+package org.javastreet.utils.configurationHandle;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import org.javastreet.utils.Query;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -16,6 +17,9 @@ public class ConfigurationFileNavigator implements ConfigurationFile {
 	
     private String engine;
 
+    /**
+     * Création d'une nouvelle instance et chargement du fichier de configuration
+     */
     public ConfigurationFileNavigator() {
         this.load();
     }

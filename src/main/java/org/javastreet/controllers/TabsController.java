@@ -10,13 +10,13 @@ import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBBookmarks;
-import org.javastreet.utils.ConfigurationCreator;
-import org.javastreet.utils.ConfigurationFileEngineSearch;
-import org.javastreet.utils.ConfigurationFileNavigator;
+
 import org.javastreet.utils.DBCookies;
 import org.javastreet.utils.DBHistory;
 import org.javastreet.utils.NavigationUtils;
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

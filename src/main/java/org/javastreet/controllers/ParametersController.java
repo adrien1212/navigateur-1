@@ -7,9 +7,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.javastreet.utils.ConfigurationCreator;
-import org.javastreet.utils.ConfigurationFileEngineSearch;
-import org.javastreet.utils.ConfigurationFileNavigator;
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 
 import java.util.ArrayList;
 import java.util.Map;

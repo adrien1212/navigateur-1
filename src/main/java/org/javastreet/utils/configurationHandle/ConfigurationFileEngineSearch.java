@@ -1,4 +1,4 @@
-package org.javastreet.utils;
+package org.javastreet.utils.configurationHandle;
 
 import java.io.FileReader;
 import java.io.IOException;

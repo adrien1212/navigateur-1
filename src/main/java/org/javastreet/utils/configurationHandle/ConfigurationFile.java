@@ -1,4 +1,4 @@
-package org.javastreet.utils;
+package org.javastreet.utils.configurationHandle;
 
 public interface ConfigurationFile {
 	void load();
