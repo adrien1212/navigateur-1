@@ -94,7 +94,9 @@ public class WebViewController
 
         webEngine.locationProperty().addListener((obs, oldLoc, newLoc) -> {
             addressBar.setText(newLoc);
-            myHistory.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+            try {
+                myHistory.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
+            } catch (SQLException e) {}
         });
 
         // Cookie Manager
@@ -122,13 +124,12 @@ public class WebViewController
                     progressBar.setOpacity(0);
                 } else {
                     progressBar.setOpacity(1);
-                    myHistory.insert(new HistoryEntry(getTitle(webEngine), webEngine.getLocation(), new java.util.Date()));
                 }
             }
 
         });
 
-        Worker<Void> worker = webEngine.getLoadWorker();
+        // Worker<Void> worker = webEngine.getLoadWorker();
 
         // Bind progress bar to loading status of the worker
         progressBar.progressProperty().bind(worker.progressProperty());
