@@ -18,6 +18,9 @@ public class ConfigurationFileEngineSearch implements ConfigurationFile{
 	
     private HashMap<String, String> availableEngine;
 
+    /**
+     * Création d'une nouvelle instance et chargement du fichier
+     */
     public ConfigurationFileEngineSearch() {
         this.availableEngine = new HashMap<>();
         this.load();
