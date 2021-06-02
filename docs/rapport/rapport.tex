@@ -1,0 +1,323 @@
+\documentclass[10pt,a4paper]{article}
+\input{preambule}
+ 
+\usepackage{fancyhdr}
+\usepackage{multirow}
+
+
+
+
+\begin{document}
+\thispagestyle{empty}
+\include{coverpage}
+
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
+\setcounter{page}{1}
+\section{Introduction}
+\subsection{Le projet}
+Ce projet s'inscrit dans le cadre des unités d'enseignement Technologie Objet et Gestion de Projet dispensées durant le second semestre du cycle ingénieur. L'objectif principal de se projet est de mettre en application les principes agiles vus en Gestion de Projet. Tandis que l'implémentation de l'application est un objectif secondaire car les notions de programmation ont été travaillé en TDs et TPs. Il était donc conseillé d'avoir un projet ambitieux qui serait difficile à réaliser dans son intégralité dans le temps imparti.\\
+
+Pour ce projet, nous avons donc décidé de créer un navigateur web.
+
+\subsection{Liens utiles}
+Vous pouvez suivre l'avancement du projet avec le :
+\begin{itemize}
+\item Github \href{https://github.com/simjnd/navigateur/wiki}{https://github.com/simjnd/navigateur/wiki}
+\item Trello \href{https://trello.com/b/HyinoLEE/navigateur}{https://trello.com/b/HyinoLEE/navigateur} 
+\item SVN \href{http://cregut.svn.enseeiht.fr/2020/1air/cpo/pl/E5}{http://cregut.svn.enseeiht.fr/2020/1air/cpo/pl/E5}
+\end{itemize}
+
+\newpage
+
+\section{Orginisation de l'équipe}
+\subsection{Itération initiale}
+Cette première itération a été consacré à l'organisation du travail. Ainsi, nous nous sommes mis d'accord sur les outils à utiliser. Nous avons donc créé un \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{tableau Trello}} pour maintenir et mettre à jour le backlog  produit, les sprints et identifier le travail à réaliser, le travail en cours, les tâches terminées (Kanban). \\ 
+Nous avons également déterminé les outils de travail, à savoir le framework JavaFX, l'outil de gestion Maven, les IDE IntelliJ/Eclipse et l'outil de contrôle des sources Git. \\ 
+Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}} associé au depôt \href{https://github.com/simjnd/navigateur}{\underline{GitHub}} nous avons défini un workflow Git (gestion et nommage des branches, nombre de revues de validation des pull requests). \\
+
+\subsection{Organisation générale}
+
+Après avoir identifié les différentes épiques et user stories, nous avons procédé à un planning poker pour déterminer les points d'efforts et valeurs métier de ces stories. \\
+Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous faisions un "daily" au cours duquel nous faisions rapport sur notre progrès, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
+
+\newpage
+
+\section{Découpage des fonctionnalités}
+Avant de débuter la conception du projet, nous avons du établir les principales fonctionnalités et définir leur point d'effort et leur valeur métier. Une fois ces deux métriques définies nous avons définie les fonctionnalités à faire dans chaque sprint. 
+
+\subsection{Liste des fonctionnalités}
+\begin{table}[H]
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Epic}                           & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\multirow{6}{*}{Fenetre}                & Avoir l'affichage                            & M                                            & 10                                          \\ \cline{2-4} 
+                                        & Bouton rafraichir                            & S                                            & 8                                           \\ \cline{2-4} 
+                                        & Bouton précédent                             & S                                            & 8                                           \\ \cline{2-4} 
+                                        & Bouton suivant                               & S                                            & 8                                           \\ \cline{2-4} 
+                                        & Barre de recherche                           & S                                            & 10                                          \\ \cline{2-4} 
+                                        & Bouton Menu                                  & S                                            & 6                                           \\ \hline
+\multirow{5}{*}{Historique}             & Enregistrer historique                       & XL                                           & 4                                           \\ \cline{2-4} 
+                                        & Afficher historique                          & L                                            & 4                                           \\ \cline{2-4} 
+                                        & Supprimer historique                         & S                                            & 4                                           \\ \cline{2-4} 
+                                        & Rechercher historique                        & S                                            & 3                                           \\ \cline{2-4} 
+                                        & Cliquer sur lien dans historique             & M                                            & 4                                           \\ \hline
+\multirow{5}{*}{Onglet}                 & Ajouter onglet                               & XL                                           & 8                                           \\ \cline{2-4} 
+                                        & Naviguer entre onglet                        & L                                            & 8                                           \\ \cline{2-4} 
+                                        & Supprimer onglet                             & M                                            & 8                                           \\ \cline{2-4} 
+                                        & Interchanger onglet                          & XL                                           & 3                                           \\ \cline{2-4} 
+                                        & Grouper onglet                               & XL                                           & 3                                           \\ \hline
+\multirow{5}{*}{Barre recherche}        & Ecrire dans la barre                         & M                                            & 5                                           \\ \cline{2-4} 
+                                        & Loader (barre de chargement)                 & S                                            & 3                                           \\ \cline{2-4} 
+                                        & Sauvegarder les cookies                      & L                                            & 6                                           \\ \cline{2-4} 
+                                        & Suggestion basée sur historique              & L                                            & 6                                           \\ \cline{2-4} 
+                                        & Choisir son moteur de recherche              & L                                            & 6                                           \\ \hline
+\multirow{5}{*}{Favoris}                & Ajouter la page actuelle favoris             & M                                            & 7                                           \\ \cline{2-4} 
+                                        & Modifier nom favoris                         & L                                            & 7                                           \\ \cline{2-4} 
+                                        & Modifier adreprincipalsse favoris                     & L                                            & 7                                           \\ \cline{2-4} 
+                                        & Créer un dossier                             & L                                            & 7                                           \\ \cline{2-4} 
+                                        & Modifier nom dossier                         & L                                            & 7                                           \\ \hline
+\multirow{4}{*}{Reading-list}           & Ajouter une page                             & M                                            & 3                                           \\ \cline{2-4} 
+                                        & Ouvrir la liste                              & M                                            & 3                                           \\ \cline{2-4} 
+                                        & Supprimer la page une fois lue               & M                                            & 3                                           \\ \cline{2-4} 
+                                        & Pré-chager les pages de la liste             & M                                            & 3                                           \\ \hline
+\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 6                                           \\ \cline{2-4} 
+                                        & Saisie automatique du mot de passe           & XL                                           & 6                                           \\ \cline{2-4} 
+                                        & Afficher liste des mots de passes            & M                                            & 6                                           \\ \cline{2-4} 
+                                        & Détection des mots de passe pwned            & M                                            & 4                                           \\ \hline
+\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 6                                           \\ \cline{2-4} 
+                                        & Etat du téléchargement                       & XL                                           & 7                                           \\ \cline{2-4} 
+                                        & Liste des téléchargement                     & M                                            & 6                                           \\ \hline
+\multirow{3}{*}{Données navigations}    & Sauvegarder cookies                          & L                                          & 6                                           \\ \cline{2-4} 
+                                        & Sauvegarde localstorage                      & L                                           & 7                                         
+                                             \\ \hline
+\multicolumn{1}{|l|}{Navigation privée} & Navigation privée                            & M                                            & 6    
+                                             \\ \hline
+
+\end{tabular}
+\end{table}
+
+Vous pouvez retrouver ces mêmes users story sur le \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{Trello}}
+
+\newpage
+
+\subsection{Fonctionnalités sprint n°1}
+Ce premier sprint a été consacré à la mise en place de l'infrastructure nécessaire pour l'utilisation d'un navigateur web. On retrouve ainsi les fonctionnalités suivantes.
+
+\begin{table}[h]
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Epic}               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\multirow{6}{*}{Fenetre}    & Avoir l'affichage                            & M                                            & 10                                          \\ \cline{2-4} 
+                            & Bouton rafraichir                            & S                                            & 8                                           \\ \cline{2-4} 
+                            & Bouton précédent                             & S                                            & 8                                           \\ \cline{2-4} 
+                            & Bouton suivant                               & S                                            & 8                                           \\ \cline{2-4} 
+                            & Barre de recherche                           & S                                            & 10                                          \\ \cline{2-4} 
+                            & Bouton Menu                                  & S                                            & 6                                           \\ \hline
+\multirow{2}{*}{Historique} & Enregistrer historique                       & XL                                           & 4                                           \\ \cline{2-4} 
+                            & Afficher historique                          & L                                            & 4                                           \\ \hline
+Barre recherche             & Loader (barre de chargement)                 & M                                            & 5                                           \\ \hline
+\end{tabular}
+\end{table}
+
+Pour calculer la vélocité de l'équipe, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
+
+\subsubsection{Conclusion du sprint}
+Toutes les tâches du sprint ont été réalisées. 
+
+\subsection{Fonctionnalités sprint n°2}
+
+\begin{table}[h]
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Epic}                            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\multirow{3}{*}{Onglet}                  & Ajouter un onglet                            & XL                                           & 8                                           \\ \cline{2-4} 
+                                         & Naviguer entre onglet                        & L                                            & 8                                           \\ \cline{2-4} 
+                                         & Supprimer un onglet                          & L                                            & 8                                           \\ \hline
+\multirow{2}{*}{Historique}              & Rechercher historique                        & S                                            & 3                                           \\ \cline{2-4} 
+                                         & Supprimer historique                         & S                                            & 4                                           \\ \hline
+Cookie                                   & Loader (barre de chargement)                 & M                                            & 5                                           \\ \hline
+\multicolumn{1}{|l|}{Données navigation} & Sauvegarder cookies à la fermeture           & L                                            & 6                                           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Conclusion du sprint}
+Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévu et de nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
+Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprint.
+\newpage
+
+
+\begin{landscape}
+\section{Architecture de l'application}
+\subsection{Diagramme de classe}
+\begin{center}
+\begin{tikzpicture}
+\begin{class}[text  width=4.5cm]{HistoryController}{0,-0.5}
+\operation {initialize() }
+\end{class}	
+
+\begin{class}[text  width=4.5cm]{TabController}{0,-5.5}
+\operation {+ initialize() }
+\operation {+ getCurrentTab() }
+\operation {+ createTab()}
+\end{class}	
+
+\begin{class}[text  width=4.5cm]{WebViewController}{0,-10}
+\operation {+ initialize() }
+\end{class}	
+
+\begin{class}[text  width=4.5cm]{HistoryEntry}{-8,0}
+\attribute {- link : String}
+\attribute {- name : String}
+\attribute {- date : Date}
+\operation {+ initialize() }
+\end{class}	
+
+\begin{class}[text  width=4.5cm]{TabEntry}{-8,-5}
+\attribute {- webView : WevView}
+\attribute {- tab : Tab}
+\operation {+ initialize() }
+\operation {+ getCurrentTab() }
+\operation {+ createTab()}
+\end{class}	
+
+\begin{class}[text  width=3cm]{Historyfxml}{6,-0.8}
+\end{class}
+
+\begin{class}[text  width=3cm]{Tabfxml}{6,-6.1}
+\end{class}
+
+\begin{class}[text  width=3cm]{Mainfxml}{6,-10.3}
+\end{class}
+
+\begin{class}[text  width=4.8cm]{DBHistory}{-15,0}
+\attribute{- history : List<HistoryEntry>}
+\operation{+ selectAll()}
+\operation{+ insert(he : HistoryEntry)}
+\operation{+ ...}
+\operation{+ getHistory() : List<HistoryE>}
+\end{class}
+
+\begin{class}[text  width=4.8cm]{DBConnection}{-15,-5}
+\attribute{- connection : Connection}
+\operation{+ connect()}
+\operation{+ close()}
+\operation{+ getConnection() : Connection}
+\operation{+ createTable(String request) }
+\end{class}
+
+\composition{HistoryController}{ historyEntries }{*}{HistoryEntry}
+\composition{TabController}{ tabs }{*}{TabEntry}
+\aggregation{TabController}{ currentTab }{1}{TabEntry}
+
+\association{HistoryController}{}{}{Historyfxml}{}{}
+\association{TabController}{}{}{Tabfxml}{}{}
+\association{WebViewController}{}{}{Mainfxml}{}{}
+
+\aggregation{DBHistory}{ history }{*}{HistoryEntry}
+
+\draw[umlcd  style  dashed  line ,->] (Mainfxml) --node[above , sloped ,black]{$<<$ include$>>$} (Tabfxml);
+\draw[umlcd  style  dashed  line ,->] (WebViewController.south) |- ++(0, -1) -- ++(9,0) --node[above , sloped ,black]{$<<$ onClick$>>$}  +(0 ,11.1)  |- (Historyfxml.east);
+
+\end{tikzpicture}
+\end{center}
+
+\end{landscape}
+
+
+\section{Choix de conception}
+\subsection{Stockage des informations}
+Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ...
+Pour réaliser le stockage nous pouvions soit utiliser un fichier texte (XML, JSON) ou une base de données. \\
+
+\textbf{Les fichiers texte} \\
+Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement. \\
+
+\textbf{Les bases de données} \\
+Est un outils conçu spécialement pour le stockage d'un grand nombre de données. Cependant, il est plus difficile de manipuler les bases de données en Java que les fichiers. De plus, nous devons également stocker les informations enregistrer en base de données sans que l'utilisateur n'est besoin d'installer lui même une base de données. \\
+Cette solution bien que plus compliquée à mettre en place a été retenue car elle présente de nombreux avantages une fois la technologie maitrisée. \\
+
+Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
+
+\subsection{Stockage des configurations}
+Nous avons souhaité offrir à l'utilisateur la possibilité de customiser certaines options de l'application. 
+
+\subsubsection{Customiser le navigateur}
+Premièrement, l'utilisateur peut enregistrer des configurations pour l'intégralité du navigateur web. Par exemple, le moteur de recherche par défaut, s'il souhaite être en mode sombre, etc ... \\
+De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donnée que les possibilité de customisation peuvent évoluer au fil des versions il vaut mieux les stocker dans un fichier formatté. Ainsi, la solution retenue est une architecture JSON comme ci-dessous.
+
+\begin{verbatim}
+config.json
+{
+    engine: google // le moteur de recherche par défaut est google
+}
+\end{verbatim}
+
+L'utilisateur à la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifie la valeur dans le fichier \verb|config.json|.
+
+\subsubsection{Customiser les recherches}
+Ensuite, nous souhaitons que l'utilisateur puissent accéder différement aux ressources sur différent site. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
+Pour ce faire, de même que la customisation du navigateur nous utilisons une fichier JSON en associant un nom et un url.
+\begin{verbatim}
+webengine.config
+{
+    youtube: https://youtube.com/result?search_query=
+    google: https://google.com/search?q=
+}
+\end{verbatim}
+
+L'utilisateur a également la possibilité d'ajouter un raccourci \verb|@| depuis les paramètres du navigateur.
+
+
+\subsubsection{Diagramme de classe}
+Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'application
+
+\begin{center}
+\begin{tikzpicture}
+\begin{interface}[text  width=4.5cm]{ConfigurationFile}{0,-0.5}
+\operation {+ load() }
+\operation {+ save() }
+\end{interface}	
+
+\begin{class}[text  width=3.5cm]{CFNavigator}{-4,-3.5}
+\implement {ConfigurationFile}
+\attribute {- engine : String}
+\operation {+ query(url : String) }
+\operation {+ load() }
+\operation {+ save() }
+\end{class}	
+
+\begin{class}[text  width=6.5cm]{CFEngineSearch}{2,-3.5}
+\implement {ConfigurationFile}
+\attribute {- availableEngine : HM<String, String>}
+\operation {+ addAvailableEngine(engine, url : String) }
+\operation {+ isAvaibleEngine(engine : String) : bool. }
+\operation {+ load() }
+\operation {+ save() }
+\end{class}	
+
+\begin{class}[text  width=6.5cm]{ConfigurationCreator}{-9,0}
+\attribute {- configurationFiles : HM<Str, ConfFile>}
+\attribute {\underline{- instance : ConfigurationCreator}}
+\operation {\underline{+ getInstance() : ConfigurationCreator }}
+\operation {+ isAvaibleEngine(engine : String) : bool. }
+\operation {+ loadConfigurationFiles() }
+\end{class}	
+
+\aggregation{ConfigurationCreator}{ }{*}{ConfigurationFile}
+
+\draw[umlcd  style  dashed  line ,->] (ConfigurationCreator.north) |- ++(0, 0.5) -- ++(-4,0) --node[above , sloped ,black]{}  +(0 ,-2)  |- (ConfigurationCreator.west);
+
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Chargement des fichiers de configuration}
+Les fichiers de configurations ne doivent existés qu'en un seul exemplaire. En effet, il ne faudrait pas qu'il y  ait deux objets différents qui chargent les fichiers de configuration et qu'un des objets modifie les paramètres configurés. Pour ce faire, nous avons mis en place un patron singleton dans la classe \verb|Configuration| qui permet de manipuler les fichiers de configuration.
+
+
+\section{Conclusion}
+
+\newpage
+\end{document}
