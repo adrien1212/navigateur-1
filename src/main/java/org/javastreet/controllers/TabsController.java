@@ -4,22 +4,17 @@ import java.io.File;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-
-import org.javastreet.utils.NavigationUtils;
-import org.javastreet.utils.configurationHandle.ConfigurationCreator;
-import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
-import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
-
 import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.NavigationUtils;
 import org.javastreet.utils.DB.TableCookies;
 import org.javastreet.utils.DB.TableHistory;
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

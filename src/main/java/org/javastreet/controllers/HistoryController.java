@@ -1,16 +1,5 @@
 package org.javastreet.controllers;
 
-import java.sql.SQLException;
-
-import com.sun.javafx.scene.control.LabeledText;
-import javafx.event.EventHandler;
-import javafx.event.EventTarget;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.control.skin.ListViewSkin;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
 import org.javastreet.utils.DBConnection;
@@ -18,8 +7,18 @@ import org.javastreet.utils.DB.TableHistory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 public class HistoryController {
 

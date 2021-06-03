@@ -1,18 +1,17 @@
 package org.javastreet.controllers;
 
-import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import java.util.Map;
+
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
 import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
 import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 
-import java.util.ArrayList;
-import java.util.Map;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 
 public class ParametersController {
 

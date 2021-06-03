@@ -1,14 +1,14 @@
 package org.javastreet.controllers;
 
+import java.net.HttpCookie;
+
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.TableCookies;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DB.TableCookies;
-
-import java.net.HttpCookie;
 
 public class CookieViewController {
 
