@@ -1,9 +1,9 @@
-package org.javastreet.utils;
+package org.javastreet.utils.DB;
 
 import java.util.List;
 
 public interface Table<T> {
-
+	
 	/**
 	 * Création d'une nouvelle table
 	 */

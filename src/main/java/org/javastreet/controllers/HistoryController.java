@@ -13,7 +13,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBHistory;
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.TableHistory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,13 +43,13 @@ public class HistoryController {
     private TabsController tabsController;
 
     ObservableList<HistoryEntry> observableList = FXCollections.observableArrayList();
-    DBHistory db;
+    TableHistory db;
 
     @FXML
     private void initialize() {
-        db = new DBHistory();
+        db = TableHistory.getInstance(DBConnection.getInstance());
 
-        for (HistoryEntry he : db.getHistory()) {
+        for (HistoryEntry he : db.getDatas()) {
             System.out.println(he);
             observableList.add(he);
         }
@@ -111,8 +112,6 @@ public class HistoryController {
                 for (HistoryEntry he : historyEntries.getSelectionModel().getSelectedItems()) {
                     try {
                         db.delete(he);
-                    } catch (SQLException e) {
-                        System.out.println(e.getMessage());
                     } finally {
                         observableList.remove(he);
                     }
@@ -143,7 +142,7 @@ public class HistoryController {
     private void searchHistory() {
         String searchText = searchBar.getText().toLowerCase();
         observableList.clear();
-        for (HistoryEntry he : db.getHistory()) {
+        for (HistoryEntry he : db.getDatas()) {
             if (he.getName().contains(searchText) || he.getLink().contains(searchText)) {
                 observableList.add(he);
             }

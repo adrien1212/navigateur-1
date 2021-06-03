@@ -33,8 +33,6 @@ import org.javastreet.models.BookmarkDir;
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.utils.DBBookmarks;
 import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
 import javafx.stage.Stage;
 
 

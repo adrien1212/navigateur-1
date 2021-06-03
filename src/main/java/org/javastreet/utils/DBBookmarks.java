@@ -16,14 +16,14 @@ public class DBBookmarks {
     private Connection connection;
 
     public DBBookmarks() {
-        connection= App.connection.getConnection();
+        //connection= App.connection.getConnection();
         bookmarkDirs = new ArrayList<>();
         String sql = "CREATE TABLE IF NOT EXISTS BookmarkDir (\n"
                 + "	id integer PRIMARY KEY,\n"
                 + "	name text NOT NULL\n"
                 + ");";
 
-        App.connection.createTable(sql);
+        //App.connection.createTable(sql);
 
         String sqlBookmark = "CREATE TABLE IF NOT EXISTS Bookmark (\n"
                 + "	id integer PRIMARY KEY,\n"
@@ -33,7 +33,7 @@ public class DBBookmarks {
                 + " FOREIGN KEY (dirId)\n" +
                 "       REFERENCES BookMarkDir(id) "
                 + ");";
-        App.connection.createTable(sqlBookmark);
+        //App.connection.createTable(sqlBookmark);
         this.selectAll();
     }
 
