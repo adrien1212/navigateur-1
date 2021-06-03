@@ -66,6 +66,7 @@ public class TableHistory implements Table<HistoryEntry> {
                         rs.getDate("date")
                 );
                 history.add(he);
+                
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
