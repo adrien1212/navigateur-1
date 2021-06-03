@@ -229,8 +229,8 @@ Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprin
 
 \section{Choix de conception}
 \subsection{Stockage des informations}
-Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ...
-Pour réaliser le stockage nous pouvions soit utiliser un fichier texte (XML, JSON) ou une base de données. \\
+Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ... \\
+Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
 
 \textbf{Les fichiers texte} \\
 Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement. \\
@@ -240,6 +240,10 @@ Est un outils conçu spécialement pour le stockage d'un grand nombre de donnée
 Cette solution bien que plus compliquée à mettre en place a été retenue car elle présente de nombreux avantages une fois la technologie maitrisée. \\
 
 Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
+
+\subsubsection{Diagramme de classe}
+Ci-dessous nous représentons l'organisation des classes pour la gestions des tables de la base de données.
+La classe \verb|DBConnection| permet de gérer l'accès à la base de données et les implémentations de \verb|Table| fait le lien entre les objets Java et les tables de la base de données.
 
 \subsection{Stockage des configurations}
 Nous avons souhaité offrir à l'utilisateur la possibilité de configurer certaines options de l'application. 
