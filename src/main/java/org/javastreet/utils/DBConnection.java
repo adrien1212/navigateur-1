@@ -4,31 +4,38 @@ import java.sql.*;
 
 public class DBConnection {
 
-    private String DBPath = "";
+    private static final String DB_PATH = "src/main/resources/Database.db";
+    
     private Connection connection = null;
     private Statement statement = null;
 
-    public DBConnection(String dBPath) {
-        DBPath = dBPath;
+    private static DBConnection instance;
+    
+    private DBConnection() {
+    }
+    
+    public static DBConnection getInstance() {
+    	if (instance == null) {
+    		instance = new DBConnection();
+    	}
+    	return instance;
     }
 
     public void connect() {
-        try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:" + DBPath);
-            statement = connection.createStatement();
-            System.out.println("Connexion a " + DBPath + " avec succès");
-        } catch (ClassNotFoundException notFoundException) {
-            notFoundException.printStackTrace();
-            System.out.println("Erreur de connecxion");
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-            System.out.println("Erreur de connecxion");
-        }
-    }
-
-    public Connection getConnection() {
-        return connection;
+    	if(connection == null) {
+    		try {
+                Class.forName("org.sqlite.JDBC");
+                connection = DriverManager.getConnection("jdbc:sqlite:" + DB_PATH);
+                statement = connection.createStatement();
+                System.out.println("Connexion a " + DB_PATH + " avec succès");
+            } catch (ClassNotFoundException notFoundException) {
+                notFoundException.printStackTrace();
+                System.out.println("Erreur de connecxion");
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+                System.out.println("Erreur de connecxion");
+            }
+    	}
     }
 
     public void createTable(String requet) {
@@ -47,5 +54,9 @@ public class DBConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public Connection getConnection() {
+        return connection;
     }
 }
