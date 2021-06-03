@@ -20,8 +20,8 @@ public class TableBookmarks implements Table<Bookmark>{
 	
 	private TableBookmarks(DBConnection DBconnection) {
 		this.DBconnection = DBconnection;
-		create();
-		selectAll();
+		this.create();
+		this.selectAll();
 	}
 	
 	public static TableBookmarks getInstance(DBConnection DBconnection) {
