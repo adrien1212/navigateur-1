@@ -74,8 +74,8 @@ public class HistoryController {
             if (deleteOption == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Warning");
-                alert.setHeaderText("Suppresion");
-                alert.setContentText("Attention merci de choisir un mode de suppresion");
+                alert.setHeaderText("Suppression");
+                alert.setContentText("Attention merci de choisir un mode de suppression");
 
                 alert.showAndWait();
             } else if (deleteOption.equals("Selectionné")) {
