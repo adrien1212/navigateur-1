@@ -7,14 +7,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.javastreet.utils.Configuration;
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 public class ParametersController {
-
-    private Configuration config;
 
     @FXML
     private ChoiceBox choiceBoxEngine;
@@ -34,16 +34,22 @@ public class ParametersController {
     @FXML
     private void initialize(){
         // get config from file
-        config = Configuration.getInstance();
+        ConfigurationCreator config = ConfigurationCreator.getInstance();
 
-        choiceBoxEngine.setValue(config.getEngine());
-        for(Map.Entry<String, String> entry : config.getAvailableEngine().entrySet()){
+        ConfigurationFileNavigator configNavigator = 
+        		(ConfigurationFileNavigator) config.getConfigurationFile("configurationFileNavigator");
+        
+        ConfigurationFileEngineSearch configEngineSearch =
+        		(ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+        
+        choiceBoxEngine.setValue(configNavigator.getEngine());
+        for(Map.Entry<String, String> entry : configEngineSearch.getAvailableEngine().entrySet()){
             choiceBoxEngine.getItems().add(entry.getKey());
         }
 
         btnSave.setOnAction(event -> {
-            config.setEngine((String) choiceBoxEngine.getSelectionModel().getSelectedItem());
-            config.saveToJson();
+        	configNavigator.setEngine((String) choiceBoxEngine.getSelectionModel().getSelectedItem());
+            configNavigator.save();
             Stage stage = (Stage) btnSave.getScene().getWindow();
             stage.close();
         });
@@ -52,12 +58,12 @@ public class ParametersController {
             String nom = TF_nom.getText();
             String url = TF_url.getText();
 
-            config.addAvailableEngine(nom, url);
-            config.saveWebConfToJson();
+            configEngineSearch.addAvailableEngine(nom, url);
+            configEngineSearch.save();
 
             choiceBoxEngine.getItems().clear();
-            choiceBoxEngine.setValue(config.getEngine());
-            for(Map.Entry<String, String> entry : config.getAvailableEngine().entrySet()){
+            choiceBoxEngine.setValue(configNavigator.getEngine());
+            for(Map.Entry<String, String> entry : configEngineSearch.getAvailableEngine().entrySet()){
                 choiceBoxEngine.getItems().add(entry.getKey());
             }
         });

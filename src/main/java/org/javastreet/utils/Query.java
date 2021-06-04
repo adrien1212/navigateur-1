@@ -3,14 +3,19 @@ package org.javastreet.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+
 public class Query {
 
     public static String request(String engine, String args[]){
         String url = "";
-        if(Configuration.getInstance().isAvailable(engine)){
-            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get(engine), args);
+        ConfigurationFileEngineSearch cfe = 
+        		(ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
+        if(cfe.isAvailable(engine)){
+            url = Query.webQuery(cfe.getAvailableEngine().get(engine), args);
         } else {
-            url = Query.webQuery(Configuration.getInstance().getAvailableEngine().get("google"), args);
+            url = Query.webQuery(cfe.getAvailableEngine().get("google"), args);
         }
         return url;
     }
