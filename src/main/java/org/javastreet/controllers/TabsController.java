@@ -4,19 +4,17 @@ import java.io.File;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
+import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.NavigationUtils;
+import org.javastreet.utils.DB.TableCookies;
+import org.javastreet.utils.DB.TableHistory;
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
 import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
-import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -53,10 +51,10 @@ public class TabsController {
 	private ProgressBar progressBar; 
 	
 	// Database instance of the history
-	private DBHistory history;
+	private TableHistory history;
 
 	// Database instance of the cookie store
-	private DBCookies myCookies;
+	private TableCookies myCookies;
 	
 	// Instance of non-private tabs Cookie Manager
 	private CookieManager cookieManager;
@@ -86,9 +84,9 @@ public class TabsController {
 		});
 
 		// Initialize storage / cookies
-		this.history = new DBHistory();
+		this.history = TableHistory.getInstance(DBConnection.getInstance());
 
-		myCookies = new DBCookies();
+		myCookies = TableCookies.getInstance(DBConnection.getInstance());
 		cookieManager = new CookieManager();
 
         // Cookie Manager
@@ -96,7 +94,7 @@ public class TabsController {
         CookieHandler.setDefault(cookieManager);
 
 		// Load cookies into webview when starting the app
-		myCookies.getCookiesList().forEach(cookie -> {
+		myCookies.getDatas().forEach(cookie -> {
 			cookieManager.getCookieStore().add(URI.create(cookie.getDomain()), cookie);
 		});
 	}
@@ -159,12 +157,8 @@ public class TabsController {
 				updateCurrentTab(getCurrentTab());
 				if (newValue == Worker.State.SUCCEEDED) {
 					progressBar.setOpacity(0);
-					try {
-						if (!privateTab) {
-							history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
-						}
-					} catch (SQLException e) {
-						e.printStackTrace();
+					if (!privateTab) {
+						history.insert(new HistoryEntry(webEngine.getTitle(), webEngine.getLocation(), new java.util.Date()));
 					}
 				} else {
 					progressBar.setOpacity(1);

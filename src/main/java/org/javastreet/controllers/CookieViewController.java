@@ -1,14 +1,14 @@
 package org.javastreet.controllers;
 
+import java.net.HttpCookie;
+
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.TableCookies;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
-
-import java.net.HttpCookie;
 
 public class CookieViewController {
 
@@ -19,9 +19,9 @@ public class CookieViewController {
     @FXML
     private void initialize()
     {
-        DBCookies dbCookies = new DBCookies();
-        System.out.println(dbCookies.getCookiesList().size());
-        for(HttpCookie cookie : dbCookies.getCookiesList()) {
+    	TableCookies dbCookies = TableCookies.getInstance(DBConnection.getInstance());
+        System.out.println(dbCookies.getDatas().size());
+        for(HttpCookie cookie : dbCookies.getDatas()) {
             System.out.println(cookie.getComment() + " " + cookie.getCommentURL() + " " + cookie.getDiscard() + " " + cookie.getDomain() + " " + cookie.isHttpOnly() + " " + cookie.getMaxAge() + " " + cookie.getPath() + " " + cookie.getPortlist() + " " + cookie.getSecure() + " " + cookie.getVersion());
             observableList.add(cookie.getComment() + " " + cookie.getCommentURL() + " " + cookie.getDiscard() + " " + cookie.getDomain() + " " + cookie.isHttpOnly() + " " + cookie.getMaxAge() + " " + cookie.getPath() + " " + cookie.getPortlist() + " " + cookie.getSecure() + " " + cookie.getVersion());
         }
