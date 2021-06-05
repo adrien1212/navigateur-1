@@ -11,11 +11,10 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-    public static DBConnection connection;
-
     @Override
     public void start(final Stage stage) throws Exception {
-        connection = new DBConnection("src/main/resources/Database.db");
+      
+        DBConnection connection = DBConnection.getInstance();
         connection.connect();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));

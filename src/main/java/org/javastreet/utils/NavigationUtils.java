@@ -3,6 +3,9 @@ package org.javastreet.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.javastreet.utils.configurationHandle.ConfigurationCreator;
+import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,12 +26,16 @@ public class NavigationUtils {
 				if(keywords[0].startsWith("@")){
 					String engine = keywords[0].split("@")[1];
 					System.out.println(engine);
-					if(Configuration.getInstance().isAvailable(engine)){
+					ConfigurationFileEngineSearch cfe = (ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
+					if(cfe.isAvailable(engine)){
 						keywords[0] = "";
 						url = Query.request(engine, keywords);
 					}
 				} else {
-					url = Configuration.getInstance().query(keywords);
+					ConfigurationCreator cc = ConfigurationCreator.getInstance();
+					ConfigurationFileNavigator cfn = (ConfigurationFileNavigator) cc.getConfigurationFile("configurationFileNavigator");
+
+					url = Query.request(cfn.getEngine(), keywords);
 				}
 			}
 		}

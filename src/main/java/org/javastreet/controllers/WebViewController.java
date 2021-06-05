@@ -2,6 +2,7 @@ package org.javastreet.controllers;
 
 import java.io.IOException;
 
+import org.javastreet.models.Bookmark;
 import org.javastreet.utils.NavigationUtils;
 
 import javafx.application.Platform;
@@ -19,22 +20,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker.State;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.javastreet.models.Bookmark;
-import org.javastreet.models.BookmarkDir;
-import org.javastreet.models.HistoryEntry;
-import org.javastreet.utils.DBBookmarks;
-import org.javastreet.utils.DBConnection;
-import org.javastreet.utils.DBCookies;
-import org.javastreet.utils.DBHistory;
 import javafx.stage.Stage;
 
 

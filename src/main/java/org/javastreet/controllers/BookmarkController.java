@@ -1,32 +1,32 @@
 package org.javastreet.controllers;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.javastreet.models.Bookmark;
+import org.javastreet.models.BookmarkDir;
+import org.javastreet.models.TabEntry;
+import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.TableBookmarks;
+import org.javastreet.utils.DB.TableBookmarksDir;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import org.javastreet.models.Bookmark;
-import org.javastreet.models.BookmarkDir;
-import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBBookmarks;
-
-import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Optional;
 
 public class BookmarkController {
     @FXML
@@ -48,14 +48,17 @@ public class BookmarkController {
     private ChoiceBox choices;;
 
 
-    private DBBookmarks bookmarks;
+    private TableBookmarks bookmarks;
+    private TableBookmarksDir bookmarksDir;
 
     private TabsController tabsController;
 
 
     @FXML
     private void initialize() {
-        bookmarks = new DBBookmarks();
+        bookmarks = TableBookmarks.getInstance(DBConnection.getInstance());
+        bookmarksDir = TableBookmarksDir.getInstance(DBConnection.getInstance());
+
         this.treeView.setRoot(createTreeView());
         this.treeView.setShowRoot(false);
         loadChoices();
@@ -66,7 +69,7 @@ public class BookmarkController {
             public void handle(ActionEvent event) {
                 BookmarkDir d = (BookmarkDir)choices.getValue();
                 Bookmark temp = new Bookmark(name.getText(), link.getText(), d.getId());
-                bookmarks.addBookmark(temp);
+                bookmarks.insert(temp);
                 treeView.setRoot(createTreeView());
             }
         });
@@ -105,7 +108,7 @@ public class BookmarkController {
                 Optional<String> result = dialog.showAndWait();
 
                 result.ifPresent(pair -> {
-                    bookmarks.addBoormarkDir(new BookmarkDir(pair));
+                    bookmarksDir.insert(new BookmarkDir(pair));
                     loadChoices();
                 });
             }
@@ -137,14 +140,14 @@ public class BookmarkController {
 
     private void loadChoices() {
         choices.getItems().clear();
-        for (BookmarkDir d: bookmarks.getBookmarkDirs()) {
+        for (BookmarkDir d: bookmarksDir.getDatas()) {
             choices.getItems().add(d);
         }
     }
 
     private TreeItem<String> createTreeView() {
         TreeItem<String> dummyRoot = new TreeItem<>();
-        ArrayList<BookmarkDir> dirs = bookmarks.getBookmarkDirs();
+        ArrayList<BookmarkDir> dirs = (ArrayList<BookmarkDir>) bookmarksDir.getDatas();
 
         for (BookmarkDir d: dirs) {
             TreeItem<String> dir = new TreeItem<>(d.getName());
