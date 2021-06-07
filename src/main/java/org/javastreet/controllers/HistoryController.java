@@ -2,7 +2,7 @@ package org.javastreet.controllers;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.DBConnection;
 import org.javastreet.utils.DB.TableHistory;
 
 import javafx.collections.FXCollections;

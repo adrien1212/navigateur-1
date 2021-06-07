@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.javastreet.models.Bookmark;
 import org.javastreet.models.BookmarkDir;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.DBConnection;
 import org.javastreet.utils.DB.TableBookmarks;
 import org.javastreet.utils.DB.TableBookmarksDir;
 

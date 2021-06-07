@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.javastreet.models.HistoryEntry;
 import org.javastreet.models.TabEntry;
-import org.javastreet.utils.DBConnection;
 import org.javastreet.utils.NavigationUtils;
+import org.javastreet.utils.DB.DBConnection;
 import org.javastreet.utils.DB.TableCookies;
 import org.javastreet.utils.DB.TableHistory;
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;

@@ -10,7 +10,6 @@ import java.util.Optional;
 import org.javastreet.App;
 import org.javastreet.models.Bookmark;
 import org.javastreet.models.BookmarkDir;
-import org.javastreet.utils.DBConnection;
 
 public class TableBookmarks implements Table<Bookmark>{
 
