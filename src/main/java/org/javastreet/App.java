@@ -1,7 +1,7 @@
 package org.javastreet;
 
 import org.javastreet.controllers.WebViewController;
-import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.DBConnection;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.javastreet.models.BookmarkDir;
-import org.javastreet.utils.DBConnection;
 
 public class TableBookmarksDir implements Table<BookmarkDir>{
 

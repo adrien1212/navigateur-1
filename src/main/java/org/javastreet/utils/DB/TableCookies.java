@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.javastreet.utils.DBConnection;
-
 
 public class TableCookies implements Table<HttpCookie> {
 

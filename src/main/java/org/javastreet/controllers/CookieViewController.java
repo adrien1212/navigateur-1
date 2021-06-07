@@ -2,7 +2,7 @@ package org.javastreet.controllers;
 
 import java.net.HttpCookie;
 
-import org.javastreet.utils.DBConnection;
+import org.javastreet.utils.DB.DBConnection;
 import org.javastreet.utils.DB.TableCookies;
 
 import javafx.collections.FXCollections;
