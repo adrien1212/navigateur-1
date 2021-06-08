@@ -20,7 +20,7 @@ public class TableHistory implements Table<HistoryEntry> {
 	/**
 	 * If the table isn't created, It creates it
 	 * And select all datas in the table
-	 * @param connection the database connection object
+	 * @param DBconnection the database connection object
 	 */
 	private TableHistory(DBConnection DBconnection) {
 		this.DBconnection = DBconnection;
@@ -89,9 +89,9 @@ public class TableHistory implements Table<HistoryEntry> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            //history.remove(he);
-            historyList.clear();
-            selectAll();
+            historyList.remove(data);
+            // historyList.clear();
+            // selectAll();
         }
 	}
 
