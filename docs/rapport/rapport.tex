@@ -43,6 +43,18 @@ Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}}
 Après avoir identifié les différentes épiques et user stories, nous avons procédé à un planning poker pour déterminer les points d'efforts et valeurs métier de ces stories. \\
 Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous faisions un "daily" au cours duquel nous faisions rapport sur notre progrès, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
 
+\subsection{Organisation à chaque sprint}
+Pour chaque sprint, nous répétons les étapes suivantes :
+\begin{itemize}
+\item Se donner un objectif pour le sprint.
+\item Réalisation avec l'équipe des stories qui seront inluses dans le backlog du sprint.
+\item Raffinage des points d'efforts et des valeurs métier pour chaque users stories.
+\item Choix des users stories par le développeur.
+\item \textit{Réalisation du backlog du sprint}
+\item Sprint review : création d'une branche release, tag du commit, et démonstration.
+\item Retrospective du sprint (à partir du deuxième) sur ce qu'on a apprécié et moins.
+\end{itemize}
+
 \newpage
 
 \section{Découpage des fonctionnalités}
@@ -75,21 +87,18 @@ Avant de débuter la conception du projet, nous avons du établir les principale
                                         & Suggestion basée sur historique              & L                                            & 6                                           \\ \cline{2-4} 
                                         & Choisir son moteur de recherche              & L                                            & 6                                           \\ \hline
 \multirow{5}{*}{Favoris}                & Ajouter la page actuelle favoris             & M                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier nom favoris                         & L                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier adreprincipalsse favoris                     & L                                            & 7                                           \\ \cline{2-4} 
-                                        & Créer un dossier                             & L                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier nom dossier                         & L                                            & 7                                           \\ \hline
-\multirow{4}{*}{Reading-list}           & Ajouter une page                             & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Ouvrir la liste                              & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Supprimer la page une fois lue               & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Pré-chager les pages de la liste             & M                                            & 3                                           \\ \hline
-\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 6                                           \\ \cline{2-4} 
-                                        & Saisie automatique du mot de passe           & XL                                           & 6                                           \\ \cline{2-4} 
-                                        & Afficher liste des mots de passes            & M                                            & 6                                           \\ \cline{2-4} 
-                                        & Détection des mots de passe pwned            & M                                            & 4                                           \\ \hline
-\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 6                                           \\ \cline{2-4} 
-                                        & Etat du téléchargement                       & XL                                           & 7                                           \\ \cline{2-4} 
-                                        & Liste des téléchargement                     & M                                            & 6                                           \\ \hline
+                                        & Modifier nom d'un favori                         & L                                            & 5                                           \\ \cline{2-4} 
+                                        & Modifier adresse principale favori                     & L                                            & 5                                           \\ \cline{2-4} 
+                                        & Créer un dossier                             & L                                            & 7                                           \\ \cline{2-4}
+                                        & Cliquer sur un favori                             & S                                            & 7                                           \\ \cline{2-4} 
+                                        & Modifier nom dossier                         & L                                            & 5                                           \\ \hline
+\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 4                                           \\ \cline{2-4} 
+                                        & Saisie automatique du mot de passe           & XL                                           & 4                                           \\ \cline{2-4} 
+                                        & Afficher liste des mots de passes            & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Détection des mots de passe pwned            & M                                            & 2                                           \\ \hline
+\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Etat du téléchargement                       & XL                                           & 5                                           \\ \cline{2-4} 
+                                        & Liste des téléchargement                     & M                                            & 4                                           \\ \hline
 \multirow{3}{*}{Données navigations}    & Sauvegarder cookies                          & L                                          & 6                                           \\ \cline{2-4} 
                                         & Sauvegarde localstorage                      & L                                           & 7                                         
                                              \\ \hline
@@ -137,13 +146,64 @@ Toutes les tâches du sprint ont été réalisées.
                                          & Supprimer un onglet                          & L                                            & 8                                           & Adrien, Guillaume  \\ \hline
 \multirow{2}{*}{Historique}              & Rechercher historique                        & S                                            & 3                                           & Simon M, Victor    \\ \cline{2-5} 
                                          & Supprimer historique                         & S                                            & 4                                           & Simon M, Victor    \\ \hline
-Cookie                                   & Loader (barre de chargement)                 & M                                            & 5                                           & Simon J            \\ \hline
 \multicolumn{1}{|l|}{Données navigation} & Sauvegarder cookies à la fermeture           & L                                            & 6                                           & Simon J            \\ \hline
 \end{tabular}
 \end{table}
+
+La vélovieté théorique du sprint est de 48. Mais comme expliqué dans la conclusion du sprint ci-dessous, nous n'avons pas réussir à finir toutes les fonctionnalités.
+
 \subsubsection{Conclusion du sprint}
 Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévu et de nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
 Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprint.
+
+\newpage
+
+\subsection{Fonctionnalités sprint n°3}
+
+\begin{table}[h]
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+\textbf{Epic}                               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}}                                                & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affecté à} \\ \hline
+\multirow{3}{*}{Onglet}                     & Ajouter un onglet                                                                           & XL                                           & 8                                           & Guillaume, Adrien  \\ \cline{2-5} 
+                                            & Naviguer entre onglet                                                                       & L                                            & 8                                           & Guillaume, Simon J          \\ \cline{2-5} 
+                                            & Supprimer un onglet                                                                         & L                                            & 8                                           & Guillaume, Simon J          \\ \hline
+\multirow{3}{*}{Favoris}                    & Créer un dossier                                                                            & L                                            & 7                                           & Simon M            \\ \cline{2-5} 
+                                            & Ajouter un favori                                                                           & M                                            & 7                                           & Simon M            \\ \cline{2-5} 
+                                            & Cliquer sur un favori                                                                       & S                                            & 7                                           & Simon M             \\ \hline
+Barre de recherche                          & \begin{tabular}[c]{@{}l@{}}Choisir son navigateur\\ (fichier de configuration)\end{tabular} & L                                            & 6                                           & Victor             \\ \hline
+\multicolumn{1}{|l|}{Navigation privée}     & Navigation privée                                                                           & M                                            & 6                                           & Guillaume          \\ \hline
+\multicolumn{1}{|l|}{Données de navigation} & Sauvegarde localstorage                                                                     & L                                            & 7                                           & Simon J            \\ \hline
+\multirow{2}{*}{Autre}                      & Revue de code BDD                                                                           &                                              &                                             & Adrien             \\ \cline{2-5} 
+                                            & Revue de code fichier de conf.                                                              &                                              &                                             & Adrien             \\ \hline
+\end{tabular}
+\end{table}
+
+La fonctionnalité \textit{Choisir son navigateur} a également été sous-évaluée. Malgré qu'elle soit finie, elle nous a prise plus de temps que prévue. \\
+
+La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux dernières vélocités. Il faut également considéré que l'épic onglet c'est réalisé sur deux sprints. Mais, on peut quand même se demander si certain point d'effort n'ont pas été sur-estimés.
+
+\subsubsection{Conclusion du sprint}
+Ce troisème et dernier sprint nous a permi d'avoir une application réellement fonctionnelle.
+
+\subsection{Fonctionnalités manquantes}
+Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développé par manque de temps. Cependant, ces fonctionnalités sont les moins valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les fonctionnalités essentielles
+\begin{table}[h]
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Epic}            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\multirow{3}{*}{Favoris} & Modifier nom d'un favori                     & L                                            & 5 \\ \cline{2-4} 
+                         & Modifier adresse principal du favori         & L                                            & 5                                           \\ \cline{2-4} 
+                         & Modifier nom d'un dossier                    & L                                            & 5                                           \\ \hline
+\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 4                                          \\ \cline{2-4} 
+                                        & Saisie automatique du mot de passe           & XL                                           & 4                                           \\ \cline{2-4} 
+                                        & Afficher liste des mots de passes            & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Détection des mots de passe pwned            & M                                            & 2                                           \\ \hline
+\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Etat du téléchargement                       & XL                                           & 5                                           \\ \cline{2-4} 
+                                        & Liste des téléchargement                     & M                                            & 4                                           \\ \hline
+\end{tabular}
+\end{table}
+
 \newpage
 
 
@@ -227,8 +287,8 @@ Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprin
 
 \section{Choix de conception}
 \subsection{Stockage des informations}
-Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ...
-Pour réaliser le stockage nous pouvions soit utiliser un fichier texte (XML, JSON) ou une base de données. \\
+Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ... \\
+Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
 
 \textbf{Les fichiers texte} \\
 Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement. \\
@@ -239,20 +299,117 @@ Cette solution bien que plus compliquée à mettre en place a été retenue car 
 
 Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
 
-
-\subsubsection{Identification des tables}
-
 \subsubsection{Diagramme de classe}
+Ci-dessous nous représentons l'organisation des classes pour la gestions des tables de la base de données.
+La classe \verb|DBConnection| permet de gérer l'accès à la base de données et les implémentations de \verb|Table| fait le lien entre les objets Java et les tables de la base de données.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{interface}[text  width=4.5cm]{Table<T>}{0,0}
+\operation {+ create() }
+\operation {+ insert(data : T) }
+\operation {+ delete(date : T) }
+\operation {+ selectAll() }
+\operation {+ deleteAll() }
+\operation {+ deleteDatas(datas : T[]) }
+\operation {+ getDatas() : List<T> }
+\end{interface}	
+
+
+\begin{class}[text  width=5.9cm]{TableHistory}{-3.5,-5.5}
+\implement {Table<T>}
+\attribute {- datas : List<HistoryEntry>}
+\attribute {- DBConnection : DBconnection}
+\attribute {- \underline{instance : TableHistory}}
+\operation {- TableHistory(co : DBConnection) }
+\operation {+ \underline{getInstance(co : DBConnection) : TH}}
+\end{class}	
+
+\begin{class}[text  width=5.9cm]{TableCookie}{3.5,-5.5}
+\implement {Table<T>}
+\attribute {- datas : List<HttpCookie>}
+\attribute {- DBConnection : DBconnection}
+\attribute {- \underline{instance : TableCookie}}
+\operation {- TableCookie(co : DBConnection) }
+\operation {+ \underline{getInstance(co : DBConnection) : TC}}
+\end{class}	
+
+	
+	
+\begin{class}[text  width=5.5cm]{DBConnection}{7.5,0}
+\attribute {- connection : Connection}
+\attribute {- statement : Statement}
+\operation {- DBConnection(co : DBConnection) }
+\operation {+ \underline{getInstance() : DBConnection}}
+\operation {+ connect()}
+\operation {+ close()}
+\operation {+ createTable(request : String)}
+\operation {+ getConnection() : Connection}
+\end{class}	
+	
+
+\draw[->] (TableHistory.north) |- ++(0, 0.5) -- ++(-3.5,0) --node[above , sloped ,black]{}  +(0 ,-1)  |- (TableHistory.west);
+
+\draw[->] (TableCookie.north) |- ++(0, 0.5) -- ++(-3.5,0) --node[above , sloped ,black]{}  +(0 ,-1)  |- (TableCookie.west);
+
+\draw[->] (DBConnection.north) |- ++(0, 0.5) -- ++(-3.5,0) --node[above , sloped ,black]{}  +(0 ,-1)  |- (DBConnection.west);
+
+\draw[umlcd  style  dashed  line ,->] (TableHistory.south) |- ++(0, -1) |- ++(11,0) --node[above , sloped ,black]{$<<$ use $>>$} (DBConnection.south);
+
+\draw[umlcd  style  dashed  line] (TableCookie.south) -- ++(0, -1.2) ;
+
+\end{tikzpicture}
+\end{center}
+
+Un objet de type \verb|DBConnection| est créé au lancement de l'application. Ensuite, pour pouvoir manipuler les tables, nous devons récupérer cet objet pour pouvoir effectuer des traitements dessus, c'est pour cela que nous le passons en paramètre de nos constructeurs \verb|TableHistory| et \verb|TableCookie|. \\
+
+\newpage
+
+\begin{lstlisting}
+class HistoryController {
+
+	private TableHistory table;    
+    
+    @FXML
+    intinialize() {
+        table = TableHistory.getInstance(DBConnection.getInstance());
+        ...
+    }
+}
+
+class TableHistory implements Table<HistoryEntry> {
+
+	private List<HistoryEntry> historyList;
+	private DBConnection DBconnection;
+
+	private static TableHistory instance;
+	
+	private TableHistory(DBConnection DBconnection) {
+		this.DBconnection = DBconnection;
+		this.historyList = new ArrayList<HistoryEntry>();
+		
+		this.create(); this.selectAll();
+	}
+	
+	public static TableHistory getInstance(DBConnection DBconnection) {
+		if(instance == null) {
+			instance = new TableHistory(DBconnection);
+		}
+		return instance;
+	}
+\end{lstlisting}
 
 
 
+
+\newpage
 
 \subsection{Stockage des configurations}
-Nous avons souhaité offrir à l'utilisateur la possibilité de customiser certaines options de l'application. 
+Nous avons souhaité offrir à l'utilisateur la possibilité de configurer certaines options de l'application. 
 
-\subsubsection{Customiser le navigateur}
+\subsubsection{Configurer le navigateur}
 Premièrement, l'utilisateur peut enregistrer des configurations pour l'intégralité du navigateur web. Par exemple, le moteur de recherche par défaut, s'il souhaite être en mode sombre, etc ... \\
-De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donnée que les possibilité de customisation peuvent évoluer au fil des versions il vaut mieux les stocker dans un fichier formatté. Ainsi, la solution retenue est une architecture JSON comme ci-dessous.
+De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donné que les configurations possibles ne représentent pas un grand nombreux de données à stocker, il est plus simple de manier un fichier formaté comme JSON.
 
 \begin{verbatim}
 config.json
@@ -263,9 +420,9 @@ config.json
 
 L'utilisateur à la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifie la valeur dans le fichier \verb|config.json|.
 
-\subsubsection{Customiser les recherches}
-Ensuite, nous souhaitons que l'utilisateur puissent accéder différement aux ressources sur différent site. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
-Pour ce faire, de même que la customisation du navigateur nous utilisons une fichier JSON en associant un nom et un url.
+\subsubsection{Configurer les moteurs recherches}
+Ensuite, nous souhaitons que l'utilisateur puissent ajouter des moteurs de recherche ou des raccourcis de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
+Pour ce faire, de même que la configuration du navigateur nous utilisons un fichier JSON en associant un nom et un url.
 \begin{verbatim}
 webengine.config
 {
@@ -287,7 +444,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \operation {+ save() }
 \end{interface}	
 
-\begin{class}[text  width=4.5cm]{CFNavigator}{-6,-3.5}
+\begin{class}[text  width=4.5cm]{CFNavigator}{-5.5,-4.5}
 \implement {ConfigurationFile}
 \attribute {- engine : String}
 \operation {+ query(url : String) : String}
@@ -295,7 +452,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \operation {+ save() }
 \end{class}	
 
-\begin{class}[text  width=6.5cm]{CFEngineSearch}{0.5,-3.5}
+\begin{class}[text  width=6.5cm]{CFEngineSearch}{0.5,-4.5}
 \implement {ConfigurationFile}
 \attribute {- availableEngine : HM<String, String>}
 \operation {+ addAvailableEngine(engine, url : String) }
@@ -308,39 +465,123 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \attribute {- configurationFiles : HM<Str, ConfFile>}
 \attribute {\underline{- instance : ConfigurationCreator}}
 \operation {\underline{+ getInstance() : ConfigurationCreator }}
-\operation {+ isAvaibleEngine(engine : String) : bool. }
-\operation {+ loadConfigurationFiles() }
+\operation {+ getConfigurationFile(key : String) : ConfFile }
+\operation {- loadConfigurationFiles() }
+\end{class}	
+
+\begin{class}[text  width=4cm]{aT}{-10.3,-4.7}
+\operation {+ initialize }
+\end{class}	
+
+\begin{class}[text  width=4cm]{TabsController}{-10.5,-4.5}
+\operation {+ initialize() }
 \end{class}	
 
 \aggregation{ConfigurationCreator}{ }{*}{ConfigurationFile}
 
 \draw[->] (ConfigurationCreator.north) |- ++(0, 0.5) -- ++(-4,0) --node[above , sloped ,black]{}  +(0 ,-2)  |- (ConfigurationCreator.west);
 
+\draw[umlcd  style  dashed  line ,->] (TabsController) --node[above ,sloped , black]{} (ConfigurationCreator);
 \end{tikzpicture}
 \end{center}
 
-Chaque fichier de configuration dispose d'une classe dédiée qui permet de charger le fichier lors de la création d'une instance. De plus, lors de la création d'un objet de type \verb|ConfigurationCreator| nous créons une instance de chaque implémentation de \verb|ConfigurationFile|. Et, étant donné que, nous souhaitons que les fichiers de configuration ne soient être chargés qu'une seule fois, nous avons défini un patron singleton sur la classe \verb|ConfigurationCreator|.
+C'est dans la méthode \verb|TabsController#initialize()| que nous instancions pour la premièrement fois un objet de type \verb|ConfigurationCreator|. Lors de la création de cet objet, nous exécutons la méthode\verb|loadConfigurationFile| qui va se charger de créer un nouvel objet pour chaque fichier de configuration avec une clé. Ainsi, par la suite nous pourrons récupérer cet objet grâce à la méthode \verb|getConfigurationFile(key)|
+
+\newpage
 
 \begin{lstlisting}
+class TabController {
+    @FXML
+    void initialize() {
+	    config = ConfigurationCreator.getInstance();
+    }
+}
+
 class ConfigurationCreator {
-	private static HashMap<String, ConfigurationFile> configurationsFiles;
-		
-	private ConfigurationCreator() {
-		configurationsFiles = new HashMap<>();
-		loadConfigurationFiles();
-	}	
-	
-	/** Chargement des fichiers de configuration */
-	private void loadConfigurationFiles() {
-		configurationsFiles.put("configurationFileNavigator", 
-		                                new ConfigurationFileNavigator());
-		configurationsFiles.put("configurationFileEngineSearch", 
-		                                new ConfigurationFileEngineSearch());
+    void loadConfigurationFiles() {
+	    	configurationsFiles.put("configurationFileNavigator", 
+		                                      new ConfigurationFileNavigator());
+		    configurationsFiles.put("configurationFileEngineSearch", 
+		                                      new ConfigurationFileEngineSearch());
 	}
 }
 \end{lstlisting}
 
-\section{Conclusion}
+Par la suite, les autres contrôleurs pourront récupérer les objets associés aux fichiers de configuration. C'est le cas dans \verb|ParametersController| qui a besoin des fichiers de configuration du navigateur et des moteurs de recherche.
+
+\begin{lstlisting}
+class ParametersController {
+    @FXML
+    private void initialize(){
+        // get config from file
+        ConfigurationCreator config = ConfigurationCreator.getInstance();
+
+        ConfigurationFileNavigator configNavigator = 
+        		(ConfigurationFileNavigator) config.getConfigurationFile("configurationFileNavigator");
+        
+        ConfigurationFileEngineSearch configEngineSearch =
+        		(ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+        		
+        /* manipulation des fichiers à travers les deux objets */
+}
+\end{lstlisting}  
 
 \newpage
+
+\subsection{Complémentarité des controlleurs}
+L'une des principales difficultés du projet était de pouvoir communiquer entre controlleurs. En effet, nous avons définie un WebView qui permet d'avoir l'affichage des pages web. Mais lors de l'épic onglet, il a fallu faire en sorte que chaque onglet et une WebView différente. De plus, les boutons de la barre de navigation (suivant, précédent, etc) doivent communiquer seulement avec l'onglet et la WebView courante. \\
+
+Pour résoudre ce problème, nous avons du imbriquer les différents controleurs afin de pouvoir manipuler plusieurs controleurs sur la même vue. Ainsi, la vue définie dans le \verb|main.fxml| avec la fenêtre de navigation et la barre de navigation contient également une imbriquation pour pouvoir utiliser la classe \verb|TabsController|. \\
+\verb|<fx:include fx:id="tab" source="tabs.fxml" VBox.vgrow="ALWAYS" />|
+
+\subsubsection{Communication du fils vers le père}
+Et dans le controleur du \verb|main.fxml| nous avons
+\begin{lstlisting}
+@FXML  //  vaut toujours null si manquant
+private TabsController tabController;
+
+private void initialize() {
+	tabController.setControlsController(this);
+	...
+}
+\end{lstlisting}
+
+La méthode \verb|TabsController.setControlsController| va permettre d'avoir connaissance de la barre de recherche dans la classe \verb|TabsController|. Ainsi, lorsqu'on va changer d'onglet on va pouvoir également changer le nom dans la barre de recherche.
+\begin{lstlisting}
+/**
+ * Assign the window controller instance.
+ * @param controlsController the window controller.
+ */
+public void setControlsController(WebViewController controlsController) {
+	this.controlsController = controlsController;
+	if (this.controlsController != null) {
+		this.addressBar = this.controlsController.getAddressBar();
+		this.progressBar = this.controlsController.getProgressBar();
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Communication du père vers le fils}
+
+Nous venons de donner connaissance du controleur parent au controleur fils. Maintenant, nous pouvons utiliser les méthodes définies dans \verb|TabsController|. Par exemple en cliquant sur le bouton \textit{ajouter un onglet} qui est défini dans \verb|main.fxml| on va utiliser la méthode \verb|TabsController#addNewTab()|. 
+\begin{lstlisting}
+newTabButton.setOnAction(new EventHandler<ActionEvent>() {
+	@Override
+	public void handle(ActionEvent event) {
+		tabController.addNewTab(false);
+    	tabController.getCurrentTab().getTab().setText("Loading...");
+		NavigationUtils.search(addressBar.getText(), tabController.getCurrentTab().getWebView().getEngine());
+	}
+});
+\end{lstlisting}
+
+
+\section{Conclusion}
+\subsection{Pistes d'amélioration}
+
+\subsection{Conclusion sur l'agilité}
+
+\subsection{Conclution du projet}
+
+
 \end{document}
