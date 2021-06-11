@@ -43,6 +43,18 @@ Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}}
 Après avoir identifié les différentes épiques et user stories, nous avons procédé à un planning poker pour déterminer les points d'efforts et valeurs métier de ces stories. \\
 Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous faisions un "daily" au cours duquel nous faisions rapport sur notre progrès, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
 
+\subsection{Organisation à chaque sprint}
+Pour chaque sprint, nous répétons les étapes suivantes :
+\begin{itemize}
+\item Se donner un objectif pour le sprint.
+\item Réalisation avec l'équipe des stories qui seront inluses dans le backlog du sprint.
+\item Raffinage des points d'efforts et des valeurs métier pour chaque users stories.
+\item Choix des users stories par le développeur.
+\item \textit{Réalisation du backlog du sprint}
+\item Sprint review : création d'une branche release, tag du commit, et démonstration.
+\item Retrospective du sprint (à partir du deuxième) sur ce qu'on a apprécié et moins.
+\end{itemize}
+
 \newpage
 
 \section{Découpage des fonctionnalités}
@@ -75,22 +87,18 @@ Avant de débuter la conception du projet, nous avons du établir les principale
                                         & Suggestion basée sur historique              & L                                            & 6                                           \\ \cline{2-4} 
                                         & Choisir son moteur de recherche              & L                                            & 6                                           \\ \hline
 \multirow{5}{*}{Favoris}                & Ajouter la page actuelle favoris             & M                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier nom favoris                         & L                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier adresse principale favori                     & L                                            & 7                                           \\ \cline{2-4} 
+                                        & Modifier nom d'un favori                         & L                                            & 5                                           \\ \cline{2-4} 
+                                        & Modifier adresse principale favori                     & L                                            & 5                                           \\ \cline{2-4} 
                                         & Créer un dossier                             & L                                            & 7                                           \\ \cline{2-4}
                                         & Cliquer sur un favori                             & S                                            & 7                                           \\ \cline{2-4} 
-                                        & Modifier nom dossier                         & L                                            & 7                                           \\ \hline
-\multirow{4}{*}{Reading-list}           & Ajouter une page                             & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Ouvrir la liste                              & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Supprimer la page une fois lue               & M                                            & 3                                           \\ \cline{2-4} 
-                                        & Pré-chager les pages de la liste             & M                                            & 3                                           \\ \hline
-\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 6                                           \\ \cline{2-4} 
-                                        & Saisie automatique du mot de passe           & XL                                           & 6                                           \\ \cline{2-4} 
-                                        & Afficher liste des mots de passes            & M                                            & 6                                           \\ \cline{2-4} 
-                                        & Détection des mots de passe pwned            & M                                            & 4                                           \\ \hline
-\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 6                                           \\ \cline{2-4} 
-                                        & Etat du téléchargement                       & XL                                           & 7                                           \\ \cline{2-4} 
-                                        & Liste des téléchargement                     & M                                            & 6                                           \\ \hline
+                                        & Modifier nom dossier                         & L                                            & 5                                           \\ \hline
+\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 4                                           \\ \cline{2-4} 
+                                        & Saisie automatique du mot de passe           & XL                                           & 4                                           \\ \cline{2-4} 
+                                        & Afficher liste des mots de passes            & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Détection des mots de passe pwned            & M                                            & 2                                           \\ \hline
+\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Etat du téléchargement                       & XL                                           & 5                                           \\ \cline{2-4} 
+                                        & Liste des téléchargement                     & M                                            & 4                                           \\ \hline
 \multirow{3}{*}{Données navigations}    & Sauvegarder cookies                          & L                                          & 6                                           \\ \cline{2-4} 
                                         & Sauvegarde localstorage                      & L                                           & 7                                         
                                              \\ \hline
@@ -104,7 +112,9 @@ Vous pouvez retrouver ces mêmes users story sur le \href{https://trello.com/b/H
 
 \newpage
 \subsection{Fonctionnalités sprint n°1}
-Ce premier sprint a été consacré à la mise en place de l'infrastructure nécessaire pour l'utilisation d'un navigateur web. On retrouve ainsi les fonctionnalités suivantes.
+Ce premier sprint a été consacré à la mise en place de l'infrastructure nécessaire pour l'utilisation d'un navigateur web. 
+Cependant, étant donné que nous ne connaissions pas nos capacités et lors du \textit{sanity check} nous avons du ajouter des tâches.
+On retrouve ainsi les fonctionnalités suivantes.
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
@@ -122,7 +132,7 @@ Barre recherche             & Loader (barre de chargement)                 & M  
 \end{tabular}
 \end{table}
 
-Pour calculer la vélocité de l'équipe, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
+Ainsi, nous avons pu calculter la vélocité de l'équipe. Etant donné l'utilisation de taille de T-shirt, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
 
 \subsubsection{Conclusion du sprint}
 Toutes les tâches du sprint ont été réalisées. 
@@ -138,7 +148,6 @@ Toutes les tâches du sprint ont été réalisées.
                                          & Supprimer un onglet                          & L                                            & 8                                           & Adrien, Guillaume  \\ \hline
 \multirow{2}{*}{Historique}              & Rechercher historique                        & S                                            & 3                                           & Simon M, Victor    \\ \cline{2-5} 
                                          & Supprimer historique                         & S                                            & 4                                           & Simon M, Victor    \\ \hline
-Cookie                                   & Loader (barre de chargement)                 & M                                            & 5                                           & Simon J            \\ \hline
 \multicolumn{1}{|l|}{Données navigation} & Sauvegarder cookies à la fermeture           & L                                            & 6                                           & Simon J            \\ \hline
 \end{tabular}
 \end{table}
@@ -162,8 +171,7 @@ Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprin
                                             & Supprimer un onglet                                                                         & L                                            & 8                                           & Guillaume, Simon J          \\ \hline
 \multirow{3}{*}{Favoris}                    & Créer un dossier                                                                            & L                                            & 7                                           & Simon M            \\ \cline{2-5} 
                                             & Ajouter un favori                                                                           & M                                            & 7                                           & Simon M            \\ \cline{2-5} 
-                                            & Cliquer sur un favori                                                                       & S                                            & 7                                           & Simon M            \\ \hline
-Cookie                                      & Loader (barre de chargement)                                                                & M                                            & 5                                           & Simon J            \\ \hline
+                                            & Cliquer sur un favori                                                                       & S                                            & 7                                           & Simon M             \\ \hline
 Barre de recherche                          & \begin{tabular}[c]{@{}l@{}}Choisir son navigateur\\ (fichier de configuration)\end{tabular} & L                                            & 6                                           & Victor             \\ \hline
 \multicolumn{1}{|l|}{Navigation privée}     & Navigation privée                                                                           & M                                            & 6                                           & Guillaume          \\ \hline
 \multicolumn{1}{|l|}{Données de navigation} & Sauvegarde localstorage                                                                     & L                                            & 7                                           & Simon J            \\ \hline
@@ -179,6 +187,24 @@ La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux de
 \subsubsection{Conclusion du sprint}
 Ce troisème et dernier sprint nous a permi d'avoir une application réellement fonctionnelle.
 
+\subsection{Fonctionnalités manquantes}
+Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développé par manque de temps. Cependant, ces fonctionnalités sont les moins valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les fonctionnalités essentielles
+\begin{table}[h]
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Epic}            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\multirow{3}{*}{Favoris} & Modifier nom d'un favori                     & L                                            & 5 \\ \cline{2-4} 
+                         & Modifier adresse principal du favori         & L                                            & 5                                           \\ \cline{2-4} 
+                         & Modifier nom d'un dossier                    & L                                            & 5                                           \\ \hline
+\multirow{4}{*}{Mot de passe}           & Proposer génération lors d'une inscription   & L                                            & 4                                          \\ \cline{2-4} 
+                                        & Saisie automatique du mot de passe           & XL                                           & 4                                           \\ \cline{2-4} 
+                                        & Afficher liste des mots de passes            & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Détection des mots de passe pwned            & M                                            & 2                                           \\ \hline
+\multirow{3}{*}{Téléchargement}         & Choix du dossier destination                 & M                                            & 4                                           \\ \cline{2-4} 
+                                        & Etat du téléchargement                       & XL                                           & 5                                           \\ \cline{2-4} 
+                                        & Liste des téléchargement                     & M                                            & 4                                           \\ \hline
+\end{tabular}
+\end{table}
 
 \newpage
 
@@ -261,7 +287,91 @@ Ce troisème et dernier sprint nous a permi d'avoir une application réellement 
 \end{landscape}
 
 
-\section{Choix de conception}
+\subsection{Organisation des packages}
+Cette partie présente simplement le découpage de l'application en package. Nous détaillerons le contenu de certain packages dans les sections suivantes (\ref{choix_conception}).
+
+\begin{center}
+\begin{tikzpicture}
+
+\begin{class}[text  width=3.5cm]{Controller}{0,-1}
+\end{class}	
+
+\begin{class}[text  width=3cm]{Model}{2.5,-2}
+\end{class}	
+
+\begin{class}[text  width=3cm]{Vue}{-2.5,-2}
+\end{class}	
+
+
+\begin{class}[text  width=4.5cm]{Utils}{-8,0}
+\attribute {}
+\attribute {}
+\attribute {}
+\attribute {}
+\attribute {}
+\end{class}	
+
+
+\begin{class}[text  width=3.5cm]{DB}{-8,-0.8}
+\end{class}	
+
+
+\begin{class}[text  width=3.5cm]{ConfigurationHandle}{-8,-1.5}
+\end{class}	
+
+
+\begin{class}[text  width=3.5cm]{APP}{-3,-4}
+\end{class}	
+
+\association{Controller}{}{}{Vue}{}{}
+\association{Controller}{}{}{Model}{}{}
+\association{Utils}{}{}{Controller}{}{}
+
+\draw[->] (APP.south) |- ++(0, -0.5) -- ++(-8,0) --node[above , sloped ,black]{}  +(0 ,1)  |- (DB.west);
+\draw[->] (APP.south) |- ++(0, -0.5) -- ++(8,0) --node[above , sloped ,black]{}  +(0 ,1)  |- (Controller.east);
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{Exemple d'un diagramme de séquence}
+Au lieu de réaliser un diagramme de classe décrivant les dépendances entre les classes des packages \verb|Model|, \verb|Vue|, \verb|Controller| nous avons préféré décrire l'enchainement des instructions d'une user storie. Ainsi, ci-dessous vous retrouvez un diagramme de séquence  pour la suppression d'un élément de l'historique. 
+
+\begin{center}
+\begin{sequencediagram}
+\newinst []{User}{:user}
+\newthread{App}{:app}
+\newinst []{HistFXML}{:histFXML}
+\newinst []{HistController}{:histController}
+\newinst [1]{TableHistory}{:tableHistory}
+\newinst[]{DB}{:DB}
+
+\begin{messcall}{App}{ connection() }{DB}\end{messcall}
+\begin{messcall}{User}{ openHistory() }{App}\end{messcall}
+\begin{messcall}{App}{ display }{HistFXML}
+	\begin{messcall}{HistFXML}{ initialize() }{HistController}
+		\begin{messcall}{HistController}{ new TableHistory() }{TableHistory}
+			\begin{messcall}{TableHistory}{ create() }{DB}\end{messcall}
+			\begin{messcall}{TableHistory}{ load() }{DB}\end{messcall}
+		\end{messcall}	
+	\end{messcall}
+\end{messcall}
+
+\begin{messcall}{User}{ supprime un élément }{HistFXML}
+	\begin{call}{HistFXML}{ BTN\_delete.onClick() }{HistController}{delete from interface}
+		\begin{messcall}{HistController}{ delete(...) }{TableHistory}
+			\begin{messcall}{TableHistory}{ DELETE FROM  }{DB}\end{messcall}
+		\end{messcall}
+	\end{call}
+\end{messcall}
+
+
+\end{sequencediagram}
+\end{center}
+
+\newpage
+
+
+\section{Choix de conception} \label{choix_conception}
 \subsection{Stockage des informations}
 Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ... \\
 Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
@@ -397,7 +507,7 @@ config.json
 L'utilisateur à la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifie la valeur dans le fichier \verb|config.json|.
 
 \subsubsection{Configurer les moteurs recherches}
-Ensuite, nous souhaitons que l'utilisateur puissent ajouter des moteurs de recherche ou des raccourcies de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
+Ensuite, nous souhaitons que l'utilisateur puissent ajouter des moteurs de recherche ou des raccourcis de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
 Pour ce faire, de même que la configuration du navigateur nous utilisons un fichier JSON en associant un nom et un url.
 \begin{verbatim}
 webengine.config
@@ -467,7 +577,6 @@ C'est dans la méthode \verb|TabsController#initialize()| que nous instancions p
 
 \begin{lstlisting}
 class TabController {
-
     @FXML
     void initialize() {
 	    config = ConfigurationCreator.getInstance();
@@ -502,6 +611,56 @@ class ParametersController {
         /* manipulation des fichiers à travers les deux objets */
 }
 \end{lstlisting}  
+
+\newpage
+
+\subsection{Complémentarité des controlleurs}
+L'une des principales difficultés du projet était de pouvoir communiquer entre controlleurs. En effet, nous avons définie un WebView qui permet d'avoir l'affichage des pages web. Mais lors de l'épic onglet, il a fallu faire en sorte que chaque onglet et une WebView différente. De plus, les boutons de la barre de navigation (suivant, précédent, etc) doivent communiquer seulement avec l'onglet et la WebView courante. \\
+
+Pour résoudre ce problème, nous avons du imbriquer les différents controleurs afin de pouvoir manipuler plusieurs controleurs sur la même vue. Ainsi, la vue définie dans le \verb|main.fxml| avec la fenêtre de navigation et la barre de navigation contient également une imbriquation pour pouvoir utiliser la classe \verb|TabsController|. \\
+\verb|<fx:include fx:id="tab" source="tabs.fxml" VBox.vgrow="ALWAYS" />|
+
+\subsubsection{Communication du fils vers le père}
+Et dans le controleur du \verb|main.fxml| nous avons
+\begin{lstlisting}
+@FXML  //  vaut toujours null si manquant
+private TabsController tabController;
+
+private void initialize() {
+	tabController.setControlsController(this);
+	...
+}
+\end{lstlisting}
+
+La méthode \verb|TabsController.setControlsController| va permettre d'avoir connaissance de la barre de recherche dans la classe \verb|TabsController|. Ainsi, lorsqu'on va changer d'onglet on va pouvoir également changer le nom dans la barre de recherche.
+\begin{lstlisting}
+/**
+ * Assign the window controller instance.
+ * @param controlsController the window controller.
+ */
+public void setControlsController(WebViewController controlsController) {
+	this.controlsController = controlsController;
+	if (this.controlsController != null) {
+		this.addressBar = this.controlsController.getAddressBar();
+		this.progressBar = this.controlsController.getProgressBar();
+	}
+}
+\end{lstlisting}
+
+\subsubsection{Communication du père vers le fils}
+
+Nous venons de donner connaissance du controleur parent au controleur fils. Maintenant, nous pouvons utiliser les méthodes définies dans \verb|TabsController|. Par exemple en cliquant sur le bouton \textit{ajouter un onglet} qui est défini dans \verb|main.fxml| on va utiliser la méthode \verb|TabsController#addNewTab()|. 
+\begin{lstlisting}
+newTabButton.setOnAction(new EventHandler<ActionEvent>() {
+	@Override
+	public void handle(ActionEvent event) {
+		tabController.addNewTab(false);
+    	tabController.getCurrentTab().getTab().setText("Loading...");
+		NavigationUtils.search(addressBar.getText(), tabController.getCurrentTab().getWebView().getEngine());
+	}
+});
+\end{lstlisting}
+
 
 \section{Conclusion}
 \subsection{Pistes d'amélioration}
