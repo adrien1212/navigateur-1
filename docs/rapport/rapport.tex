@@ -287,8 +287,13 @@ Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développ
 \end{landscape}
 
 
-\subsection{Organisation des packages}
-Cette partie présente simplement le découpage de l'application en package. Nous détaillerons le contenu de certain packages dans les sections suivantes (\ref{choix_conception}).
+\section{Architecture de l'application}
+
+L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et moyennabilité. Ainsi, dans cette section nous présentons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
+D'autres choix de conception serons présentés dans la section \textit{\nameref{choix_conception}}
+
+\subsection{Organisation des paquetages}
+Les classes et interfaces de notre application ont été structurées dans nos différents paquetages en respectant le modèle MVC. 
 
 \begin{center}
 \begin{tikzpicture}
@@ -327,11 +332,51 @@ Cette partie présente simplement le découpage de l'application en package. Nou
 \association{Controller}{}{}{Model}{}{}
 \association{Utils}{}{}{Controller}{}{}
 
-\draw[->] (APP.south) |- ++(0, -0.5) -- ++(-8,0) --node[above , sloped ,black]{}  +(0 ,1)  |- (DB.west);
+\draw[->] (APP.south) |- ++(0, -0.5) -- ++(-8,0) --node[above , sloped ,black]{}  +(0 ,1)  |- (Utils.west);
 \draw[->] (APP.south) |- ++(0, -0.5) -- ++(8,0) --node[above , sloped ,black]{}  +(0 ,1)  |- (Controller.east);
 
 \end{tikzpicture}
 \end{center}
+
+\subsection{Exemple d'un diagramme de classe}
+Les deux sections suivantes illustrent un diagramme de classe et un diagramme de séquence à travers le service \textit{Historique}. Etant donné que tous les services de l'application (favoris, onglets, cookies, paramètres) suivent la même architecture nous avons trouvé plus pertinent de ne représenter en détail qu'un seul service. Ainsi, ci-dessous vous retrouvez le diagramme de classe du service \textit{Historique}.
+
+\begin{center}
+\begin{tikzpicture}
+
+\begin{class}[text  width=7cm]{HistoryController}{0,0}
+\attribute {- objet FXML}
+\attribute {- historyEntries : ListView<HistoryEntry>}
+\operation {+ initialize() : void }
+\operation {- searchHistory() : void}
+\operation {- getTabsController() : TabsController}
+\operation {+ setTabsController(tc : TabsController) : void}
+\end{class}	
+
+\begin{class}[text  width=5cm]{HistoryFXML}{-3,-5}
+\end{class}	
+
+\begin{class}[text  width=5cm]{HistoryEntry}{3,-5}
+\attribute {id : int}
+\attribute {link : String}
+\attribute {name : String}
+\attribute {date : Date}
+\operation {getX()}
+\operation {setX()}
+\end{class}	
+
+\begin{class}[text  width=4cm]{TableHistory}{-9,-1.4}
+\end{class}
+
+\association{HistoryController}{}{}{HistoryFXML}{}{}
+\association{HistoryController}{}{}{HistoryEntry}{}{}
+\association{HistoryController}{table}{1}{TableHistory}{}{}
+
+
+\end{tikzpicture}
+\end{center}
+
+L'implémentation des bases de données pour l'application est présentée plus en détail dans la section \ref{BDD}.
 
 \subsection{Exemple d'un diagramme de séquence}
 Au lieu de réaliser un diagramme de classe décrivant les dépendances entre les classes des packages \verb|Model|, \verb|Vue|, \verb|Controller| nous avons préféré décrire l'enchainement des instructions d'une user storie. Ainsi, ci-dessous vous retrouvez un diagramme de séquence  pour la suppression d'un élément de l'historique. 
@@ -385,7 +430,7 @@ Cette solution bien que plus compliquée à mettre en place a été retenue car 
 
 Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
 
-\subsubsection{Diagramme de classe}
+\subsubsection{Diagramme de classe} \label{BDD}
 Ci-dessous nous représentons l'organisation des classes pour la gestions des tables de la base de données.
 La classe \verb|DBConnection| permet de gérer l'accès à la base de données et les implémentations de \verb|Table| fait le lien entre les objets Java et les tables de la base de données.
 
