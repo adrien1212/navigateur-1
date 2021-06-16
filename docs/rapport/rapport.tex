@@ -209,84 +209,6 @@ Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développ
 \newpage
 
 
-\begin{landscape}
-\section{Architecture de l'application}
-\subsection{Diagramme de classe}
-\begin{center}
-\begin{tikzpicture}
-\begin{class}[text  width=4.5cm]{HistoryController}{0,-0.5}
-\operation {initialize() }
-\end{class}	
-
-\begin{class}[text  width=4.5cm]{TabController}{0,-5.5}
-\operation {+ initialize() }
-\operation {+ getCurrentTab() }
-\operation {+ createTab()}
-\end{class}	
-
-\begin{class}[text  width=4.5cm]{WebViewController}{0,-10}
-\operation {+ initialize() }
-\end{class}	
-
-\begin{class}[text  width=4.5cm]{HistoryEntry}{-8,0}
-\attribute {- link : String}
-\attribute {- name : String}
-\attribute {- date : Date}
-\operation {+ initialize() }
-\end{class}	
-
-\begin{class}[text  width=4.5cm]{TabEntry}{-8,-5}
-\attribute {- webView : WevView}
-\attribute {- tab : Tab}
-\operation {+ initialize() }
-\operation {+ getCurrentTab() }
-\operation {+ createTab()}
-\end{class}	
-
-\begin{class}[text  width=3cm]{Historyfxml}{6,-0.8}
-\end{class}
-
-\begin{class}[text  width=3cm]{Tabfxml}{6,-6.1}
-\end{class}
-
-\begin{class}[text  width=3cm]{Mainfxml}{6,-10.3}
-\end{class}
-
-\begin{class}[text  width=4.8cm]{DBHistory}{-15,0}
-\attribute{- history : List<HistoryEntry>}
-\operation{+ selectAll()}
-\operation{+ insert(he : HistoryEntry)}
-\operation{+ ...}
-\operation{+ getHistory() : List<HistoryE>}
-\end{class}
-
-\begin{class}[text  width=4.8cm]{DBConnection}{-15,-5}
-\attribute{- connection : Connection}
-\operation{+ connect()}
-\operation{+ close()}
-\operation{+ getConnection() : Connection}
-\operation{+ createTable(String request) }
-\end{class}
-
-\composition{HistoryController}{ historyEntries }{*}{HistoryEntry}
-\composition{TabController}{ tabs }{*}{TabEntry}
-\aggregation{TabController}{ currentTab }{1}{TabEntry}
-
-\association{HistoryController}{}{}{Historyfxml}{}{}
-\association{TabController}{}{}{Tabfxml}{}{}
-\association{WebViewController}{}{}{Mainfxml}{}{}
-
-\aggregation{DBHistory}{ history }{*}{HistoryEntry}
-
-\draw[umlcd  style  dashed  line ,->] (Mainfxml) --node[above , sloped ,black]{$<<$ include$>>$} (Tabfxml);
-\draw[umlcd  style  dashed  line ,->] (WebViewController.south) |- ++(0, -1) -- ++(9,0) --node[above , sloped ,black]{$<<$ onClick$>>$}  +(0 ,11.1)  |- (Historyfxml.east);
-
-\end{tikzpicture}
-\end{center}
-
-\end{landscape}
-
-
 \section{Architecture de l'application}
 
 L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et moyennabilité. Ainsi, dans cette section nous présentons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
@@ -417,7 +339,7 @@ Au lieu de réaliser un diagramme de classe décrivant les dépendances entre le
 
 
 \section{Choix de conception} \label{choix_conception}
-\subsection{Stockage des informations}
+\subsection{Stockage des données}
 Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ... \\
 Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
 
@@ -629,7 +551,17 @@ class TabController {
 }
 
 class ConfigurationCreator {
-    void loadConfigurationFiles() {
+	
+	private ConfigurationCreator() {
+		configurationsFiles = new HashMap<>();
+		loadConfigurationFiles();
+	}
+	
+	public static ConfigurationCreator getInstance() {
+	    /* Singleton */
+	}
+
+    public void loadConfigurationFiles() {
 	    	configurationsFiles.put("configurationFileNavigator", 
 		                                      new ConfigurationFileNavigator());
 		    configurationsFiles.put("configurationFileEngineSearch", 
@@ -710,7 +642,22 @@ newTabButton.setOnAction(new EventHandler<ActionEvent>() {
 \section{Conclusion}
 \subsection{Pistes d'amélioration}
 
+Avant de conclure sur ce projet, nous pouvons lister quelques pistes d'amélioration :
+\begin{itemize}
+\item Pour finaliser le projet, en se basant sur la vélocité, on estime qu'il nous faudrait deux semaines supplémentaires.
+\item De même, certain point d'effort ont été mal évalué. Mais de meilleures estimations nécessite une plus grande expérience. 
+\item Une meilleure conception dès le début du projet aurait pu nous éviter d'avoir à réaliser des refactors.
+\item Suivre jusqu'à la fin du projet le workflow détaillé sur le GitHub car à la fin du projet nous ne nous relisons plus (prise de confiance)
+\item Enfin, il manque des tests unitaires car l'architecture est très simple et les tests se baseraient sur l'interface graphique.
+\end{itemize}
+
 \subsection{Conclusion sur l'agilité}
+
+L'obligation d'utiliser l'agilité pour ce projet nous a prouvé que ce concept fonctionne bien. En effet, au fur et à mesure des itérations on arrivait à prioriser les tâches et à apporter des modifications sur des points d'effort et des valeurs métier. 
+De plus, le fait d'avoir un rendu de l'application chaque semaine est très gratifiant et nous pousse à continuer. \\
+Ensuite, la répartition des tâches était équitable. Chacun pouvait travailler sur son service indépendamment puis ensuite le mettre en commun via git. \\
+Enfin, nous finissions chaque itération par un sprint review pour se remettre en question et continuer à s'améliorer
+
 
 \subsection{Conclution du projet}
 
