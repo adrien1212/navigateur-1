@@ -18,12 +18,12 @@
 \setcounter{page}{1}
 \section{Introduction}
 \subsection{Le projet}
-Ce projet s'inscrit dans le cadre des unités d'enseignement Technologie Objet et Gestion de Projet dispensées durant le second semestre du cycle ingénieur. L'objectif principal de se projet est de mettre en application les principes agiles vus en Gestion de Projet. Tandis que l'implémentation de l'application est un objectif secondaire car les notions de programmation ont été travaillé en TDs et TPs. Il était donc conseillé d'avoir un projet ambitieux qui serait difficile à réaliser dans son intégralité dans le temps imparti.\\
+Ce projet s'inscrit dans le cadre des unités d'enseignement Technologie Objet et Gestion de Projet dispensées durant le second semestre du cycle ingénieur. L'objectif principal de ce projet est de mettre en application les principes agiles vus en Gestion de Projet. L'implémentation de l'application quand à elle, est un objectif secondaire car les notions de programmation ont été travaillées en TDs et TPs. Il était donc conseillé d'avoir un projet ambitieux qui serait difficile à concrétiser dans son intégralité dans le temps imparti.\\
 
-Pour ce projet, nous avons donc décidé de créer un navigateur web.
+Après avoir assemblé notre équipe, nous nous sommes mis d’accord sur le projet que nous réaliserions : la création d'un navigateur internet. Par la suite, nous avons jugé important de consulter chaque membre de l’équipe afin de connaître sa vision et ses ambitions pour application. 
 
 \subsection{Liens utiles}
-Vous pouvez suivre l'avancement du projet avec le :
+L'avancement et les sources du projet sont disponibles aux liens suivants :
 \begin{itemize}
 \item Github \href{https://github.com/simjnd/navigateur/wiki}{https://github.com/simjnd/navigateur/wiki}
 \item Trello \href{https://trello.com/b/HyinoLEE/navigateur}{https://trello.com/b/HyinoLEE/navigateur} 
@@ -34,9 +34,9 @@ Vous pouvez suivre l'avancement du projet avec le :
 
 \section{Orginisation de l'équipe}
 \subsection{Itération initiale}
-Cette première itération a été consacré à l'organisation du travail. Ainsi, nous nous sommes mis d'accord sur les outils à utiliser. Nous avons donc créé un \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{tableau Trello}} pour maintenir et mettre à jour le backlog  produit, les sprints et identifier le travail à réaliser, le travail en cours, les tâches terminées (Kanban). \\ 
+Cette première itération a été consacré à l'organisation du travail. Ainsi, nous nous sommes mis d'accord sur les outils à utiliser. Nous avons donc créé un \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{tableau Trello}} pour maintenir et mettre à jour le backlog  produits, les sprints et identifier le travail à réaliser, le travail en cours, les tâches terminées (Kanban). \\ 
 Nous avons également déterminé les outils de travail, à savoir le framework JavaFX, l'outil de gestion Maven, les IDE IntelliJ/Eclipse et l'outil de contrôle des sources Git. \\ 
-Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}} associé au depôt \href{https://github.com/simjnd/navigateur}{\underline{GitHub}} nous avons défini un workflow Git (gestion et nommage des branches, nombre de revues de validation des pull requests). \\
+Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}} associé au depôt \href{https://github.com/simjnd/navigateur}{\underline{GitHub}} nous avons défini un workflow Git (conventions de gestion et de nommage des branches, du nombre de revues de validation des pull requests).
 
 \subsection{Organisation générale}
 
@@ -44,7 +44,7 @@ Après avoir identifié les différentes épiques et user stories, nous avons pr
 Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous faisions un "daily" au cours duquel nous faisions rapport sur notre progrès, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
 
 \subsection{Organisation à chaque sprint}
-Pour chaque sprint, nous répétons les étapes suivantes :
+Pour chaque sprint, nous reproduisions les étapes suivantes :
 \begin{itemize}
 \item Se donner un objectif pour le sprint.
 \item Réalisation avec l'équipe des stories qui seront inluses dans le backlog du sprint.
@@ -58,7 +58,7 @@ Pour chaque sprint, nous répétons les étapes suivantes :
 \newpage
 
 \section{Découpage des fonctionnalités}
-Avant de débuter la conception du projet, nous avons du établir les principales fonctionnalités et définir leur point d'effort et leur valeur métier. Une fois ces deux métriques définies nous avons définie les fonctionnalités à faire dans chaque sprint. 
+Avant de débuter la conception du projet, nous avons du établir les principales fonctionnalités et définir leur point d'effort et leur valeur métier. Une fois ces deux métriques définies nous avons établie les fonctionnalités à faire dans chaque sprint. 
 
 \subsection{Liste des fonctionnalités}
 \begin{table}[H]
@@ -108,12 +108,17 @@ Avant de débuter la conception du projet, nous avons du établir les principale
 \end{tabular}
 \end{table}
 
+
+\let\thefootnote\relax\footnotetext{
 Vous pouvez retrouver ces mêmes users story sur le \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{Trello}}
+}
+
+
 
 \newpage
 \subsection{Fonctionnalités sprint n°1}
 Ce premier sprint a été consacré à la mise en place de l'infrastructure nécessaire pour l'utilisation d'un navigateur web. 
-Cependant, étant donné que nous ne connaissions pas nos capacités et lors du \textit{sanity check} nous avons du ajouter des tâches.
+Cependant, étant donné que nous ne connaissions pas nos capacités, lors du \textit{sanity check} nous avons du ajouter de nouvelles tâches.
 On retrouve ainsi les fonctionnalités suivantes.
 
 \begin{table}[h]
@@ -132,12 +137,14 @@ Barre recherche             & Loader (barre de chargement)                 & M  
 \end{tabular}
 \end{table}
 
-Ainsi, nous avons pu calculter la vélocité de l'équipe. Etant donné l'utilisation de taille de T-shirt, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
+Ainsi, nous avons pu calculer la vélocité de l'équipe. Étant donné l'utilisation de taille de T-shirt, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
 
 \subsubsection{Conclusion du sprint}
-Toutes les tâches du sprint ont été réalisées. 
+Ce premier sprint nous a permis d'avoir une première estimation de la vélocité de l'équipe. De plus, il y a eu une très bonne entente entre les membres de l'équipe. et toutes les tâches fixées ont été réalisées. Cela est donc prometteur pour la suite du projet.
+
 
 \subsection{Fonctionnalités sprint n°2}
+Deuxième sprint du projet, on se consacra plus sur la mise en place d'outils pour faciliter l'utilisation du navigateur.
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
@@ -152,15 +159,16 @@ Toutes les tâches du sprint ont été réalisées.
 \end{tabular}
 \end{table}
 
-La vélovieté théorique du sprint est de 48. Mais comme expliqué dans la conclusion du sprint ci-dessous, nous n'avons pas réussir à finir toutes les fonctionnalités.
+La vélovieté théorique du sprint est de 48. Mais comme expliqué ci-dessous dans la conclusion du sprint, nous n'avons pas réussir à finir toutes les fonctionnalités.
 
 \subsubsection{Conclusion du sprint}
-Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévu et de nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
+Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévue et de nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
 Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprint.
 
 \newpage
 
 \subsection{Fonctionnalités sprint n°3}
+Un léger retard pris durant le sprint précédent, nous devons donc terminer les tâches en suspends. Ensuite, nous implémenterons d'autres fonctionnalités utiles pour le confort utilisateur.
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
@@ -182,13 +190,14 @@ Barre de recherche                          & \begin{tabular}[c]{@{}l@{}}Choisir
 
 La fonctionnalité \textit{Choisir son navigateur} a également été sous-évaluée. Malgré qu'elle soit finie, elle nous a prise plus de temps que prévue. \\
 
-La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux dernières vélocités. Il faut également considéré que l'épic onglet c'est réalisé sur deux sprints. Mais, on peut quand même se demander si certain point d'effort n'ont pas été sur-estimés.
+La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux dernières vélocités. Mais, il faut considéré que l'épic \textit{onglet} s'est réalisée sur deux sprints. Mais, on peut quand même se demander si certain point d'effort n'ont pas été sur-estimés.
 
 \subsubsection{Conclusion du sprint}
-Ce troisème et dernier sprint nous a permi d'avoir une application réellement fonctionnelle.
+Ce troisème et dernier sprint nous a permis d'avoir une application réellement fonctionnelle.
 
 \subsection{Fonctionnalités manquantes}
-Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développé par manque de temps. Cependant, ces fonctionnalités sont les moins valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les fonctionnalités essentielles
+Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développées par manque de temps. Cependant, ces fonctionnalités sont les moins valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les services essentiels.
+
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|}
 \hline
@@ -211,11 +220,11 @@ Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développ
 
 \section{Architecture de l'application}
 
-L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et moyennabilité. Ainsi, dans cette section nous présentons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
-D'autres choix de conception serons présentés dans la section \textit{\nameref{choix_conception}}
+L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et maintenabilité. Ainsi, dans cette section nous présentons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
+D'autres choix de conception serons présentés dans la section suivante  \textit{\nameref{choix_conception}}
 
 \subsection{Organisation des paquetages}
-Les classes et interfaces de notre application ont été structurées dans nos différents paquetages en respectant le modèle MVC. 
+Les classes et interfaces de notre application ont été structurées dans nos différents paquetages en respectant le modèle MVC. Nous avons également un paquetage \verb|Utils| qui englobe deux autres paquetages \verb|DB| et  \verb|ConfigurationHandle| qui sont respectivement responsables de la gestion de la base de données et de la gestion des fichiers de configuration.
 
 \begin{center}
 \begin{tikzpicture}
@@ -261,7 +270,7 @@ Les classes et interfaces de notre application ont été structurées dans nos d
 \end{center}
 
 \subsection{Exemple d'un diagramme de classe}
-Les deux sections suivantes illustrent un diagramme de classe et un diagramme de séquence à travers le service \textit{Historique}. Etant donné que tous les services de l'application (favoris, onglets, cookies, paramètres) suivent la même architecture nous avons trouvé plus pertinent de ne représenter en détail qu'un seul service. Ainsi, ci-dessous vous retrouvez le diagramme de classe du service \textit{Historique}.
+Les deux sections suivantes illustrent le service \textit{Historique} à travers un  diagramme de classe et un diagramme de séquence. Étant donné que, tous les services de l'application (favoris, onglets, cookies, paramètres) suivent la même architecture nous avons trouvé plus pertinent de ne représenter en détail qu'un seul service. Ainsi, ci-dessous vous retrouvez le diagramme de classe du service \textit{Historique}.
 
 \begin{center}
 \begin{tikzpicture}
@@ -292,7 +301,7 @@ Les deux sections suivantes illustrent un diagramme de classe et un diagramme de
 
 \association{HistoryController}{}{}{HistoryFXML}{}{}
 \association{HistoryController}{}{}{HistoryEntry}{}{}
-\association{HistoryController}{table}{1}{TableHistory}{}{}
+\association{HistoryController}{}{}{TableHistory}{table}{1}
 
 
 \end{tikzpicture}
@@ -300,8 +309,10 @@ Les deux sections suivantes illustrent un diagramme de classe et un diagramme de
 
 L'implémentation des bases de données pour l'application est présentée plus en détail dans la section \ref{BDD}.
 
+\newpage
+
 \subsection{Exemple d'un diagramme de séquence}
-Au lieu de réaliser un diagramme de classe décrivant les dépendances entre les classes des packages \verb|Model|, \verb|Vue|, \verb|Controller| nous avons préféré décrire l'enchainement des instructions d'une user storie. Ainsi, ci-dessous vous retrouvez un diagramme de séquence  pour la suppression d'un élément de l'historique. 
+Afin de décrire l'enchainement des évènements entre \verb|Model|, \verb|Vue|, \verb|Controller| et la base de données nous avons réalisé un diagramme de séquence. De même que la section précédente, ce diagramme de séquence est valable pour les favoris, les cookies, les onglets et les paramètres. Ici, nous l'illustrerons avec le service \textit{Historique}.
 
 \begin{center}
 \begin{sequencediagram}
@@ -340,21 +351,21 @@ Au lieu de réaliser un diagramme de classe décrivant les dépendances entre le
 
 \section{Choix de conception} \label{choix_conception}
 \subsection{Stockage des données}
-Lors de la conception de l'application, nous nous sommes demandé s'il serait interessant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'hsistorique, les favoris, les cookies, etc ... \\
+Lors de la conception de l'application, nous nous sommes demandé s'il serait intéressant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'historique, les favoris, les cookies, etc ... \\
 Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
 
 \textbf{Les fichiers texte} \\
 Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement. \\
 
-\textbf{Les bases de données} \\
-Est un outils conçu spécialement pour le stockage d'un grand nombre de données. Cependant, il est plus difficile de manipuler les bases de données en Java que les fichiers. De plus, nous devons également stocker les informations enregistrer en base de données sans que l'utilisateur n'est besoin d'installer lui même une base de données. \\
+\textbf{Une base de données} \\
+Est un outils conçu spécialement pour le stockage d'un grand nombre de données. Cependant, il est plus difficile de manipuler les bases de données en Java que les fichiers. De plus, nous devons également stocker les informations enregistrer en base de données sans que l'utilisateur n'est besoin d'installer lui même un serveur de base de données. \\
 Cette solution bien que plus compliquée à mettre en place a été retenue car elle présente de nombreux avantages une fois la technologie maitrisée. \\
 
-Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans la base dans un fichier \verb|.db|. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'intéragir avec la base de données (\verb|insert()|, \verb|selectAll()| ...).
+Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans un fichier \verb|.db| représentant la base de données. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'interagir avec la base de données.
 
 \subsubsection{Diagramme de classe} \label{BDD}
 Ci-dessous nous représentons l'organisation des classes pour la gestions des tables de la base de données.
-La classe \verb|DBConnection| permet de gérer l'accès à la base de données et les implémentations de \verb|Table| fait le lien entre les objets Java et les tables de la base de données.
+La classe \verb|DBConnection| permet de gérer l'accès à la base de données. Et, les implémentations de \verb|Table| font le lien entre les objets Java (POJOs) et les tables de la base de données.
 
 \begin{center}
 \begin{tikzpicture}
@@ -492,7 +503,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 
 \begin{center}
 \begin{tikzpicture}
-\begin{interface}[text  width=4.5cm]{ConfigurationFile}{0,-0.7}
+\begin{interface}[text  width=4.5cm]{ConfigurationFile}{0,-0.6}
 \operation {+ load() }
 \operation {+ save() }
 \end{interface}	
