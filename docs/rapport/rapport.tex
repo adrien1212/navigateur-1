@@ -492,7 +492,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 
 \begin{center}
 \begin{tikzpicture}
-\begin{interface}[text  width=4.5cm]{ConfigurationFile}{0,-0.5}
+\begin{interface}[text  width=4.5cm]{ConfigurationFile}{0,-0.7}
 \operation {+ load() }
 \operation {+ save() }
 \end{interface}	
@@ -514,7 +514,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \operation {+ save() }
 \end{class}	
 
-\begin{class}[text  width=6.5cm]{ConfigurationCreator}{-9,0}
+\begin{class}[text  width=7cm]{ConfigurationCreator}{-9,0}
 \attribute {- configurationFiles : HM<Str, ConfFile>}
 \attribute {\underline{- instance : ConfigurationCreator}}
 \operation {\underline{+ getInstance() : ConfigurationCreator }}
