@@ -4,9 +4,6 @@
 \usepackage{fancyhdr}
 \usepackage{multirow}
 
-
-
-
 \begin{document}
 \thispagestyle{empty}
 \include{coverpage}
@@ -18,9 +15,7 @@
 \setcounter{page}{1}
 \section{Introduction}
 \subsection{Le projet}
-Ce projet s'inscrit dans le cadre des unités d'enseignement Technologie Objet et Gestion de Projet dispensées durant le second semestre du cycle ingénieur. L'objectif principal de ce projet est de mettre en application les principes agiles vus en Gestion de Projet. L'implémentation de l'application quand à elle, est un objectif secondaire car les notions de programmation ont été travaillées en TDs et TPs. Il était donc conseillé d'avoir un projet ambitieux qui serait difficile à concrétiser dans son intégralité dans le temps imparti.\\
-
-Après avoir assemblé notre équipe, nous nous sommes mis d’accord sur le projet que nous réaliserions : la création d'un navigateur internet. Par la suite, nous avons jugé important de consulter chaque membre de l’équipe afin de connaître sa vision et ses ambitions pour application. 
+Ce projet s'inscrit dans le cadre des unités d'enseignement Technologie Objet et Gestion de Projet dispensées durant le second semestre du cycle ingénieur. L'objectif principal de ce projet est de mettre en application les principes agiles vus en Gestion de Projet. L'implémentation de l'application quand à elle, est un objectif secondaire car les notions de programmation ont été travaillées en TDs et TPs. Il était donc conseillé d'avoir un projet ambitieux qui serait difficile à concrétiser dans le temps imparti : la création d'un navigateur web.
 
 \subsection{Liens utiles}
 L'avancement et les sources du projet sont disponibles aux liens suivants :
@@ -32,41 +27,46 @@ L'avancement et les sources du projet sont disponibles aux liens suivants :
 
 \newpage
 
-\section{Orginisation de l'équipe}
+\section{Organisation de l'équipe}
 \subsection{Itération initiale}
-Cette première itération a été consacré à l'organisation du travail. Ainsi, nous nous sommes mis d'accord sur les outils à utiliser. Nous avons donc créé un \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{tableau Trello}} pour maintenir et mettre à jour le backlog  produits, les sprints et identifier le travail à réaliser, le travail en cours, les tâches terminées (Kanban). \\ 
-Nous avons également déterminé les outils de travail, à savoir le framework JavaFX, l'outil de gestion Maven, les IDE IntelliJ/Eclipse et l'outil de contrôle des sources Git. \\ 
-Enfin, sur un \href{https://github.com/simjnd/navigateur/wiki}{\underline{Wiki}} associé au depôt \href{https://github.com/simjnd/navigateur}{\underline{GitHub}} nous avons défini un workflow Git (conventions de gestion et de nommage des branches, du nombre de revues de validation des pull requests).
+Cette première itération a été consacrée à l'organisation du travail. Après avoir assemblé notre équipe et nous être mis d’accord sur le projet que nous réaliserions ensemble, nous avons jugé important de consulter chaque membre de l’équipe afin de connaître sa vision et ses ambitions pour notre application. Nous avons ainsi pu nous accorder sur une vision commune : pas seulement un navigateur de base, mais un, dont les fonctionnalités rivalisent avec les navigateurs modernes. De cette vision a découlé une idée générale des fonctionnalités principales de notre navigateur.\\ 
+
+Avant d’aller plus loin, nous nous sommes mis d’accord sur les outils que nous utiliserions. Nous avons commencé par créer un tableau Kanban sur \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{Trello}} afin de transcrire notre avancée sur le projet et l'état des users stories. Ensuite, un dépôt Git a été créé sur la plateforme \href{https://github.com/simjnd/navigateur/}{\underline{GitHub}}. Sur ce dépôt nous avons également mis en place un \href{https://github.com/simjnd/navigateur/wiki}{\underline{wiki}} interne sur lequel nous détaillons le workflow Git. Afin de faciliter l'entraide, nous utiliserons l'IDE IntelliJ. \\
+
+Une fois les outils en place, nous avons pu commencer à fournir le backlog du projet. Nous avons commencé par lister les épiques importantes : la gestion des données de navigation, les onglets, l’historique, le gestionnaire de téléchargement. Nous les avons ensuite décomposées en user stories individuelles avec une évaluation des points d’efforts et de leur valeur métier. Pour les métriques, nous avons respectivement utilisé les tailles de t-shirt (S, L, XL), et une échelle de 1 à 10.
+
 
 \subsection{Organisation générale}
 
 Après avoir identifié les différentes épiques et user stories, nous avons procédé à un planning poker pour déterminer les points d'efforts et valeurs métier de ces stories. \\
-Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous faisions un "daily" au cours duquel nous faisions rapport sur notre progrès, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
+Nous avons ensuite fournit le backlog du premier sprint, au début duquel nous avons chacun choisi les stories sur lesquelles nous souhaitions travailler. Au début des périodes de travail nous partagions des croissants pour du teambuilding et nous réalisons un "daily" au cours duquel nous faisions le point sur notre progression, puis au cours des périodes de travail nous communiquions pour être sûr qu'aucun de nous ne soit bloqué.
 
 \subsection{Organisation à chaque sprint}
-Pour chaque sprint, nous reproduisions les étapes suivantes :
-\begin{itemize}
-\item Se donner un objectif pour le sprint.
-\item Réalisation avec l'équipe des stories qui seront inluses dans le backlog du sprint.
-\item Raffinage des points d'efforts et des valeurs métier pour chaque users stories.
-\item Choix des users stories par le développeur.
-\item \textit{Réalisation du backlog du sprint}
-\item Sprint review : création d'une branche release, tag du commit, et démonstration.
-\item Retrospective du sprint (à partir du deuxième) sur ce qu'on a apprécié et moins.
-\end{itemize}
+Au début de chaque sprint nous menions un \textit{Sprint Planning} au cours duquel nous établissions l’objectif et la vision du sprint dans le but de fédérer et motiver l’équipe. De plus, cela nous permettait d'avoir une vision globale de l'avancemenet du projet. \\
+
+Cette vision nous guidait dans le choix des \textit{User Stories} à réaliser dans le sprint. Nous cherchions un équilibre dans les valeurs métiers et points d’efforts afin de ne pas avoir une surcharge avec trop d’user stories critiques. Cependant, il nous fallait quand même un backlog de sprint qui correspond à notre vélocité. \\
+
+Chaque membre de l’équipe choisissait ensuite la prochaine user story sur laquelle il souhaitait travailler. Il créait ainsi une nouvelle une branche de travail sur git. Une fois sa story implémentée et testée, il devait résoudre les conflits avec la branche principale (branche \verb|dev|). Une fois le code poussé sur GitHub une \textit{Pull Request} est créée afin que les autres membres de l'équipe effectuent et une validation. \\
+
+Au début de chaque séance de travail, nous menions un \textit{Daily} au cours duquel chaque membre faisait un point de son avancement, évoquait ses problèmes bloquants, et ce qu'il souhaitait faire durant la séance de travail. \\
+ 
+Au cours d’un sprint nous prenions du temps pour un \textit{Sanity Check} durant lequel nous nous consultions afin de voir si les users stories engagées ne nécessitaient pas un nouveau raffinage, et si les points d’effort avaient été mesurés précisément. Plus particulièrement, au premier sprint nous avons du raffiner des users stories par manque d’expérience. \\
+
+La fin de chaque sprint donnait lieu à plusieurs échanges : d’abord une \textit{Sprint Review}, au cours de laquelle nous présentions la nouvelle version du navigateur, soit à l'encadrant quand c’était possible, soit entre nous afin que l’équipe puisse voir le résultat des efforts engagés. Ensuite une \textit{Rétrospective de Sprint} au cours de laquelle nous évaluions notre alignement avec nos objectifs : le respect des méthodes agiles, l’ambiance et l’attitude de travail. Ainsi, nous décidions ensemble des mesures à adopter si besoin pour corriger notre trajectoire. Enfin nous faisions une session d’entretien du backlog préalable au sprint planning suivant. Cela nous permettait de réévaluer les points d’efforts, de raffiner des users stories grâce à l’expérience acquise.
+
 
 \newpage
 
 \section{Découpage des fonctionnalités}
-Avant de débuter la conception du projet, nous avons du établir les principales fonctionnalités et définir leur point d'effort et leur valeur métier. Une fois ces deux métriques définies nous avons établie les fonctionnalités à faire dans chaque sprint. 
+Avant de débuter la conception du projet, nous avons dû établir les principales fonctionnalités puis définir leur point d'effort et leur valeur métier. Une fois ces deux métriques définies, nous avons établie les fonctionnalités à faire dans chaque sprint. 
 
 \subsection{Liste des fonctionnalités}
 \begin{table}[H]
 \begin{tabular}{|c|l|l|l|}
 \hline
-\textbf{Epic}                           & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\textbf{Epiques}                           & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
 \multirow{6}{*}{Fenetre}                & Avoir l'affichage                            & M                                            & 10                                          \\ \cline{2-4} 
-                                        & Bouton rafraichir                            & S                                            & 8                                           \\ \cline{2-4} 
+                                        & Bouton rafraîchir                            & S                                            & 8                                           \\ \cline{2-4} 
                                         & Bouton précédent                             & S                                            & 8                                           \\ \cline{2-4} 
                                         & Bouton suivant                               & S                                            & 8                                           \\ \cline{2-4} 
                                         & Barre de recherche                           & S                                            & 10                                          \\ \cline{2-4} 
@@ -81,7 +81,7 @@ Avant de débuter la conception du projet, nous avons du établir les principale
                                         & Supprimer onglet                             & M                                            & 8                                           \\ \cline{2-4} 
                                         & Interchanger onglet                          & XL                                           & 3                                           \\ \cline{2-4} 
                                         & Grouper onglet                               & XL                                           & 3                                           \\ \hline
-\multirow{5}{*}{Barre recherche}        & Ecrire dans la barre                         & M                                            & 5                                           \\ \cline{2-4} 
+\multirow{5}{*}{Barre recherche}        & Écrire dans la barre                         & M                                            & 5                                           \\ \cline{2-4} 
                                         & Loader (barre de chargement)                 & S                                            & 3                                           \\ \cline{2-4} 
                                         & Sauvegarder les cookies                      & L                                            & 6                                           \\ \cline{2-4} 
                                         & Suggestion basée sur historique              & L                                            & 6                                           \\ \cline{2-4} 
@@ -110,7 +110,7 @@ Avant de débuter la conception du projet, nous avons du établir les principale
 
 
 \let\thefootnote\relax\footnotetext{
-Vous pouvez retrouver ces mêmes users story sur le \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{Trello}}
+Vous pouvez retrouver ces mêmes user stories sur le \href{https://trello.com/b/HyinoLEE/navigateur}{\underline{Trello}}
 }
 
 
@@ -118,15 +118,15 @@ Vous pouvez retrouver ces mêmes users story sur le \href{https://trello.com/b/H
 \newpage
 \subsection{Fonctionnalités sprint n°1}
 Ce premier sprint a été consacré à la mise en place de l'infrastructure nécessaire pour l'utilisation d'un navigateur web. 
-Cependant, étant donné que nous ne connaissions pas nos capacités, lors du \textit{sanity check} nous avons du ajouter de nouvelles tâches.
+Etant donné que nous ne connaissions pas nos capacités, nous avons rajouté de nouvelles tâches lors du \textit{Sanity Check}.
 On retrouve ainsi les fonctionnalités suivantes.
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
 \hline
-\textbf{Epic}               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affectée à} \\ \hline
+\textbf{epiques}               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affectée à} \\ \hline
 \multirow{6}{*}{Fenetre}    & Avoir l'affichage                            & M                                            & 10                                          & Victor              \\ \cline{2-5} 
-                            & Bouton rafraichir                            & S                                            & 8                                           & Guillaume           \\ \cline{2-5} 
+                            & Bouton rafraîchir                            & S                                            & 8                                           & Guillaume           \\ \cline{2-5} 
                             & Bouton précédent                             & S                                            & 8                                           & Guillaume           \\ \cline{2-5} 
                             & Bouton suivant                               & S                                            & 8                                           & Guillaume           \\ \cline{2-5} 
                             & Barre de recherche                           & S                                            & 10                                          & Victor              \\ \cline{2-5} 
@@ -137,19 +137,19 @@ Barre recherche             & Loader (barre de chargement)                 & M  
 \end{tabular}
 \end{table}
 
-Ainsi, nous avons pu calculer la vélocité de l'équipe. Étant donné l'utilisation de taille de T-shirt, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint est de 46.
+Ainsi, nous avons pu calculer la vélocité de l'équipe. Étant donné l'utilisation de taille de T-shirt, nous avons défini une conversion arbitraire $S = 3, M = 5, L = 8, XL = 13$. Ainsi, la vélocité du premier sprint était de 46.
 
 \subsubsection{Conclusion du sprint}
-Ce premier sprint nous a permis d'avoir une première estimation de la vélocité de l'équipe. De plus, il y a eu une très bonne entente entre les membres de l'équipe. et toutes les tâches fixées ont été réalisées. Cela est donc prometteur pour la suite du projet.
+Ce premier sprint nous a permis d'avoir une première estimation de la vélocité de l'équipe. De plus, il y a eu une très bonne entente entre les membres de l'équipe, et toutes les tâches fixées ont été réalisées. Cela était donc prometteur pour la suite du projet.
 
 
 \subsection{Fonctionnalités sprint n°2}
-Deuxième sprint du projet, on se consacra plus sur la mise en place d'outils pour faciliter l'utilisation du navigateur.
+Durant le deuxième sprint nous nous sommes concentré sur la mise en place d'outils pour faciliter la navigation à l'utilisateur. 
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
 \hline
-\textbf{Epic}                            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affecté à} \\ \hline
+\textbf{Épiques}                            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affecté à} \\ \hline
 \multirow{3}{*}{Onglet}                  & Ajouter un onglet                            & XL                                           & 8                                           & Adrien, Guillaume  \\ \cline{2-5} 
                                          & Naviguer entre onglet                        & L                                            & 8                                           & Adrien, Guillaume  \\ \cline{2-5} 
                                          & Supprimer un onglet                          & L                                            & 8                                           & Adrien, Guillaume  \\ \hline
@@ -159,21 +159,22 @@ Deuxième sprint du projet, on se consacra plus sur la mise en place d'outils po
 \end{tabular}
 \end{table}
 
-La vélovieté théorique du sprint est de 48. Mais comme expliqué ci-dessous dans la conclusion du sprint, nous n'avons pas réussir à finir toutes les fonctionnalités.
+La vélocité théorique du sprint était de 48. Mais comme expliqué ci-dessous, nous n'avons pas réussir à finir toutes les fonctionnalités.
 
 \subsubsection{Conclusion du sprint}
-Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévue et de nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
-Par conséquent, l'épic \textit{onglet} sera continuée sur le troisième sprint.
+Nous avons mal évalué la difficulté pour la mise en place des onglets de navigation. En effet, la tâche s'est avérée plus longue que prévue. De nombreux problèmes auxquels nous n'avions pas pensés nous ont obligé à modifier notre conception et une partie du code réalisé au premier sprint. \\
+Par conséquent, l'épique \textit{onglet} sera continuée sur le troisième sprint.
 
 \newpage
 
 \subsection{Fonctionnalités sprint n°3}
-Un léger retard pris durant le sprint précédent, nous devons donc terminer les tâches en suspends. Ensuite, nous implémenterons d'autres fonctionnalités utiles pour le confort utilisateur.
+Suite à un léger retard pris dans le sprint précédent, nous avons donc du terminer le développement des onglets. Et, le reste de l'équipe a pu se consacrer au développement de nouvelles fonctionnalités.
+
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|l|}
 \hline
-\textbf{Epic}                               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}}                                                & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affecté à} \\ \hline
+\textbf{Epiques}                               & \multicolumn{1}{c|}{\textbf{Fonctionnalité}}                                                & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} & \textbf{Affecté à} \\ \hline
 \multirow{3}{*}{Onglet}                     & Ajouter un onglet                                                                           & XL                                           & 8                                           & Guillaume, Adrien  \\ \cline{2-5} 
                                             & Naviguer entre onglet                                                                       & L                                            & 8                                           & Guillaume, Simon J          \\ \cline{2-5} 
                                             & Supprimer un onglet                                                                         & L                                            & 8                                           & Guillaume, Simon J          \\ \hline
@@ -182,26 +183,28 @@ Un léger retard pris durant le sprint précédent, nous devons donc terminer le
                                             & Cliquer sur un favori                                                                       & S                                            & 7                                           & Simon M             \\ \hline
 Barre de recherche                          & \begin{tabular}[c]{@{}l@{}}Choisir son navigateur\\ (fichier de configuration)\end{tabular} & L                                            & 6                                           & Victor             \\ \hline
 \multicolumn{1}{|l|}{Navigation privée}     & Navigation privée                                                                           & M                                            & 6                                           & Guillaume          \\ \hline
-\multicolumn{1}{|l|}{Données de navigation} & Sauvegarde localstorage                                                                     & L                                            & 7                                           & Simon J            \\ \hline
+\multicolumn{1}{|l|}{Données de navigation} & Sauvegarde \textit{localStorage}                                                                     & L                                            & 7                                           & Simon J            \\ \hline
 \multirow{2}{*}{Autre}                      & Revue de code BDD                                                                           &                                              &                                             & Adrien             \\ \cline{2-5} 
                                             & Revue de code fichier de conf.                                                              &                                              &                                             & Adrien             \\ \hline
 \end{tabular}
 \end{table}
 
-La fonctionnalité \textit{Choisir son navigateur} a également été sous-évaluée. Malgré qu'elle soit finie, elle nous a prise plus de temps que prévue. \\
+La fonctionnalité \textit{Choisir son navigateur} a été sous-évaluée. Bien qu'elle soit finie, elle nous a pris plus de temps que prévue. \\
 
-La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux dernières vélocités. Mais, il faut considéré que l'épic \textit{onglet} s'est réalisée sur deux sprints. Mais, on peut quand même se demander si certain point d'effort n'ont pas été sur-estimés.
+La vélocité de ce sprint est de 69, ce qui est largement au-dessus des deux dernières vélocités. Mais, il faut considérer que l'épique \textit{onglet} s'est réalisée sur deux sprints. On peut tout de même se demander si certains points d'effort n'ont pas été sur-estimés.
 
 \subsubsection{Conclusion du sprint}
-Ce troisème et dernier sprint nous a permis d'avoir une application réellement fonctionnelle.
+
+ Le retard a été rattrapé rapidement et nous avons pu développer autant de fonctionnalités que prévu (sans compter les fonctionnalités en retard). 
+ Ce troisième et dernier sprint nous a permis d'avoir une application fonctionnelle et mature.
 
 \subsection{Fonctionnalités manquantes}
-Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développées par manque de temps. Cependant, ces fonctionnalités sont les moins valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les services essentiels.
+Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développées par manque de temps. Cependant, ces fonctionnalités sont peu valorisantes pour l'application, là, où, nous avons voulu nous concentrer sur les services essentiels. En effet, aucune de ces fonctionnalités n'ont une valeur métier importante et leurs points d'effort sont assez élevés. Ces fonctionnalités n'étaient donc pas prioritaires.
 
 \begin{table}[h]
 \begin{tabular}{|c|l|l|l|}
 \hline
-\textbf{Epic}            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
+\textbf{Épiques}            & \multicolumn{1}{c|}{\textbf{Fonctionnalité}} & \multicolumn{1}{c|}{\textbf{Point d'effort}} & \multicolumn{1}{c|}{\textbf{Valeur métier}} \\ \hline
 \multirow{3}{*}{Favoris} & Modifier nom d'un favori                     & L                                            & 5 \\ \cline{2-4} 
                          & Modifier adresse principal du favori         & L                                            & 5                                           \\ \cline{2-4} 
                          & Modifier nom d'un dossier                    & L                                            & 5                                           \\ \hline
@@ -218,9 +221,49 @@ Ce dernier tableau résume les fonctionnalités qui n'ont pas pu être développ
 \newpage
 
 
+
+\section{Choix des technologies}
+
+\subsection{Langage et cadriciels}
+
+Pour ce projet le langage Java était imposé, mais nous avions le choix pour les bibliothèques et cadriciels utilisables.\\
+
+Pour l'interface graphique nous avons donc choisi JavaFX pour plusieurs raisons. La principale est la présence des composants \verb|WebEngine| et \verb|WebView| qui nous permettaient de ne pas re-développer un moteur de rendu de pages Web qui aurait rendu notre projet difficilement réalisable en 3 semaines. \\
+D'autres raisons nous ont incité à utiliser JavaFX :
+\begin{itemize}
+\item SceneBuilder qui permet de réaliser des interfaces graphiques plus simplement à partir d'un fichier fxml 
+\item Composants stylisables avec du CSS.
+\item Meilleure gestion des événements que Swing. \\
+\end{itemize} 
+
+De plus nous avions déjà tous fait du Java Swing à l'IUT mais aussi à l'ENSEEIHT et nous voulions donc essayer une autre technologie.
+
+\subsection{Gestionnaire de dépendances}
+
+Afin de rendre le développement de notre application plus simple nous avons décidé d'utiliser un gestionnaire de dépendances. Cela rend l'installation de dépendances automatique et commune afin d'éviter qu'un développeur se retrouve avec des problèmes de paquets.\\
+Nous avons donc choisi \textit|Maven| qui est un outil de gestion de dépendances mais aussi d'automatisation pour l'intégration continue.
+Cela nous a permis d'avoir à configurer seulement un fichier \verb|pom.xml| et Maven s'occupait d'ajouter les paquets dans notre projet.
+
+\subsection{Stockage des données}
+
+Pour le stockage des données nous avions deux besoins :
+\begin{itemize}
+    \item Fichier de configuration : peu de données mais devant être accessible rapidement.
+    \item Données de l'utilisateur : grosse quantité de données. \\ 
+\end{itemize}
+
+Pour les fichiers de configuration nous avons choisi d'utiliser le format \verb|JSON| qui est simple à créer et à utiliser. \\
+
+Les données liées à l'utilisateur sont plus volumineuses et nous avons donc utilisé une base de données.
+\verb|SQLite|  était la meilleure option pour nous. En effet, \verb|SQLite| est une base de données relationnelle, simple et légère. Il n'y a pas besoin de lancer un serveur de base de données, mais nous profitons quand même de la puissance du SQL. Les quantités de données stockées étant raisonnables, cela correspondait parfaitement à nos besoins. De plus, des bibliothèques Java réalisent la communication très facilement.
+
+
+
+\newpage
+
 \section{Architecture de l'application}
 
-L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et maintenabilité. Ainsi, dans cette section nous présentons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
+L'architecture de l'application est très importante afin de s'assurer d'une bonne évolution et maintenabilité. Ainsi, dans cette section nous présenterons l'architecture principale de l'application à travers un diagramme de paquetage, un diagramme de classe et un diagramme de séquence. \\
 D'autres choix de conception serons présentés dans la section suivante  \textit{\nameref{choix_conception}}
 
 \subsection{Organisation des paquetages}
@@ -292,8 +335,8 @@ Les deux sections suivantes illustrent le service \textit{Historique} à travers
 \attribute {link : String}
 \attribute {name : String}
 \attribute {date : Date}
-\operation {getX()}
-\operation {setX()}
+\operation {getX() // l'ensemble des getters }
+\operation {setX() // l'ensemble des setters }
 \end{class}	
 
 \begin{class}[text  width=4cm]{TableHistory}{-9,-1.4}
@@ -350,18 +393,18 @@ Afin de décrire l'enchainement des évènements entre \verb|Model|, \verb|Vue|,
 
 
 \section{Choix de conception} \label{choix_conception}
+
 \subsection{Stockage des données}
-Lors de la conception de l'application, nous nous sommes demandé s'il serait intéressant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'historique, les favoris, les cookies, etc ... \\
-Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données. \\
+Lors de la conception de l'application, nous nous sommes demandé s'il serait intéressant d'utiliser une base de données. En effet, nous avons besoin de stocker des informations persistantes telles que l'historique, les favoris, les cookies, etc. Différentes solutions s'offrent à nous pour réaliser le stockage. Nous pouvions soit utiliser un fichier texte soit utiliser une base de données.
 
-\textbf{Les fichiers texte} \\
-Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement. \\
+\subsubsection{Les fichiers texte}
+\indent Ils ont l'avantage d'être simple à créer et à utiliser. De plus si nous utilisons une structure comme JSON ou XML il existe des librairies Java qui permettent de créer et récupérer les informations d'un fichier facilement.
 
-\textbf{Une base de données} \\
-Est un outils conçu spécialement pour le stockage d'un grand nombre de données. Cependant, il est plus difficile de manipuler les bases de données en Java que les fichiers. De plus, nous devons également stocker les informations enregistrer en base de données sans que l'utilisateur n'est besoin d'installer lui même un serveur de base de données. \\
-Cette solution bien que plus compliquée à mettre en place a été retenue car elle présente de nombreux avantages une fois la technologie maitrisée. \\
+\subsubsection{Une base de données}
+\indent Est un outil conçu spécialement pour le stockage d'un grand nombre de données. Cependant, il est plus difficile de manipuler les bases de données en Java que les fichiers. De plus, nous devons également stocker les informations enregistrées en base de données sans que l'utilisateur n'ait besoin d'installer lui même un serveur de base de données. \\
+Cette solution bien que plus compliquée à mettre en place a été retenue car elle présente de nombreux avantages une fois la technologie maîtrisée. \\
 
-Ainsi, nous avons choisi une base de données SQLite qui permet d'avoir les informations stockées dans un fichier \verb|.db| représentant la base de données. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenter différents services qui permettent d'interagir avec la base de données.
+Ainsi, nous avons choisi une base de données \verb|SQLite| qui permet d'avoir les informations stockées dans un fichier \verb|.db| représentant la base de données. Ensuite, nous devions faire le lien entre nos classes Java (POJOs) et la table SQL. Une solution serait d'utiliser JavaEE et les annotations mais étant données que nous ne souhaitons pas charger le projet nous avons implémenté différents services qui permettent d'interagir avec la base de données.
 
 \subsubsection{Diagramme de classe} \label{BDD}
 Ci-dessous nous représentons l'organisation des classes pour la gestions des tables de la base de données.
@@ -372,17 +415,17 @@ La classe \verb|DBConnection| permet de gérer l'accès à la base de données. 
 \begin{interface}[text  width=4.5cm]{Table<T>}{0,0}
 \operation {+ create() }
 \operation {+ insert(data : T) }
-\operation {+ delete(date : T) }
+\operation {+ delete(data : T) }
 \operation {+ selectAll() }
 \operation {+ deleteAll() }
-\operation {+ deleteDatas(datas : T[]) }
-\operation {+ getDatas() : List<T> }
+\operation {+ deleteData(data : T[]) }
+\operation {+ getData() : List<T> }
 \end{interface}	
 
 
 \begin{class}[text  width=5.9cm]{TableHistory}{-3.5,-5.5}
 \implement {Table<T>}
-\attribute {- datas : List<HistoryEntry>}
+\attribute {- data : List<HistoryEntry>}
 \attribute {- DBConnection : DBconnection}
 \attribute {- \underline{instance : TableHistory}}
 \operation {- TableHistory(co : DBConnection) }
@@ -391,7 +434,7 @@ La classe \verb|DBConnection| permet de gérer l'accès à la base de données. 
 
 \begin{class}[text  width=5.9cm]{TableCookie}{3.5,-5.5}
 \implement {Table<T>}
-\attribute {- datas : List<HttpCookie>}
+\attribute {- data : List<HttpCookie>}
 \attribute {- DBConnection : DBconnection}
 \attribute {- \underline{instance : TableCookie}}
 \operation {- TableCookie(co : DBConnection) }
@@ -444,22 +487,27 @@ class HistoryController {
 class TableHistory implements Table<HistoryEntry> {
 
 	private List<HistoryEntry> historyList;
-	private DBConnection DBconnection;
+	private DBConnection dbConnection;
 
 	private static TableHistory instance;
 	
-	private TableHistory(DBConnection DBconnection) {
-		this.DBconnection = DBconnection;
+	private TableHistory(DBConnection dbConnection) {
+		this.dbConnection = dbConnection;
 		this.historyList = new ArrayList<HistoryEntry>();
 		
 		this.create(); this.selectAll();
 	}
 	
-	public static TableHistory getInstance(DBConnection DBconnection) {
+	public static TableHistory getInstance(DBConnection dbConnection) {
 		if(instance == null) {
-			instance = new TableHistory(DBconnection);
+			instance = new TableHistory(dbConnection);
 		}
 		return instance;
+	}
+	
+	public void create() {
+	    /* utilisation de l'attribut dbConnection */
+		dbConnection.createTable("CREATE TABLE ...");
 	}
 \end{lstlisting}
 
@@ -472,21 +520,21 @@ class TableHistory implements Table<HistoryEntry> {
 Nous avons souhaité offrir à l'utilisateur la possibilité de configurer certaines options de l'application. 
 
 \subsubsection{Configurer le navigateur}
-Premièrement, l'utilisateur peut enregistrer des configurations pour l'intégralité du navigateur web. Par exemple, le moteur de recherche par défaut, s'il souhaite être en mode sombre, etc ... \\
-De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donné que les configurations possibles ne représentent pas un grand nombreux de données à stocker, il est plus simple de manier un fichier formaté comme JSON.
+Premièrement, l'utilisateur peut enregistrer des configurations pour l'intégralité du navigateur web. Par exemple, le moteur de recherche par défaut, si l'utilisateur souhaite être en mode sombre, etc ... \\
+De même que dans la section précédente, nous devons nous poser la question s'il faut utiliser une base de données ou un fichier de configuration. Pour ce cas, étant donné que les configurations possibles ne représentent pas un grand nombre de données à stocker, il est plus simple de manier un fichier formaté en JSON.
 
 \begin{verbatim}
 config.json
 {
-    engine: google // le moteur de recherche par défaut est google
+    engine: google // le moteur de recherche par défaut est Google
 }
 \end{verbatim}
 
-L'utilisateur à la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifie la valeur dans le fichier \verb|config.json|.
+L'utilisateur a la possibilité de modifier la valeur du moteur de recherche par défaut depuis le menu \textit{paramètre} de l'application. Ce qui aura pour conséquence de modifier la valeur dans le fichier \verb|config.json|.
 
 \subsubsection{Configurer les moteurs recherches}
-Ensuite, nous souhaitons que l'utilisateur puissent ajouter des moteurs de recherche ou des raccourcis de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une rechercher, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
-Pour ce faire, de même que la configuration du navigateur nous utilisons un fichier JSON en associant un nom et un url.
+Ensuite, nous souhaitons que l'utilisateur puisse ajouter des moteurs de recherche ou des raccourcis de recherche au navigateur. Par exemple au lieu d'aller sur Youtube et d'effectuer une recherche, l'utilisateur peut directement écrire \verb|@youtube nom_video| dans la barre de recherche. \\
+Pour ce faire, de même que la configuration du navigateur nous utilisons un fichier JSON en associant un nom et une URL.
 \begin{verbatim}
 webengine.config
 {
@@ -508,7 +556,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \operation {+ save() }
 \end{interface}	
 
-\begin{class}[text  width=4.5cm]{CFNavigator}{-5.5,-4.5}
+\begin{class}[text  width=4.5cm]{CFSearchEngineDefault}{-5.5,-4.5}
 \implement {ConfigurationFile}
 \attribute {- engine : String}
 \operation {+ query(url : String) : String}
@@ -516,11 +564,11 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \operation {+ save() }
 \end{class}	
 
-\begin{class}[text  width=6.5cm]{CFEngineSearch}{0.5,-4.5}
+\begin{class}[text  width=6.5cm]{CFSearchEngineList}{0.5,-4.5}
 \implement {ConfigurationFile}
 \attribute {- availableEngine : HM<String, String>}
 \operation {+ addAvailableEngine(engine, url : String) }
-\operation {+ isAvaibleEngine(engine : String) : bool. }
+\operation {+ isAvailable(engine : String) : bool. }
 \operation {+ load() }
 \operation {+ save() }
 \end{class}	
@@ -549,7 +597,7 @@ Nous présentons ci-dessous, un diagramme de classe sur la configuration de l'ap
 \end{tikzpicture}
 \end{center}
 
-C'est dans la méthode \verb|TabsController#initialize()| que nous instancions pour la premièrement fois un objet de type \verb|ConfigurationCreator|. Lors de la création de cet objet, nous exécutons la méthode\verb|loadConfigurationFile| qui va se charger de créer un nouvel objet pour chaque fichier de configuration avec une clé. Ainsi, par la suite nous pourrons récupérer cet objet grâce à la méthode \verb|getConfigurationFile(key)|
+C'est dans la méthode \verb|TabsController#initialize()| que nous instancions pour la première fois un objet de type \verb|ConfigurationCreator|. Lors de la création de cet objet, nous exécutons la méthode\verb|loadConfigurationFile()| qui va se charger de créer un nouvel objet pour chaque fichier de configuration avec une clé. Ainsi, par la suite nous pourrons récupérer cet objet grâce à la méthode \verb|getConfigurationFile(key)|
 
 \newpage
 
@@ -581,7 +629,7 @@ class ConfigurationCreator {
 }
 \end{lstlisting}
 
-Par la suite, les autres contrôleurs pourront récupérer les objets associés aux fichiers de configuration. C'est le cas dans \verb|ParametersController| qui a besoin des fichiers de configuration du navigateur et des moteurs de recherche.
+Les autres contrôleurs pourront récupérer les objets associés aux fichiers de configuration. \\ C'est le cas dans \verb|ParametersController| qui a besoin des fichiers de configuration du navigateur et des moteurs de recherche.
 
 \begin{lstlisting}
 class ParametersController {
@@ -590,11 +638,11 @@ class ParametersController {
         // get config from file
         ConfigurationCreator config = ConfigurationCreator.getInstance();
 
-        ConfigurationFileNavigator configNavigator = 
-        		(ConfigurationFileNavigator) config.getConfigurationFile("configurationFileNavigator");
+        CFSearchEngineDefault configNavigator = 
+        		(CFSearchEngineDefault) config.getConfigurationFile("configurationFileNavigator");
         
-        ConfigurationFileEngineSearch configEngineSearch =
-        		(ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+        CFSearchEngineList configEngineSearch =
+        		(CFSearchEngineList) config.getConfigurationFile("configurationFileEngineSearch");
         		
         /* manipulation des fichiers à travers les deux objets */
 }
@@ -603,13 +651,13 @@ class ParametersController {
 \newpage
 
 \subsection{Complémentarité des controlleurs}
-L'une des principales difficultés du projet était de pouvoir communiquer entre controlleurs. En effet, nous avons définie un WebView qui permet d'avoir l'affichage des pages web. Mais lors de l'épic onglet, il a fallu faire en sorte que chaque onglet et une WebView différente. De plus, les boutons de la barre de navigation (suivant, précédent, etc) doivent communiquer seulement avec l'onglet et la WebView courante. \\
+L'une des principales difficultés du projet était de pouvoir communiquer entre contrôleurs. En effet, nous avons défini un WebView qui permet d'avoir l'affichage des pages web. Mais lors de l'épique onglet, il a fallu faire en sorte que chaque onglet et une WebView différente. De plus, les boutons de la barre de navigation (suivant, précédent, etc) doivent communiquer seulement avec l'onglet et la WebView courante. \\
 
-Pour résoudre ce problème, nous avons du imbriquer les différents controleurs afin de pouvoir manipuler plusieurs controleurs sur la même vue. Ainsi, la vue définie dans le \verb|main.fxml| avec la fenêtre de navigation et la barre de navigation contient également une imbriquation pour pouvoir utiliser la classe \verb|TabsController|. \\
+Pour résoudre ce problème, nous avons du imbriquer les différents controleurs afin de pouvoir manipuler plusieurs contrôleurs sur la même vue. Ainsi, la vue définie dans le \verb|main.fxml| avec la fenêtre de navigation et la barre de navigation contient également une imbrication pour pouvoir utiliser la classe \verb|TabsController|. \\
 \verb|<fx:include fx:id="tab" source="tabs.fxml" VBox.vgrow="ALWAYS" />|
 
 \subsubsection{Communication du fils vers le père}
-Et dans le controleur du \verb|main.fxml| nous avons
+Et dans le contrôleur du \verb|main.fxml| nous avons
 \begin{lstlisting}
 @FXML  //  vaut toujours null si manquant
 private TabsController tabController;
@@ -637,7 +685,7 @@ public void setControlsController(WebViewController controlsController) {
 
 \subsubsection{Communication du père vers le fils}
 
-Nous venons de donner connaissance du controleur parent au controleur fils. Maintenant, nous pouvons utiliser les méthodes définies dans \verb|TabsController|. Par exemple en cliquant sur le bouton \textit{ajouter un onglet} qui est défini dans \verb|main.fxml| on va utiliser la méthode \verb|TabsController#addNewTab()|. 
+Nous venons de donner l'instance du contrôleur parent au controleur fils. Maintenant, nous pouvons utiliser les méthodes définies dans \verb|TabsController|. Par exemple en cliquant sur le bouton \textit{ajouter un onglet} qui est défini dans \verb|main.fxml| on va utiliser la méthode \verb|TabsController#addNewTab()|. 
 \begin{lstlisting}
 newTabButton.setOnAction(new EventHandler<ActionEvent>() {
 	@Override
@@ -653,24 +701,27 @@ newTabButton.setOnAction(new EventHandler<ActionEvent>() {
 \section{Conclusion}
 \subsection{Pistes d'amélioration}
 
-Avant de conclure sur ce projet, nous pouvons lister quelques pistes d'amélioration :
+Avant de conclure ce projet, nous pouvons lister quelques pistes d'amélioration :
 \begin{itemize}
 \item Pour finaliser le projet, en se basant sur la vélocité, on estime qu'il nous faudrait deux semaines supplémentaires.
-\item De même, certain point d'effort ont été mal évalué. Mais de meilleures estimations nécessite une plus grande expérience. 
-\item Une meilleure conception dès le début du projet aurait pu nous éviter d'avoir à réaliser des refactors.
-\item Suivre jusqu'à la fin du projet le workflow détaillé sur le GitHub car à la fin du projet nous ne nous relisons plus (prise de confiance)
-\item Enfin, il manque des tests unitaires car l'architecture est très simple et les tests se baseraient sur l'interface graphique.
+\item De même, certains points d'effort ont été mal évalué. Mais, de meilleures estimations nécessitent une plus grande expérience. 
+\item Une meilleure conception dès le début du projet aurait pu nous éviter d'avoir recours à du refactoring.
+\item Suivre jusqu'à la fin du projet le workflow détaillé sur le GitHub. Car à la fin du projet nous ne nous relisions moins qu'au début (prise de confiance).
+\item Enfin, il manque des tests unitaires car l'architecture est très simple et les tests se baseraient principalement sur l'interface graphique.
 \end{itemize}
 
 \subsection{Conclusion sur l'agilité}
-
-L'obligation d'utiliser l'agilité pour ce projet nous a prouvé que ce concept fonctionne bien. En effet, au fur et à mesure des itérations on arrivait à prioriser les tâches et à apporter des modifications sur des points d'effort et des valeurs métier. 
-De plus, le fait d'avoir un rendu de l'application chaque semaine est très gratifiant et nous pousse à continuer. \\
-Ensuite, la répartition des tâches était équitable. Chacun pouvait travailler sur son service indépendamment puis ensuite le mettre en commun via git. \\
-Enfin, nous finissions chaque itération par un sprint review pour se remettre en question et continuer à s'améliorer
+Le fait d'avoir d'utilisé l'agilité pour ce projet nous a prouvé que ce concept fonctionne bien. En effet, au fur et à mesure des itérations on arrivait à prioriser les tâches et à apporter des modifications sur des points d'effort et des valeurs métier. Ensuite, la répartition des tâches était équitable. Chacun pouvait travailler sur son service indépendamment puis ensuite le mettre en commun via Git. \\
+Enfin, nous finissions chaque itération par une rétrospective pour se remettre en question et continuer à s'améliorer.
 
 
-\subsection{Conclution du projet}
+\subsection{Conclusion du projet}
+
+Notre backlog était très ambitieux, et comportait des épiques et fonctionnalités très poussées. Nous ne sommes pas parvenus à la fin de celui-ci. Les fonctionnalités essentielles, avec les plus grandes valeurs métiers (de 6 à 10) ont été choisies et terminées. Heureusement pour nous, les fonctionnalités les plus difficiles, avec les points d’efforts les plus hauts étaient souvent des fonctionnalités accessoires, ou en tout cas moins critiques (des valeurs métiers de 1 à 5), comme par exemple les épiques concernant le gestionnaire de mot de passes (4 user stories). Nous sommes confiants sur le fait qu’avec un ou deux sprints supplémentaires l’ensemble du backlog aurait pu être réalisé. \\
+
+Nous avons beaucoup apprécié l’opportunité d’enfin mettre en pratique l’agilité pour ce projet au travers de la méthode SCRUM. Nous avons pu faire l’expérience de sa valeur ajoutée : par exemple le fait d’avoir une application fonctionnelle à la fin de chaque itération était très gratifiant et nous encourageait à continuer. Fonctionner par itérations limitait la portée de nos décisions et nous permettait de corriger les erreurs (par exemple mauvaises estimations de user stories). Le fait de beaucoup communiquer lors des retrospective, de faire rapport de son progrès et surtout de ses difficultés a grandement contribué à instaurer un climat d’entraide plutôt qu’une atmosphère de compétition à qui finirait son ticket le premier. \\
+
+Enfin, pour finir de nous imprégner jusqu’au bout de la philosophie agile, nous étions bien-sûr obligés de faire des activités extra-curriculaires de team-building. Nous avons donc organisé avec une autre équipe un week-end de cohésion pour souder nos liens afin de nous aider à mieux avancer ensemble sur le projet.
 
 
 \end{document}
