@@ -14,7 +14,7 @@ import org.javastreet.utils.DB.DBConnection;
 import org.javastreet.utils.DB.TableCookies;
 import org.javastreet.utils.DB.TableHistory;
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
-import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.CFSearchEngineList;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -170,7 +170,7 @@ public class TabsController {
             addressBar.setText(newLoc);
         });
 
-		ConfigurationFileEngineSearch cfes = (ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+		CFSearchEngineList cfes = (CFSearchEngineList) config.getConfigurationFile("configurationFileEngineSearch");
 
 		NavigationUtils.search(cfes.getEngineURL(), newTab.getWebView().getEngine());
 

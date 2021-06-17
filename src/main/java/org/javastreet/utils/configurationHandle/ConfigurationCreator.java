@@ -40,7 +40,7 @@ public class ConfigurationCreator {
 	 * Chargement des fichiers de configuration
 	 */
 	private void loadConfigurationFiles() {
-		configurationsFiles.put("configurationFileNavigator", new ConfigurationFileNavigator());
-		configurationsFiles.put("configurationFileEngineSearch", new ConfigurationFileEngineSearch());
+		configurationsFiles.put("configurationFileNavigator", new CFSearchEngineDefault());
+		configurationsFiles.put("configurationFileEngineSearch", new CFSearchEngineList());
 	}
 }

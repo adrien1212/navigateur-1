@@ -4,14 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
-import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
+import org.javastreet.utils.configurationHandle.CFSearchEngineList;
 
 public class Query {
 
     public static String request(String engine, String args[]){
         String url = "";
-        ConfigurationFileEngineSearch cfe = 
-        		(ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
+        CFSearchEngineList cfe =
+        		(CFSearchEngineList) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
         if(cfe.isAvailable(engine)){
             url = Query.webQuery(cfe.getAvailableEngine().get(engine), args);
         } else {

@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ConfigurationFileEngineSearch implements ConfigurationFile{
+public class CFSearchEngineList implements ConfigurationFile{
 
     private static String jsonMoteurRechercheConfigPath = "/src/main/resources/webEngine.json";
 	
@@ -21,7 +21,7 @@ public class ConfigurationFileEngineSearch implements ConfigurationFile{
     /**
      * Création d'une nouvelle instance et chargement du fichier
      */
-    public ConfigurationFileEngineSearch() {
+    public CFSearchEngineList() {
         this.availableEngine = new HashMap<>();
         this.load();
     }
@@ -83,7 +83,7 @@ public class ConfigurationFileEngineSearch implements ConfigurationFile{
 	}
 	
     public String getEngineURL() {
-    	ConfigurationFileNavigator cfn = (ConfigurationFileNavigator) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileNavigator");
+    	CFSearchEngineDefault cfn = (CFSearchEngineDefault) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileNavigator");
         String url[] = this.availableEngine.get(cfn.getEngine()).split("/");
         return url[0] + "//" + url[2];
     }

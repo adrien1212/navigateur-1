@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
-import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
-import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
+import org.javastreet.utils.configurationHandle.CFSearchEngineList;
+import org.javastreet.utils.configurationHandle.CFSearchEngineDefault;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,14 +26,14 @@ public class NavigationUtils {
 				if(keywords[0].startsWith("@")){
 					String engine = keywords[0].split("@")[1];
 					System.out.println(engine);
-					ConfigurationFileEngineSearch cfe = (ConfigurationFileEngineSearch) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
+					CFSearchEngineList cfe = (CFSearchEngineList) ConfigurationCreator.getInstance().getConfigurationFile("configurationFileEngineSearch");
 					if(cfe.isAvailable(engine)){
 						keywords[0] = "";
 						url = Query.request(engine, keywords);
 					}
 				} else {
 					ConfigurationCreator cc = ConfigurationCreator.getInstance();
-					ConfigurationFileNavigator cfn = (ConfigurationFileNavigator) cc.getConfigurationFile("configurationFileNavigator");
+					CFSearchEngineDefault cfn = (CFSearchEngineDefault) cc.getConfigurationFile("configurationFileNavigator");
 
 					url = Query.request(cfn.getEngine(), keywords);
 				}

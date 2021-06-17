@@ -11,7 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ConfigurationFileNavigator implements ConfigurationFile {
+public class CFSearchEngineDefault implements ConfigurationFile {
 
     private static String jsonNavigateurConfigPath = "/src/main/resources/config.json";
 	
@@ -20,7 +20,7 @@ public class ConfigurationFileNavigator implements ConfigurationFile {
     /**
      * Création d'une nouvelle instance et chargement du fichier de configuration
      */
-    public ConfigurationFileNavigator() {
+    public CFSearchEngineDefault() {
         this.load();
     }
     

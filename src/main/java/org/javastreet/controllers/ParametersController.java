@@ -3,8 +3,8 @@ package org.javastreet.controllers;
 import java.util.Map;
 
 import org.javastreet.utils.configurationHandle.ConfigurationCreator;
-import org.javastreet.utils.configurationHandle.ConfigurationFileEngineSearch;
-import org.javastreet.utils.configurationHandle.ConfigurationFileNavigator;
+import org.javastreet.utils.configurationHandle.CFSearchEngineList;
+import org.javastreet.utils.configurationHandle.CFSearchEngineDefault;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,11 +35,11 @@ public class ParametersController {
         // get config from file
         ConfigurationCreator config = ConfigurationCreator.getInstance();
 
-        ConfigurationFileNavigator configNavigator = 
-        		(ConfigurationFileNavigator) config.getConfigurationFile("configurationFileNavigator");
+        CFSearchEngineDefault configNavigator =
+        		(CFSearchEngineDefault) config.getConfigurationFile("configurationFileNavigator");
         
-        ConfigurationFileEngineSearch configEngineSearch =
-        		(ConfigurationFileEngineSearch) config.getConfigurationFile("configurationFileEngineSearch");
+        CFSearchEngineList configEngineSearch =
+        		(CFSearchEngineList) config.getConfigurationFile("configurationFileEngineSearch");
         
         choiceBoxEngine.setValue(configNavigator.getEngine());
         for(Map.Entry<String, String> entry : configEngineSearch.getAvailableEngine().entrySet()){
